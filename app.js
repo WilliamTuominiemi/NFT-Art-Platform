@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
             res.status(500).send('An error occurred', err)
         }
         else {
-            res.render('imagesPage', { items: items })
+            res.render('imagesPage', { title: "Home", items: items })
         }
     });
 });
