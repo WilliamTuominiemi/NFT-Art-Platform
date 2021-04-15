@@ -1,5 +1,5 @@
- var mongoose = require('mongoose');
- 
+var mongoose = require('mongoose')
+
 var imageSchema = new mongoose.Schema({
     name: String,
     desc: String,
@@ -10,4 +10,4 @@ var imageSchema = new mongoose.Schema({
     }
 });
   
-module.exports = new mongoose.model('Image', imageSchema);
+module.exports = new mongoose.model('Image', imageSchema)
