@@ -1,27 +1,39 @@
 const express = require('express')
-const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const multer = require('multer')
+const dotenv = require('dotenv')
  
 const fs = require('fs')
 const path = require('path')
 
-const imgModel = require('./model')
+const imgModel = require('./models/model')
 
 const port = process.env.PORT || '3000'
 
-require('dotenv/config')
+const connectDB = require('./config/db')
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
-    console.log('connected')
-});
+// Load config
+dotenv.config({ path: './config/.env' })
+
+// Passport config
+// require('./config/passport')(passport)
+
+// Express app
+const app = express()
+
+// Port number
+const PORT1 = process.env.PORT || 3000
+
+// Connect to MongoDB
+connectDB()
+
+// Register view engine
+app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
  
-app.set("view engine", "ejs");
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -54,7 +66,7 @@ app.post('/', upload.single('image'), (req, res, next) => {
             contentType: 'image/png'
         }
     }
-    
+
     imgModel.create(obj, (err, item) => {
         if (err) {
             console.log(err)
