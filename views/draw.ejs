@@ -62,12 +62,19 @@
             }
 
             function decodeImage() {
+                
+
                 var variableJSON = JSON.parse($('#variableJSON').text());
                 $('#variableJSON').remove();
-                console.log(variableJSON.src)
-                var image = new Image();
-                image.src = variableJSON.src;
-                document.body.appendChild(image);
+                console.log(variableJSON)
+                
+                var i;
+                for (i = 0; i < variableJSON.amount; i++) {
+                    console.log("pog" + i)
+                    var image = new Image();
+                    image.src = variableJSON.images[i].src;
+                    document.body.appendChild(image);
+                }
             }
         </script>
         
@@ -75,8 +82,9 @@
             <canvas id="canvas" height="500px" width="500px" style="padding: 10px; border: 2px solid black;"></canvas>
         </div>
 
-        
-        <span id='variableJSON' hidden> <%= JSON.stringify (drawings[2]) %> </span>
+        <%= drawings.length %>
+
+        <span id='variableJSON' hidden> <%= JSON.stringify({"images":  drawings, "amount": drawings.length}) %>  </span>
 
         <div id="image">
             <img id="painting"/>
