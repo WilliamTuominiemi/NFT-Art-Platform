@@ -53,14 +53,48 @@
             
             function toImage() {
                 var img = canvas.toDataURL("image/png");
-                document.write('<img src="'+img+'"/>');
+
+                var element = document.getElementById("src");;
+
+                console.log(element)
+
+                element.setAttribute("value", img);
+            }
+
+            function decodeImage() {
+                var variableJSON = JSON.parse($('#variableJSON').text());
+                $('#variableJSON').remove();
+                console.log(variableJSON.src)
+                var image = new Image();
+                image.src = variableJSON.src;
+                document.body.appendChild(image);
             }
         </script>
         
         <div id="capture">
-            <canvas id="canvas" height="500px" width="500px" style="padding: 10px;"></canvas>
+            <canvas id="canvas" height="500px" width="500px" style="padding: 10px; border: 2px solid black;"></canvas>
+        </div>
+
+        
+        <span id='variableJSON' hidden> <%= JSON.stringify (drawings[2]) %> </span>
+
+        <div id="image">
+            <img id="painting"/>
         </div>
 
         <button onclick="toImage()">Save image</button>
+
+        <button onclick="decodeImage()">decode image</button>
+
+        <div class="container">
+            <form action="/image" method="POST">
+                <div class="form-group">
+                    <input type="hidden" id="src" value="" name="src" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

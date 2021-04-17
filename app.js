@@ -8,6 +8,7 @@ const fs = require('fs')
 const path = require('path')
 
 const imgModel = require('./models/model')
+const Drawing = require('./models/image')
 
 const port = process.env.PORT || '3000'
 
@@ -31,6 +32,8 @@ connectDB()
 // Register view engine
 app.set('view engine', 'ejs')
 
+app.use(express.static('public'))
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -49,15 +52,21 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.get('/', (req, res) => {
-    imgModel.find({}, (err, items) => {
-        if (err) {
-            console.log(err)
-            res.status(500).send('An error occurred', err)
-        }
-        else {
-            res.render('draw', { title: "Home", items: items })
-        }
-    });
+
+    Drawing.find()
+    .then((result) => {
+        res.render('draw', { title: "Home", drawings: result})
+    })
+
+    // imgModel.find({}, (err, items) => {
+    //     if (err) {
+    //         console.log(err)
+    //         res.status(500).send('An error occurred', err)
+    //     }
+    //     else {
+    //         res.render('draw', { title: "Home", items: items })
+    //     }
+    // });
 });
 
 app.post('/', upload.single('image'), (req, res, next) => {
@@ -70,6 +79,8 @@ app.post('/', upload.single('image'), (req, res, next) => {
         }
     }
 
+    console.log()
+
     imgModel.create(obj, (err, item) => {
         if (err) {
             console.log(err)
@@ -80,6 +91,23 @@ app.post('/', upload.single('image'), (req, res, next) => {
         }
     });
 });
+
+app.post('/image', (req, res) => {
+    console.log(req.body.src)
+
+    const obj = {
+        src: req.body.src
+    }
+
+    Drawing.create(obj, (err, item) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.redirect('/')
+        }
+    });
+})
 
 app.listen(port, err => {
     if (err)
