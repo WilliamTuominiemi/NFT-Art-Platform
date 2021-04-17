@@ -31,8 +31,11 @@ connectDB()
 // Register view engine
 app.set('view engine', 'ejs')
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
  
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -52,7 +55,7 @@ app.get('/', (req, res) => {
             res.status(500).send('An error occurred', err)
         }
         else {
-            res.render('imagesPage', { title: "Home", items: items })
+            res.render('draw', { title: "Home", items: items })
         }
     });
 });
