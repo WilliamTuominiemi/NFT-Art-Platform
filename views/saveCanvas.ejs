@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+    </head>
+    <body>
+        <canvas id="canvasid" width="200" height="100"></canvas>
+
+        <script>
+            var canvas = document.getElementById('canvasid');
+            var context = canvas.getContext('2d');
+            context.fillStyle="#ff0000";
+            context.fillRect(10,10,60,60);
+        </script>
+
+        <img id="canvasimg" src="" />
+        <script type="text/javascript">
+        $("#canvasimg").attr("src", $("#canvasid").get(0).toDataURL("img/png"));
+        </script>
+        
+    </body>
+</html>

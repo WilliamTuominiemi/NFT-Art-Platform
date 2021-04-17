@@ -1,5 +1,6 @@
 <html lang="en">
     <body>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
             // create canvas element and append it to document body
             var canvas = document.createElement('canvas');
@@ -48,19 +49,18 @@
                 ctx.lineTo(pos.x, pos.y); // to
 
                 ctx.stroke(); // draw it!
+            }  
+            
+            function toImage() {
+                var img = canvas.toDataURL("image/png");
+                document.write('<img src="'+img+'"/>');
             }
-
-            // function take_image()   {
-            //     html2canvas(document.querySelector("#capture")).then(canvas => {
-            //         document.body.appendChild(canvas)
-            //     });
-            // }          
         </script>
         
         <div id="capture">
-            <canvas id="canvas" height="500px" width="500px" style="background: black; padding: 10px;"></canvas>
+            <canvas id="canvas" height="500px" width="500px" style="padding: 10px;"></canvas>
         </div>
 
-        <!-- <button onclick="take_image()">Save image</button> -->
+        <button onclick="toImage()">Save image</button>
     </body>
 </html>
