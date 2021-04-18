@@ -3,13 +3,16 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const multer = require('multer')
 const dotenv = require('dotenv')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
  
 const fs = require('fs')
 const path = require('path')
 
 const Drawing = require('./models/image')
 
-const port = process.env.PORT || '3000'
+const auth = require('./routes/auth')
 
 const connectDB = require('./config/db')
 
@@ -17,13 +20,13 @@ const connectDB = require('./config/db')
 dotenv.config({ path: './config/.env' })
 
 // Passport config
-// require('./config/passport')(passport)
+require('./config/passport')(passport)
 
 // Express app
 const app = express()
 
 // Port number
-const PORT1 = process.env.PORT || 3000
+const port = process.env.PORT || '3000'
 
 // Connect to MongoDB
 connectDB()
@@ -33,22 +36,27 @@ app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
 
+
+// Sessions
+app.use(
+	session({
+		secret: 'keyboard cat',
+		resave: false,
+		saveUninitialized: false,
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+	})
+)
+
+// Passport and express middleware
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(express.urlencoded())
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 app.use(bodyParser.json());
- 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-})
- 
-const upload = multer({ storage: storage })
 
 app.get('/', (req, res) => {
     Drawing.find()
@@ -59,30 +67,6 @@ app.get('/', (req, res) => {
 
 app.get('/draw', (req, res) => {
     res.render('draw', { title: "Draw"})
-});
-
-
-app.post('/', upload.single('image'), (req, res, next) => {
-    var obj = {
-        name: req.body.name,
-        desc: req.body.desc,
-        img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
-        }
-    }
-
-    console.log()
-
-    imgModel.create(obj, (err, item) => {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            // item.save();
-            res.redirect('/')
-        }
-    });
 });
 
 app.post('/image', (req, res) => {
@@ -101,6 +85,8 @@ app.post('/image', (req, res) => {
         }
     });
 })
+
+app.use('/auth', auth)
 
 app.listen(port, err => {
     if (err)
