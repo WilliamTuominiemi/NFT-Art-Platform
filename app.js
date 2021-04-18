@@ -53,10 +53,11 @@ app.use(passport.session())
 app.use(express.urlencoded())
 
 app.use(bodyParser.urlencoded({
+    limit: '50mb',
     extended: true
 }));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.get('/', (req, res) => {
     Drawing.find()
