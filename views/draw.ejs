@@ -66,17 +66,7 @@
             <canvas id="canvas" height="500px" width="500px" style="padding: 10px; border: 2px solid black;"></canvas>
         </div>
 
-        <div id="drawings">
-            <% let i = 0 %>
-
-            <% drawings.forEach(drawing => { %>
-                <% i++; %>
-                <div id="drawing">
-                    <p> <%= drawing._id %> </p>
-                    <img id="drawing<%= i %>" src="<%= drawing.src %>" />
-                </div> 
-            <% }) %>   
-        </div>
+        
         
         <div id="image">
             <img id="painting"/>

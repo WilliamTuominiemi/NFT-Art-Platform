@@ -1,0 +1,23 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <div class="drawings">
+            <% let i = 0 %>
+        
+            <% drawings.forEach(drawing => { %>
+                <% i++; %>
+                <div class="drawing">
+                    <p> <%= drawing._id %> </p>
+                    <img id="drawing<%= i %>" src="<%= drawing.src %>" height="150px" width="150px"/>
+                </div> 
+            <% }) %>   
+        </div>
+    </main>
+</body>
+
+</html>

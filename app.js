@@ -7,7 +7,6 @@ const dotenv = require('dotenv')
 const fs = require('fs')
 const path = require('path')
 
-const imgModel = require('./models/model')
 const Drawing = require('./models/image')
 
 const port = process.env.PORT || '3000'
@@ -52,22 +51,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.get('/', (req, res) => {
-
     Drawing.find()
     .then((result) => {
-        res.render('draw', { title: "Home", drawings: result})
+        res.render('index', { title: "Home", drawings: result})
     })
-
-    // imgModel.find({}, (err, items) => {
-    //     if (err) {
-    //         console.log(err)
-    //         res.status(500).send('An error occurred', err)
-    //     }
-    //     else {
-    //         res.render('draw', { title: "Home", items: items })
-    //     }
-    // });
 });
+
+app.get('/draw', (req, res) => {
+    res.render('draw', { title: "Draw"})
+});
+
 
 app.post('/', upload.single('image'), (req, res, next) => {
     var obj = {
