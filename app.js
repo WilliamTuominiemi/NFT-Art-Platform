@@ -70,14 +70,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/draw', (req, res) => {
-    res.render('draw', { title: "Draw"})
+    res.render('draw', { title: "Draw", user: req.user})
 });
 
-app.post('/image', (req, res) => {
-    console.log(req.body.src)
+app.post('/draw', (req, res) => {
+    console.log(req.body)
 
     const obj = {
-        src: req.body.src
+        src: req.body.src,
+        googleId: req.body.googleId,
+        name: req.body.name,
+        avatar: req.body.avatar,
     }
 
     Drawing.create(obj, (err, item) => {
