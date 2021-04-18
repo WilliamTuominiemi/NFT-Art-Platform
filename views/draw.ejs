@@ -59,40 +59,30 @@
                 console.log(element)
 
                 element.setAttribute("value", img);
-            }
-
-            function decodeImage() {
-                
-
-                var variableJSON = JSON.parse($('#variableJSON').text());
-                $('#variableJSON').remove();
-                console.log(variableJSON)
-                
-                var i;
-                for (i = 0; i < variableJSON.amount; i++) {
-                    console.log("pog" + i)
-                    var image = new Image();
-                    image.src = variableJSON.images[i].src;
-                    document.body.appendChild(image);
-                }
-            }
+            }       
         </script>
         
         <div id="capture">
             <canvas id="canvas" height="500px" width="500px" style="padding: 10px; border: 2px solid black;"></canvas>
         </div>
 
-        <%= drawings.length %>
+        <div id="drawings">
+            <% let i = 0 %>
 
-        <span id='variableJSON' hidden> <%= JSON.stringify({"images":  drawings, "amount": drawings.length}) %>  </span>
-
+            <% drawings.forEach(drawing => { %>
+                <% i++; %>
+                <div id="drawing">
+                    <p> <%= drawing._id %> </p>
+                    <img id="drawing<%= i %>" src="<%= drawing.src %>" />
+                </div> 
+            <% }) %>   
+        </div>
+        
         <div id="image">
             <img id="painting"/>
         </div>
 
         <button onclick="toImage()">Save image</button>
-
-        <button onclick="decodeImage()">decode image</button>
 
         <div class="container">
             <form action="/image" method="POST">
