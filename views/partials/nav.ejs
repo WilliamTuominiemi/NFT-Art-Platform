@@ -4,11 +4,17 @@
 	<!-- Logo -->
 	<h5 class="my-0 mr-md-auto font-weight-normal">NRG-NFT</h5>
 	<!-- Links -->
-	<nav class="my-2 my-md-0 mr-md-3">
-		<a class="p-2 text-dark" href="/">Home</a>
-		<a class="p-2 text-dark" href="/draw">New drawing</a>
-
-	</nav>
+	
 	<!-- Sign in button -->
-	<a class="btn btn-outline-dark" href="/auth/google">Sign in</a>
+	<% if(user === "undefined") { %>
+		<a class="btn btn-outline-dark" href="/auth/google">Sign in</a>
+	<% } else { %>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="/">Home</a>
+			<a class="p-2 text-dark" href="/draw">New drawing</a>
+			<a class="p-2 text-dark" href="/auth/logout">Logout</a>
+		</nav>
+	<% } %>
+
+
 </div>

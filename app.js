@@ -59,9 +59,16 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
+    console.log(req.user)
     Drawing.find()
     .then((result) => {
-        res.render('index', { title: "Home", drawings: result})
+        if(req.user === undefined) {
+            console.log("undefined")
+            res.render('index', { title: "Home", drawings: result, user: "undefined"})
+        }   else    {
+            console.log(req.user)
+            res.render('index', { title: "Home", drawings: result, user: req.user})
+        }
     })
 });
 

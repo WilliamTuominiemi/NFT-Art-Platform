@@ -10,7 +10,7 @@ router.get(
 	'/google/callback',
 	passport.authenticate('google', { failureRedirect: '/posts' }),
 	(req, res) => {
-		res.redirect('/profile')
+		res.redirect('/')
 	}
 )
 
