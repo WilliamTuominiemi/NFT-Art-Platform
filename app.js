@@ -74,6 +74,16 @@ app.get('/draw', (req, res) => {
     res.render('draw', { title: "Draw", user: req.user})
 });
 
+app.get('/like/:id', (req, res) => {
+    Drawing.findOneAndUpdate({_id: req.params.id}, {$inc : {'likes' : 1}})
+    .then((result) => {
+        Drawing.findOneAndUpdate({_id: req.params.id}, { $push: { 'likers': req.user.googleId }})
+        .then((result1) => {
+            res.redirect('/')
+        })
+    })
+})
+
 app.post('/draw', (req, res) => {
     console.log(req.body)
 
@@ -82,6 +92,8 @@ app.post('/draw', (req, res) => {
         googleId: req.body.googleId,
         name: req.body.name,
         avatar: req.body.avatar,
+        likes: 0,
+        likers: [],
     }
 
     Drawing.create(obj, (err, item) => {

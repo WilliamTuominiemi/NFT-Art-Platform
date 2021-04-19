@@ -17,6 +17,12 @@ var drawingSchema = new mongoose.Schema({
         type: String,
 		required: true,
     },
+    likes: {
+        type: Number,
+    },
+    likers: {
+        type: Array,
+    },
 });
   
 module.exports = new mongoose.model('Drawing', drawingSchema)
