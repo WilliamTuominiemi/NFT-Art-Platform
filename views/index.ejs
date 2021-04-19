@@ -13,7 +13,7 @@
                 <div class="drawing">
                     <p><img src="<%= drawing.avatar%>" height="25px" width="25px"/> <b><%= drawing.name %></b> drew: </p>
                     <img id="drawing<%= i %>" src="<%= drawing.src %>" height="150px" width="150px"/> <br />
-                    <a href="/like/<%= drawing._id %>"><img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1618837572~hmac=d4ef1dcb9f0fd8032535733f6f4160d4" 
+                    <a href="/like/<%= drawing._id %>"><img src="heart.png" 
                         height="25px" width="25px"> <%= drawing.likes %></a>
                 </div> 
             <% }) %>   
