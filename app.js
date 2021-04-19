@@ -77,8 +77,6 @@ app.get('/draw', (req, res) => {
 app.get('/like/:id', (req, res) => {
     Drawing.find({_id: req.params.id})
     .then((result) => {
-        console.log(result[0].likers)
-        console.log(req.user.googleId)
         if(result[0].likers.includes(req.user.googleId))    {
             res.redirect('/')
         }   else    {
