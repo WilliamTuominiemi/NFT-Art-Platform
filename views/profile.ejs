@@ -1,0 +1,27 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <img src="<%= user.image %>" alt="<%= user.googleId %>" height="50px" width="50px">
+        <h1> <%= profile_user.displayName %></h1>
+        <% let i = 0 %>
+        <% drawings.forEach(drawing => { %>
+            <% i++; %>
+            <div class="drawing">
+                <p><img src="<%= drawing.avatar%>" height="25px" width="25px"/> <b><%= drawing.name %></b> drew: </p>
+                <img id="drawing<%= i %>" src="<%= drawing.src %>" height="150px" width="150px"/> <br />             
+                <div class="likeContainer">
+                    <img src="heart.png" height="25px" width="25px">
+                    <div class="centered"><%= drawing.likes %></div>
+                </div>       
+                <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"><%= drawing.likes %></img> </a>
+            </div> 
+        <% }) %>   
+    </main>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 const Drawing = require('../models/image')
+const User = require('../models/User')
 
 const main = (req, res) => {
     Drawing.find()
@@ -8,6 +9,18 @@ const main = (req, res) => {
         }   else    {
             res.render('index', { title: "Home", drawings: result, user: req.user})
         }
+    })
+}
+
+const profile = (req, res) => {
+    User.find({googleId: req.params.id})
+    .then((result) => {
+        const user = result[0]
+        Drawing.find({googleId: user.googleId})
+        .then((result1) => {
+            console.log("drawings: " + result1)
+            res.render('profile', { title: user.displayName, profile_user: user, user: req.user, drawings: result1})
+        })
     })
 }
 
@@ -68,5 +81,6 @@ module.exports = {
 	main,
     draw,
     draw_post,
-    like
+    like,
+    profile
 }
