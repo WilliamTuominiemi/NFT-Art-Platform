@@ -78,7 +78,13 @@ app.get('/like/:id', (req, res) => {
     Drawing.find({_id: req.params.id})
     .then((result) => {
         if(result[0].likers.includes(req.user.googleId))    {
-            res.redirect('/')
+            Drawing.findOneAndUpdate({_id: req.params.id}, {$inc : {'likes' : -1}})
+            .then((result1) => {
+                Drawing.findOneAndUpdate({_id: req.params.id}, { $pull: { 'likers': req.user.googleId }})
+                .then((result2) => {
+                    res.redirect('/')
+                })
+            })
         }   else    {
             Drawing.findOneAndUpdate({_id: req.params.id}, {$inc : {'likes' : 1}})
             .then((result1) => {
