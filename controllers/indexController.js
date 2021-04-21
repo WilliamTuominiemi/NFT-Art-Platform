@@ -12,25 +12,14 @@ const main = (req, res) => {
     })
 }
 
-let i = 0;
-let u_user;
-let u_drawings;
-
 const profile = (req, res) => {
-    i++;
-    if(i === 1) {
-        User.find({googleId: req.params.id})
-        .then((result) => {
-            Drawing.find({googleId: req.params.id})
-            .then((result1) => {
-                u_user = result[0]
-                u_drawings = result1
-                res.render('profile', { title: result[0].displayName, user: req.user, profile_user: result[0], drawings: result1})
-            })
+    User.find({googleId: req.params.id})
+    .then((result) => {
+        Drawing.find({googleId: req.params.id})
+        .then((result1) => {
+            res.render('profile', { title: result[0].displayName, user: req.user, profile_user: result[0], drawings: result1})
         })
-    }   else    {
-        res.render('profile', { title: u_user.displayName, user: req.user, profile_user: u_user, drawings: u_drawings})
-    }
+    })
 }
 
 const draw = (req, res) => {

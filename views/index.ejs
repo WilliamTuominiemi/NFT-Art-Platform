@@ -11,7 +11,7 @@
             <% drawings.forEach(drawing => { %>
                 <% i++; %>
                 <div class="drawing">
-                    <p><img src="<%= drawing.avatar%>" height="25px" width="25px"/> <b><%= drawing.name %></b> drew: </p>
+                    <p><a href="/user/<%= drawing.googleId %>"><img src="<%= drawing.avatar%>" height="25px" width="25px"/></a> <b><%= drawing.name %></b> drew: </p>
                     <img id="drawing<%= i %>" src="<%= drawing.src %>" height="150px" width="150px"/> <br />                 
                     <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"><%= drawing.likes %></img> </a>
                 </div> 
