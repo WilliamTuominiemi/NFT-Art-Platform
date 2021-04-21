@@ -13,7 +13,7 @@
 			<a class="p-2 text-dark" href="/">Home</a>
 			<a class="p-2 text-dark" href="/draw">New drawing</a>
 			<a class="p-2 text-dark" href="/auth/logout">Logout</a>
-			<img src="<%= user.image %>" height="40px" width="40px"/>
+			<a href="/user/<%= user.googleId %>"><img src="<%= user.image %>" height="40px" width="40px"/></a>
 		</nav>
 	<% } %>
 
