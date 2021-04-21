@@ -15,8 +15,7 @@
                 <p><img src="<%= drawing.avatar%>" height="25px" width="25px"/> <b><%= drawing.name %></b> drew: </p>
                 <img id="drawing<%= i %>" src="<%= drawing.src %>" height="150px" width="150px"/> <br />                    
                 <a href="/like/<%= drawing._id %>">
-                    <!-- <img src="heart.png" height="25px" width="25px" /> -->
-                    <%= drawing.likes %>
+                    Like (<%= drawing.likes %>)
                 </a>
             </div> 
         <% }) %>   
