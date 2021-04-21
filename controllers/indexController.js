@@ -3,6 +3,7 @@ const User = require('../models/User')
 
 const main = (req, res) => {
     Drawing.find()
+    .sort({ likes: -1 })
     .then((result) => {
         if(req.user === undefined) {
             res.render('index', { title: "Home", drawings: result, user: "undefined"})
@@ -16,6 +17,7 @@ const profile = (req, res) => {
     User.find({googleId: req.params.id})
     .then((result) => {
         Drawing.find({googleId: req.params.id})
+        .sort({ likes: -1 })
         .then((result1) => {
             res.render('profile', { title: result[0].displayName, user: req.user, profile_user: result[0], drawings: result1})
         })
