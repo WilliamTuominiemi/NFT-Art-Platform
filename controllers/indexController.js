@@ -1,6 +1,9 @@
 const Drawing = require('../models/image')
 const User = require('../models/User')
 
+let BlockChain = require('../src/blockChain')
+let BlockChainModel = require('../src/database/model')
+
 const main = (req, res) => {
     Drawing.find()
     .sort({ likes: -1 })
@@ -75,6 +78,27 @@ const draw_post = (req, res) => {
             res.redirect('/')
         }
     })
+}
+
+const mine = (req, res) => {
+	if(req.user != undefined)
+	{
+		console.log(req.body.blockToMine_id)
+		const filter = {_id: req.body.blockToMine_id}
+		BlockToMine.findOneAndDelete({_id: req.body.blockToMine_id})
+		.then((result) => {
+			
+			let blockChain = new BlockChain()
+			
+			let PROOF = 420
+			blockChain.addNewTransaction(req.user.googleId, req.body.sender_id, req.body.recipient_id, req.body.amount)
+			blockChain.addNewBlock(null)
+			res.redirect('/mine')
+			
+		})
+	}	else	{
+		res.redirect('/')
+	}
 }
 
 module.exports = {
