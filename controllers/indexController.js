@@ -139,15 +139,18 @@ const trade_post = (req, res) => {
     trade.save()
     .then((result) => {
         console.log(result)
-        res.render('/')
+        res.redirect('/trades')
     })   
 
 }
 
 const trades = (req, res) => {
     Trade.find({receiver_id: req.user.googleId})
-    .then((result) => {
-        res.render('trades', {title: "trades", user: req.user, trades: result})
+    .then((incoming) => {
+        Trade.find({sender_id: req.user.googleId})
+        .then((outgoing) => {
+            res.render('trades', {title: "trades", user: req.user, incoming, outgoing})
+        })
     })
 }
 
