@@ -8,8 +8,20 @@
     <main role="main" class="container">
         <% trades.forEach(trade => { %>
             <div class="trade">
-                <%= trade %>
+                <p>your: </p>
+                <% trade.receiver_drawings.forEach(drawing => { %>
+                    <a href="/drawing/<%= drawing %>"><%= drawing %></a>
+                <% }) %>
+                <p>for their: </p>
+                <% trade.sender_drawings.forEach(drawing => { %>
+                    <a href="/drawing/<%= drawing %>"><%= drawing %></a>
+                <% }) %>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Accept</button>
+                </div>
             </div> 
+            
         <% }) %>   
     </main>
 </body>
