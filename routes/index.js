@@ -7,8 +7,11 @@ router.get('/', indexController.main)
 router.get('/draw', indexController.draw)
 router.get('/like/:id', indexController.like)
 router.get('/user/:id', indexController.profile)
+router.get('/trade/:id', indexController.trade)
 
 router.post('/draw', indexController.draw_post)
+router.post('/trade/:id', indexController.trade_post)
+
 
 
 module.exports = router

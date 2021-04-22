@@ -1,0 +1,44 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <form action="/trade/<%= receiver.googleId%>" method="POST">
+            <div class="items">
+                <div class="myItems">
+                    <p><img src="<%= user.image %>" height="20px" width="20px"/><%= user.displayName %></p>
+                    <p><b>your: </b></p>
+                    <% user_drawings.forEach(drawing => { %>
+                        <div class="trade_drawing">
+                            <img  src="<%= drawing.src %>" height="50px" width="50px"/>   
+                            <input type="checkbox" id="my_image" value="<%= drawing._id %>" name="my_image">
+                        </div>
+                    <% }) %>   
+                </div>
+                <br />
+                <div class="theirItems">
+                    <p><img src="<%= receiver.image %>" height="20px" width="20px"/> <%= receiver.displayName %></p>
+                    <p><b>for their: </b></p>
+                    <% receiver_drawings.forEach(drawing => { %>
+                        <div class="trade_drawing">
+                            <img  src="<%= drawing.src %>" height="50px" width="50px"/>      
+                            <input type="checkbox" id="your_image" value="<%= drawing._id %>" name="your_image">
+                        </div>
+                    <% }) %>   
+        
+                </div>   
+    
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Send offer</button>
+            </div>         
+        </form>
+
+            
+    </main>
+</body>
+
+</html>

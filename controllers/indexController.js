@@ -101,10 +101,32 @@ const mine = (req, res) => {
 	}
 }
 
+const trade = (req, res) => {
+    console.log(req.params.id)
+    User.find({googleId: req.params.id})
+    .then((receiver) => {
+        Drawing.find({googleId: req.user.googleId})
+        .then((user_drawings) => {
+            Drawing.find({googleId: req.params.id})
+            .then((receiver_drawings) => {
+                console.log(req.user)
+                console.log(receiver)
+                res.render('trade', {title: "Trade", user: req.user, receiver: receiver[0], user_drawings, receiver_drawings})
+            })
+        })
+    })
+}
+
+const trade_post = (req, res) => {
+    console.log(req.body)
+}
+
 module.exports = {
 	main,
     draw,
     draw_post,
     like,
-    profile
+    profile,
+    trade,
+    trade_post    
 }
