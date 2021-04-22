@@ -137,6 +137,13 @@ const trade_post = (req, res) => {
 
 }
 
+const trades = (req, res) => {
+    Trade.find({receiver_id: req.user.googleId})
+    .then((result) => {
+        res.render('trades', {title: "trades", user: req.user, trades: result})
+    })
+}
+
 module.exports = {
 	main,
     draw,
@@ -144,5 +151,6 @@ module.exports = {
     like,
     profile,
     trade,
-    trade_post    
+    trade_post,
+    trades
 }

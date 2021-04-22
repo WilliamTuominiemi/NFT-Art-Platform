@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.get('/', indexController.main)
 router.get('/draw', indexController.draw)
+router.get('/trades', indexController.trades)
 router.get('/like/:id', indexController.like)
 router.get('/user/:id', indexController.profile)
 router.get('/trade/:id', indexController.trade)

@@ -1,0 +1,17 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <% trades.forEach(trade => { %>
+            <div class="trade">
+                <%= trade %>
+            </div> 
+        <% }) %>   
+    </main>
+</body>
+
+</html>
