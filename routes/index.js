@@ -9,6 +9,8 @@ router.get('/trades', indexController.trades)
 router.get('/like/:id', indexController.like)
 router.get('/user/:id', indexController.profile)
 router.get('/trade/:id', indexController.trade)
+router.get('/drawing/:id', indexController.drawing)
+
 
 router.post('/draw', indexController.draw_post)
 router.post('/trade/:id', indexController.trade_post)

@@ -32,6 +32,13 @@ const draw = (req, res) => {
     res.render('draw', { title: "Draw", user: req.user})
 }
 
+const drawing = (req, res) => {
+    Drawing.find({_id: req.params.id})
+    .then((drawing) => {
+        res.render('drawing', {title: "Drawing", user: req.user, drawing: drawing[0]})
+    })
+}
+
 const like = (req, res) => {
     if(req.user != undefined)   {
         Drawing.find({_id: req.params.id})
@@ -152,5 +159,6 @@ module.exports = {
     profile,
     trade,
     trade_post,
-    trades
+    trades,
+    drawing
 }
