@@ -14,7 +14,7 @@
                     <% user_drawings.forEach(drawing => { %>
                         <div class="trade_drawing">
                             <img  src="<%= drawing.src %>" height="50px" width="50px"/>   
-                            <input type="checkbox" id="my_image" value="<%= drawing._id %>" name="my_image">
+                            <input type="checkbox" id="sender_drawings" value="<%= drawing._id %>" name="sender_drawings">
                         </div>
                     <% }) %>   
                 </div>
@@ -25,7 +25,7 @@
                     <% receiver_drawings.forEach(drawing => { %>
                         <div class="trade_drawing">
                             <img  src="<%= drawing.src %>" height="50px" width="50px"/>      
-                            <input type="checkbox" id="your_image" value="<%= drawing._id %>" name="your_image">
+                            <input type="checkbox" id="receiver_drawings" value="<%= drawing._id %>" name="receiver_drawings">
                         </div>
                     <% }) %>   
         

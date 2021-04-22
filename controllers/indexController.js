@@ -1,4 +1,5 @@
 const Drawing = require('../models/image')
+const Trade = require('../models/trade')
 const User = require('../models/User')
 
 let BlockChain = require('../src/blockChain')
@@ -119,6 +120,21 @@ const trade = (req, res) => {
 
 const trade_post = (req, res) => {
     console.log(req.body)
+    
+    const body = {
+        sender_id: req.user.googleId,
+        receiver_id: req.params.id,
+        sender_drawings: req.body.sender_drawings,
+        receiver_drawings: req.body.receiver_drawings,
+    }
+
+    let trade = new Trade(body)
+    trade.save()
+    .then((result) => {
+        console.log(result)
+        res.render('/')
+    })   
+
 }
 
 module.exports = {
