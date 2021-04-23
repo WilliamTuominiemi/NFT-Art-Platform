@@ -145,11 +145,40 @@ const trade_post = (req, res) => {
 }
 
 const trades = (req, res) => {
+    let incoming_trades = []
+    let outgoing_trades = []
+
     Trade.find({receiver_id: req.user.googleId})
     .then((incoming) => {
+        incoming.forEach(trade => {
+            let incoming_drawings = []
+            let outgoing_drawings = []
+
+            trade.sender_drawings.forEach(sender_drawing => {
+                Drawing.find({_id: sender_drawing})
+                .then((drawing) => {
+                    console.log(drawing[0])
+                    incoming_drawings.push(drawing[0])
+                })
+            })
+            trade.receiver_drawings.forEach(receiver_drawing => {
+                Drawing.find({_id: receiver_drawing})
+                .then((drawing) => {
+                    console.log(drawing[0])
+                    outgoing_drawings.push(drawing[0])
+                })
+            })
+
+            incoming_trades.push({
+                "trade_id": trade._id,
+                "incoming_drawings": incoming_drawings,
+                "outgoing_drawings": outgoing_drawings,
+            })
+        })
         Trade.find({sender_id: req.user.googleId})
         .then((outgoing) => {
-            res.render('trades', {title: "trades", user: req.user, incoming, outgoing})
+            console.log(incoming_trades)
+            res.render('trades', {title: "trades", user: req.user, incoming_trades, outgoing})
         })
     })
 }

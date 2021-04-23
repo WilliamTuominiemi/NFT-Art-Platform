@@ -6,24 +6,26 @@
     <%- include("./partials/nav.ejs") %>
 
     <main role="main" class="container">
-        <% if(incoming.length != 0) { %>
+        <% if(incoming_trades.length != 0) { %>
             <h2> Incoming </h2>
-            <% incoming.forEach(trade => { %>
+            <% incoming_trades.forEach(trade => { %>
                 <div class="trade">
-                    <%= trade._id %>
+                    <%= trade.trade_id %>
                     <p>your: </p>
-                    <% trade.receiver_drawings.forEach(drawing => { %>
-                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
+                    <% trade.outgoing_drawings.forEach(drawing => { %>
+                        <img src="<%= drawing.src %>" height="100px" width="100px">
                     <% }) %>
                     <p>for their: </p>
-                    <% trade.sender_drawings.forEach(drawing => { %>
-                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
+                    <% trade.incoming_drawings.forEach(drawing => { %>
+                        <img src="<%= drawing.src %>" height="100px" width="100px">
                     <% }) %>
                     
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark">Accept</button>
-                        <button type="cancel" class="btn btn-dark">Cancel</button>
-                    </div>
+                    <form action="/accept/<%= trade.trade_id %>">
+                        <input type="submit" class="btn btn-dark" value="Accept" />
+                    </form>
+                    <form action="/decline/<%= trade.trade_id %>">
+                        <input type="submit" class="btn btn-dark" value="Decline" />
+                    </form>
                 </div>
             <% }) %>  
         <% } %>
