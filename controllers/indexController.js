@@ -107,12 +107,12 @@ const mine = (req, res) => {
 }
 
 const trade = (req, res) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
     User.find({ googleId: req.params.id }).then((receiver) => {
         Drawing.find({ googleId: req.user.googleId }).then((user_drawings) => {
             Drawing.find({ googleId: req.params.id }).then((receiver_drawings) => {
-                console.log(req.user)
-                console.log(receiver)
+                // console.log(req.user)
+                // console.log(receiver)
                 res.render('trade', {
                     title: 'Trade',
                     user: req.user,
@@ -128,35 +128,35 @@ const trade = (req, res) => {
 const trade_post = (req, res) => {
     console.log(req.body)
 
-    const body = {
-        sender_id: req.user.googleId,
-        receiver_id: req.params.id,
-        sender_drawings: req.body.sender_drawings,
-        receiver_drawings: req.body.receiver_drawings,
-    }
+    // const body = {
+    //     sender_id: req.user.googleId,
+    //     receiver_id: req.params.id,
+    //     sender_drawings: req.body.sender_drawings,
+    //     receiver_drawings: req.body.receiver_drawings,
+    // }
 
-    let trade = new Trade(body)
-    trade.save().then((result) => {
-        console.log(result)
-        res.redirect('/trades')
-    })
+    // let trade = new Trade(body)
+    // trade.save().then((result) => {
+    //     console.log(result)
+    //     res.redirect('/trades')
+    // })
 }
 
-const get_trade_data = (trade) => {
+async function get_trade_data(trade) {
     let incoming_drawings = []
     let outgoing_drawings = []
 
     trade.sender_drawings.forEach((sender_drawing) => {
         Drawing.find({ _id: sender_drawing }).then((drawing) => {
             incoming_drawings.push(drawing[0])
-            console.log(incoming_drawings)
+            // console.log(incoming_drawings)
         })
     })
 
     trade.receiver_drawings.forEach((receiver_drawing) => {
         Drawing.find({ _id: receiver_drawing }).then((drawing) => {
             outgoing_drawings.push(drawing[0])
-            console.log(outgoing_drawings)
+            // console.log(outgoing_drawings)
         })
     })
 
@@ -169,55 +169,39 @@ const get_trade_data = (trade) => {
         outgoing_drawings: outgoing_drawings,
     }
 
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+
     // console.log(trade_obj)
 
     return trade_obj
 }
 
-const trades = (req, res) => {
+async function trades(req, res) {
     let incoming_trades = []
     let outgoing_trades = []
 
-    let get_incoming_trades = new Promise((resolve, reject) => {
-        Trade.find({ receiver_id: req.user.googleId }).then((incoming) => {
-            let index = 0
-            incoming.forEach((trade) => {
-                index++
-                incoming_trade = get_trade_data(trade)
-                incoming_trades.push(incoming_trade)
-                if (index === incoming.length) resolve()
-            })
+    Trade.find({ receiver_id: req.user.googleId }).then((incoming) => {
+        incoming.forEach((trade) => {
+            incoming_trade = get_trade_data(trade)
+            incoming_trades.push(incoming_trade)
         })
     })
 
-    let get_outgoing_trades = new Promise((resolve, reject) => {
-        Trade.find({ sender_id: req.user.googleId }).then((outgoing) => {
-            let index = 0
-            outgoing.forEach((trade) => {
-                index++
-                outgoing_trade = get_trade_data(trade)
-                outgoing_trades.push(outgoing_trade)
-                if (index === outgoing.length) resolve()
-            })
+    Trade.find({ sender_id: req.user.googleId }).then((outgoing) => {
+        outgoing.forEach((trade) => {
+            outgoing_trade = get_trade_data(trade)
+            outgoing_trades.push(outgoing_trade)
         })
     })
 
-    get_incoming_trades.then(() => {
-        // console.log(incoming_trades)
-        get_outgoing_trades.then(() => {
-            // console.log(outgoing_trades)
-            res.render('trades', { title: 'trades', user: req.user, incoming_trades, outgoing_trades })
-        })
-    })
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // get_incoming_trades().then((result) => {
-    //     console.log(result)
-    //     console.log(incoming_trades)
-    //     get_outgoing_trades().then((result1) => {
-    //         console.log(result1)
-    //         res.render('trades', { title: 'trades', user: req.user, incoming_trades, outgoing_trades })
-    //     })
-    // })
+    console.log(incoming_trades)
+
+    // console.log(outgoing_trades)
+
+    res.render('trades', { title: 'trades', user: req.user, incoming_trades, outgoing_trades })
 }
 
 module.exports = {
