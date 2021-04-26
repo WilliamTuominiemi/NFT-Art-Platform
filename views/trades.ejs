@@ -6,51 +6,41 @@
     <%- include("./partials/nav.ejs") %>
 
     <main role="main" class="container">
-        <% if(incoming_trades.length != 0) { %>
+        <% if(incoming.length != 0) { %>
             <h2> Incoming </h2>
-            <% incoming_trades.forEach(trade => { %>
+            <% incoming.forEach(trade => { %>
                 <div class="trade">
-                    <%= trade.trade_id %>
-                    <p>your: </p>
-                    <% trade.outgoing_drawings.forEach(drawing => { %>
-                        <img src="<%= drawing.src %>" height="100px" width="100px">
+                    <h3>your: </h3>
+                    <% trade.receiver_drawings.forEach(drawing => { %>
+                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    <p>for their: </p>
-                    <% trade.incoming_drawings.forEach(drawing => { %>
-                        <img src="<%= drawing.src %>" height="100px" width="100px">
+                    <h3>for their: </h3>
+                    <% trade.sender_drawings.forEach(drawing => { %>
+                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    
-                    <form action="/accept/<%= trade.trade_id %>">
-                        <input type="submit" class="btn btn-dark" value="Accept" />
-                    </form>
-                    <form action="/decline/<%= trade.trade_id %>">
-                        <input type="submit" class="btn btn-dark" value="Decline" />
-                    </form>
-                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Decline</button>
+                    </div>
+                </div> 
             <% }) %>  
         <% } %>
-        <% if(outgoing_trades.length != 0) { %>
+        <% if(outgoing.length != 0) { %>
             <h2> Incoming </h2>
-            <% outgoing_trades.forEach(trade => { %>
+            <% outgoing.forEach(trade => { %>
                 <div class="trade">
-                    <%= trade.trade_id %>
-                    <p>your: </p>
-                    <% trade.outgoing_drawings.forEach(drawing => { %>
-                        <img src="<%= drawing.src %>" height="100px" width="100px">
+                    <h3>your: </h3>
+                    <% trade.sender_drawings.forEach(drawing => { %>
+                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    <p>for their: </p>
-                    <% trade.incoming_drawings.forEach(drawing => { %>
-                        <img src="<%= drawing.src %>" height="100px" width="100px">
+                    <h3>for their: </h3>
+                    <% trade.receiver_drawings.forEach(drawing => { %>
+                        <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    
-                    <form action="/accept/<%= trade.trade_id %>">
-                        <input type="submit" class="btn btn-dark" value="Accept" />
-                    </form>
-                    <form action="/decline/<%= trade.trade_id %>">
-                        <input type="submit" class="btn btn-dark" value="Decline" />
-                    </form>
-                </div>
-            <% }) %>  
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Decline</button>
+                    </div>
+                </div> 
+            <% }) %>   
         <% } %>
          
  
