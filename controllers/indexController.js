@@ -32,16 +32,6 @@ const profile = (req, res) => {
     })
 }
 
-const draw = (req, res) => {
-    res.render('draw', { title: 'Draw', user: req.user })
-}
-
-const drawing = (req, res) => {
-    Drawing.find({ _id: req.params.id }).then((drawing) => {
-        res.render('drawing', { title: 'Drawing', user: req.user, drawing: drawing[0] })
-    })
-}
-
 const like = (req, res) => {
     if (req.user != undefined) {
         Drawing.find({ _id: req.params.id }).then((result) => {
@@ -68,27 +58,6 @@ const like = (req, res) => {
     }
 }
 
-const draw_post = (req, res) => {
-    console.log(req.body)
-
-    const obj = {
-        src: req.body.src,
-        googleId: req.body.googleId,
-        name: req.body.name,
-        avatar: req.body.avatar,
-        likes: 0,
-        likers: [],
-    }
-
-    Drawing.create(obj, (err, item) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect('/')
-        }
-    })
-}
-
 const mine = (req, res) => {
     if (req.user != undefined) {
         console.log(req.body.blockToMine_id)
@@ -106,60 +75,10 @@ const mine = (req, res) => {
     }
 }
 
-const trade = (req, res) => {
-    // console.log(req.params.id)
-    User.find({ googleId: req.params.id }).then((receiver) => {
-        Drawing.find({ googleId: req.user.googleId }).then((user_drawings) => {
-            Drawing.find({ googleId: req.params.id }).then((receiver_drawings) => {
-                // console.log(req.user)
-                // console.log(receiver)
-                res.render('trade', {
-                    title: 'Trade',
-                    user: req.user,
-                    receiver: receiver[0],
-                    user_drawings,
-                    receiver_drawings,
-                })
-            })
-        })
-    })
-}
 
-const trade_post = (req, res) => {
-    console.log(req.body)
-
-    const body = {
-        sender_id: req.user.googleId,
-        receiver_id: req.params.id,
-        sender_drawings: req.body.sender_drawings,
-        receiver_drawings: req.body.receiver_drawings,
-    }
-
-    let trade = new Trade(body)
-    trade.save().then((result) => {
-        console.log(result)
-        res.redirect('/trades')
-    })
-}
-
-const trades = (req, res) => {
-    Trade.find({receiver_id: req.user.googleId})
-    .then((incoming) => {
-        Trade.find({sender_id: req.user.googleId})
-        .then((outgoing) => {
-            res.render('trades', {title: "trades", user: req.user, incoming, outgoing})
-        })
-    })
-}
 
 module.exports = {
     main,
-    draw,
-    draw_post,
     like,
     profile,
-    trade,
-    trade_post,
-    trades,
-    drawing,
 }
