@@ -14,6 +14,8 @@ const Drawing = require('./models/image')
 
 const auth = require('./routes/auth')
 const index = require('./routes/index')
+const trade = require('./routes/trade')
+
 
 
 const connectDB = require('./config/db')
@@ -64,6 +66,8 @@ app.use(bodyParser.json({limit: '50mb'}));
 
 app.use('/', index)
 app.use('/auth', auth)
+app.use('/trade', trade)
+
 
 app.listen(port, err => {
     if (err)

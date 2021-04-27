@@ -1,3 +1,11 @@
+.trade {
+    border-style: solid;
+    text-align: center;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+}
+
 .drawing {
     float: left;
     height: 250px;
@@ -30,10 +38,3 @@
     text-align: left;
 }
 
-.trade {
-    border-style: solid;
-    text-align: center;
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-}
