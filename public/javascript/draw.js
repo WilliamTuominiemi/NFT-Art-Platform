@@ -59,6 +59,5 @@ function toImage() {
 
     element.setAttribute("value", img);
 
-    document.getElementById("container").style.visibility = "visible";
-
+    document.getElementById("submit_button").style.visibility = "visible";
 }  
