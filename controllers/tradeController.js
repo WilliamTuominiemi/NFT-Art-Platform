@@ -52,7 +52,6 @@ const trades = (req, res) => {
 }
 
 const accept = (req, res) => {
-    console.log(req.body)
     if (req.user != undefined) {
         const filter = { _id: req.body._id }
         let blockChain = new BlockChain()
@@ -63,9 +62,48 @@ const accept = (req, res) => {
         }
 
         let PROOF = 420
-        blockChain.addNewTransaction(req.body.sender, req.body.receiver, data)
-        blockChain.addNewBlock(null)
-        res.redirect('/trade/s')
+
+        console.log(Array.isArray(data.sender_drawings))
+        if(Array.isArray(data.sender_drawings))  {
+            console.log("receiver: "+ req.body.receiver+ "drawings" + data.sender_drawings)   
+            console.log('array')
+            data.sender_drawings.forEach(drawing => {
+                Drawing.findOneAndUpdate({_id: drawing}, {googleId: req.body.receiver})
+                .then((result) => {
+                    // console.log(result)
+                })
+            })
+        }   else {
+            console.log("receiver: "+ req.body.receiver+ "drawings" + data.sender_drawings)   
+            console.log('not array')
+            Drawing.findOneAndUpdate({_id: data.sender_drawings}, {googleId: req.body.receiver})
+            .then((result) => {
+                // console.log(result)
+            })
+        }
+        
+        console.log(Array.isArray(data.receiver_drawings))
+        if(Array.isArray(data.receiver_drawings))  {
+            console.log("sender: " + req.body.sender + "drawings" + data.receiver_drawings)
+            console.log('array')
+            data.receiver_drawings.forEach(drawing => {
+                Drawing.findOneAndUpdate({_id: drawing}, {googleId: req.body.sender})
+                .then((result) => {
+                    console.log(result)
+                })
+            })
+        }   else {   
+            console.log("sender: " + req.body.sender + "drawings" + data.receiver_drawings)
+            console.log('not array')
+            Drawing.findOneAndUpdate({_id: data.receiver_drawings}, {googleId: req.body.sender})
+            .then((result) => {
+                console.log(result)
+            })
+        }
+
+        // blockChain.addNewTransaction(req.body.sender, req.body.receiver, data)
+        // blockChain.addNewBlock(null)
+        // res.redirect('/trade/s')
     } else {
         res.redirect('/')
     }

@@ -1,9 +1,5 @@
 const Drawing = require('../models/image')
-const Trade = require('../models/trade')
 const User = require('../models/User')
-
-let BlockChain = require('../src/blockChain')
-let BlockChainModel = require('../src/database/model')
 
 const main = (req, res) => {
     Drawing.find()
