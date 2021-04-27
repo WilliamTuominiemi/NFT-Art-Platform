@@ -1,6 +1,6 @@
 let hash = require('object-hash')
 
-const TARGET_HASH = 100000
+const TARGET_HASH = 420
 
 module.exports.validProof = (proof) => {
     let guessHash = hash(proof)

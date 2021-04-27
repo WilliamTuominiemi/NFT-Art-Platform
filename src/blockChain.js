@@ -1,6 +1,6 @@
 let hash = require('object-hash')
 
-const TARGET_HASH = hash(100000)
+const TARGET_HASH = hash(420)
 
 let validator = require("./validator")
 
@@ -10,8 +10,6 @@ let blockChainModel = require('./database/model')
 let User = require('../models/User')
 
 let chalk = require("chalk")
-
-const mining_reward = 1
 
 class BlockChain {
     constructor() {
@@ -42,9 +40,6 @@ class BlockChain {
         console.log(block)
 
         if(validator.proofOfWork() == TARGET_HASH)  {
-            const amount_int = parseInt(block.transactions[0].amount)
-            const neg_amount_int = 0 - amount_int
-
             block.hash = hash(block)
 
             this.getLastBlock((lastBlock) => {
@@ -59,33 +54,24 @@ class BlockChain {
                     console.log(chalk.green("Block saved on DB"))
                 })
 
-                User.findOneAndUpdate({ googleId: block.transactions[0].miner }, {$inc : {'crypto' : mining_reward}})
-                .then(() => {
-                    
-                        User.findOneAndUpdate({ googleId: block.transactions[0].recipient }, {$inc : {'crypto' : amount_int}})   
-                        .then(() => {
-                            //Hash
-                            this.hash = hash(block)
+                //Hash
+                this.hash = hash(block)
                 
-                            //Add to chain
-                            this.chain.push(block)
-                            this.curr_transactions = []
-                            return block
-                        })
-                                
-                })            
+                //Add to chain
+                this.chain.push(block)
+                this.curr_transactions = []
+                return block  
             })      
         }  
     }
 
-    addNewTransaction(miner, sender, recipient, amount) {
-        console.log(chalk.green(`miner ${miner}, sender ${sender}, recipient ${recipient}`))
+    addNewTransaction(sender, recipient, data) {
+        console.log(chalk.green(`sender ${sender}, receiver ${recipient}`))
         
         this.curr_transactions.push({
-            miner, 
             sender, 
             recipient, 
-            amount
+            data
         })       
     }
         
