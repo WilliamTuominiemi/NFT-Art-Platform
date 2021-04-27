@@ -29,9 +29,22 @@
                     <% trade.sender_drawings.forEach(drawing => { %>
                         <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark">Decline</button>
-                    </div>
+                    <form action="/accept" method="POST">
+                        <div class="form-group">
+                            <input type="hidden" id="_id" value="<%= trade._id %>" name="_id" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark">Accept</button>
+                        </div>
+                    </form>
+                    <form action="/decline" method="POST">
+                        <div class="form-group">
+                            <input type="hidden" id="_id" value="<%= trade._id %>" name="_id" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark">Decline</button>
+                        </div>
+                    </form>
                 </div> 
             <% }) %>  
         <% } %>
@@ -50,6 +63,14 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-dark">Decline</button>
                     </div>
+                    <form action="/cancel" method="POST">
+                        <div class="form-group">
+                            <input type="hidden" id="_id" value="<%= trade._id %>" name="_id" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </form>
                 </div> 
             <% }) %>   
         <% } %>
