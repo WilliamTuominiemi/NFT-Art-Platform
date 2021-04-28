@@ -54,10 +54,7 @@
                     <% trade.receiver_drawings.forEach(drawing => { %>
                         <a href="/drawing/<%= drawing %>"><%= drawing %></a>
                     <% }) %>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark">Decline</button>
-                    </div>
-                    <form action="/cancel" method="POST">
+                    <form action="/trade/cancel" method="POST">
                         <div class="form-group">
                             <input type="hidden" id="_id" value="<%= trade._id %>" name="_id" required>
                         </div>
@@ -68,9 +65,6 @@
                 </div> 
             <% }) %>   
         <% } %>
-         
- 
-           
     </main>
 </body>
 
