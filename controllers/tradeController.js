@@ -101,9 +101,14 @@ const accept = (req, res) => {
             })
         }
 
-        // blockChain.addNewTransaction(req.body.sender, req.body.receiver, data)
-        // blockChain.addNewBlock(null)
-        // res.redirect('/trade/s')
+        Trade.findOneAndDelete(filter)
+        .then((result) => {
+            console.log(result)
+        })
+
+        blockChain.addNewTransaction(req.body.sender, req.body.receiver, data)
+        blockChain.addNewBlock(null)
+        res.redirect('/trade/s')
     } else {
         res.redirect('/')
     }
