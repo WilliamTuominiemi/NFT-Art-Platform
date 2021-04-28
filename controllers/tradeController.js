@@ -114,10 +114,20 @@ const accept = (req, res) => {
     }
 }
 
+const decline = (req ,res) => {
+    const filter = { _id: req.body._id }
+    Trade.findOneAndDelete(filter)
+    .then((result) => {
+        console.log(result)
+        res.redirect('/trade/s')
+    })
+}
+
  
 module.exports = {
     trade,
     trade_post,
     trades,
     accept,
+    decline
 }
