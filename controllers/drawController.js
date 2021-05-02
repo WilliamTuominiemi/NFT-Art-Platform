@@ -17,9 +17,8 @@ const draw_post = (req, res) => {
 
     const obj = {
         src: req.body.src,
-        googleId: req.body.googleId,
-        name: req.body.name,
-        avatar: req.body.avatar,
+        owner: {googleId: req.body.googleId, displayName: req.body.name },
+        artist: {googleId: req.body.googleId, displayName: req.body.name, avatar: req.body.avatar },
         likes: 0,
         likers: [],
     }
