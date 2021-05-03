@@ -11,11 +11,10 @@
         <% if(profile_user.googleId != user.googleId) { %>
             <h2> Send <a href="/trade/<%= profile_user.googleId %>">trade offer</a></h2>
         <% } %>
-        <%= drawings %>
         <% drawings.forEach(drawing => { %>
             <div class="drawing">
-                <p>Drawn by: %= drawing.artist.avatar%>" height="25px" width="25px"/> <b><%= drawing.artist.name %></b> drew: </p>
-                <img id="drawing" src="<%= drawing.src %>" height="150px" width="150px"/> <br />                    
+                <p><a href="/user/<%= drawing.artist.googleId %>"><img src="<%= drawing.artist.avatar%>" height="25px" width="25px"/><b><%= drawing.artist.displayName %></b> </a> drew: </p>
+                <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                     
                 <a href="/like/<%= drawing._id %>">
                     Like (<%= drawing.likes %>)
                 </a>
