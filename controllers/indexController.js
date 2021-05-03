@@ -15,9 +15,14 @@ const main = (req, res) => {
 
 const profile = (req, res) => {
     User.find({ googleId: req.params.id }).then((result) => {
-        Drawing.find({ googleId: req.params.id })
+        Drawing.find()
+            .populate({
+                path: 'owner',
+                match: { googleId: req.params.id },
+            })
             .sort({ likes: -1 })
             .then((result1) => {
+                console.log(result1)
                 res.render('profile', {
                     title: result[0].displayName,
                     user: req.user,
