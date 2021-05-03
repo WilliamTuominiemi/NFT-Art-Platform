@@ -35,6 +35,6 @@ var drawingSchema = new mongoose.Schema({
     likers: {
         type: Array,
     },
-});
+}, { timestamps: true });
   
 module.exports = new mongoose.model('Drawing', drawingSchema)
