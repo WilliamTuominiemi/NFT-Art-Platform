@@ -25,6 +25,7 @@ const draw_post = (req, res) => {
         artist_avatar: req.body.avatar,
         likes: 0,
         likers: [],
+        in_trade: false,
     }
 
     Drawing.create(obj, (err, item) => {

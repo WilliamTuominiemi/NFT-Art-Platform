@@ -5,6 +5,13 @@ const User = require('../models/User')
 let BlockChain = require('../src/blockChain')
 let BlockChainModel = require('../src/database/model')
 
+// Each trade document has a inTrade: true to check if it is already in a trade.
+
+/* 
+To minimalize spam, you can block people from sending trade requests and put on an option
+where you can set your trading private, then no one can send you trade requests.
+*/
+
 const trade = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
@@ -28,6 +35,22 @@ const trade = (req, res) => {
     }
 }
 
+async function set_trade_state(drawings) {
+    if (Array.isArray(drawings)) {
+        for (const drawing of drawings) {
+            console.log(drawing)
+            Drawing.findOneAndUpdate({ _id: drawing }, { in_trade: true }).then((result) => {
+                // console.log(result)
+            })
+        }
+    } else {
+        console.log(drawings)
+        Drawing.findOneAndUpdate({ _id: drawings }, { in_trade: true }).then((result) => {
+            // console.log(result)
+        })
+    }
+}
+
 const trade_post = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
@@ -42,9 +65,13 @@ const trade_post = (req, res) => {
         }
 
         let trade = new Trade(body)
-        trade.save().then((result) => {
-            console.log(result)
-            res.redirect('/trade/s')
+
+        set_trade_state(req.body.sender_drawings).then(() => {
+            set_trade_state(req.body.receiver_drawings).then(() => {
+                trade.save().then((result) => {
+                    res.redirect('/trade/s')
+                })
+            })
         })
     }
 }
@@ -81,6 +108,7 @@ const accept = (req, res) => {
                             owner_googleId: req.body.receiver,
                             owner_displayName: user_[0].displayName,
                             owner_avatar: user_[0].image,
+                            in_trade: false,
                         }
                     ).then((result) => {
                         console.log(result)
@@ -95,6 +123,7 @@ const accept = (req, res) => {
                         owner_googleId: req.body.receiver,
                         owner_displayName: user_[0].displayName,
                         owner_avatar: user_[0].image,
+                        in_trade: false,
                     }
                 ).then((result) => {
                     console.log(result)
@@ -114,6 +143,7 @@ const accept = (req, res) => {
                             owner_googleId: req.body.sender,
                             owner_displayName: user_[0].displayName,
                             owner_avatar: user_[0].image,
+                            in_trade: false,
                         }
                     ).then((result) => {
                         console.log(result)
@@ -128,6 +158,7 @@ const accept = (req, res) => {
                         owner_googleId: req.body.sender,
                         owner_displayName: user_[0].displayName,
                         owner_avatar: user_[0].image,
+                        in_trade: false,
                     }
                 ).then((result) => {
                     console.log(result)

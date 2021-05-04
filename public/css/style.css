@@ -15,6 +15,14 @@
     text-align: center;
 }
 
+.grey-out-img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
 .img_i {
     border: 5px solid #555;
     height: 300px;

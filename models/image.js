@@ -36,6 +36,9 @@ var drawingSchema = new mongoose.Schema(
         likers: {
             type: Array,
         },
+        in_trade: {
+            type: Boolean,
+        },
     },
     { timestamps: true }
 )
