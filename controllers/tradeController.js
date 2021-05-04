@@ -77,7 +77,11 @@ const accept = (req, res) => {
                 data.sender_drawings.forEach((drawing) => {
                     Drawing.findOneAndUpdate(
                         { _id: drawing },
-                        { owner_googleId: req.body.receiver, owner_displayName: user_[0].displayName }
+                        {
+                            owner_googleId: req.body.receiver,
+                            owner_displayName: user_[0].displayName,
+                            owner_avatar: user_[0].image,
+                        }
                     ).then((result) => {
                         console.log(result)
                     })
@@ -87,14 +91,18 @@ const accept = (req, res) => {
                 console.log('not array')
                 Drawing.findOneAndUpdate(
                     { _id: data.sender_drawings },
-                    { owner_googleId: req.body.receiver, owner_displayName: user_[0].displayName }
+                    {
+                        owner_googleId: req.body.receiver,
+                        owner_displayName: user_[0].displayName,
+                        owner_avatar: user_[0].image,
+                    }
                 ).then((result) => {
                     console.log(result)
                 })
             }
         })
 
-        User.find({ googleId: req.body.receiver }).then((user_) => {
+        User.find({ googleId: req.body.sender }).then((user_) => {
             console.log(Array.isArray(data.receiver_drawings))
             if (Array.isArray(data.receiver_drawings)) {
                 console.log('sender: ' + req.body.sender + 'drawings' + data.receiver_drawings)
@@ -102,7 +110,11 @@ const accept = (req, res) => {
                 data.receiver_drawings.forEach((drawing) => {
                     Drawing.findOneAndUpdate(
                         { _id: drawing },
-                        { owner_googleId: req.body.sender, owner_displayName: user_[0].displayName }
+                        {
+                            owner_googleId: req.body.sender,
+                            owner_displayName: user_[0].displayName,
+                            owner_avatar: user_[0].image,
+                        }
                     ).then((result) => {
                         console.log(result)
                     })
@@ -112,7 +124,11 @@ const accept = (req, res) => {
                 console.log('not array')
                 Drawing.findOneAndUpdate(
                     { _id: data.receiver_drawings },
-                    { owner_googleId: req.body.sender, owner_displayName: user_[0].displayName }
+                    {
+                        owner_googleId: req.body.sender,
+                        owner_displayName: user_[0].displayName,
+                        owner_avatar: user_[0].image,
+                    }
                 ).then((result) => {
                     console.log(result)
                 })
