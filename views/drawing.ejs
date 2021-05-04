@@ -7,10 +7,10 @@
 
     <main role="main" class="container">
         <center>
-            <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/></a> <b><%= drawing.artist_displayName %></b> drew: </p>
+            <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/><b><%= drawing.artist_displayName %></b></a>  drew: </p>
             <p> Drawn on: <%= drawing.createdAt %></p>
             <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="300px" width="300px"/> </a><br />                 
-            <p> Owned by <a href="/user/<%= drawing.owner_googleId %>"><%= drawing.owner_displayName %></a></p>
+            <p> Owned by <a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><%= drawing.owner_displayName %></a></p>
             <a href="/like/<%= drawing._id %>">Like</a> (<%= drawing.likes %>)
         </center>
     </main>
