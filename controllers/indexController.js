@@ -55,8 +55,15 @@ const like = (req, res) => {
     }
 }
 
+const block = (req, res) => {
+    User.findOneAndUpdate({ googleId: req.user.googleId }, { $push: { blocked: req.params.id } }).then((result) => {
+        res.redirect('/')
+    })
+}
+
 module.exports = {
     main,
     like,
     profile,
+    block,
 }

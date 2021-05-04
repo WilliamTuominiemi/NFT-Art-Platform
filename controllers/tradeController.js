@@ -5,8 +5,6 @@ const User = require('../models/User')
 let BlockChain = require('../src/blockChain')
 let BlockChainModel = require('../src/database/model')
 
-// Each trade document has a inTrade: true to check if it is already in a trade.
-
 /* 
 To minimalize spam, you can block people from sending trade requests and put on an option
 where you can set your trading private, then no one can send you trade requests.
@@ -16,21 +14,22 @@ const trade = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
     } else {
-        // console.log(req.params.id)
         User.find({ googleId: req.params.id }).then((receiver) => {
-            Drawing.find({ owner_googleId: req.user.googleId }).then((user_drawings) => {
-                Drawing.find({ owner_googleId: req.params.id }).then((receiver_drawings) => {
-                    // console.log(req.user)
-                    // console.log(receiver)
-                    res.render('trade', {
-                        title: 'Trade',
-                        user: req.user,
-                        receiver: receiver[0],
-                        user_drawings,
-                        receiver_drawings,
+            if (receiver[0].blocked.includes(req.user.googleId)) {
+                res.redirect('/user/' + req.params.id)
+            } else {
+                Drawing.find({ owner_googleId: req.user.googleId }).then((user_drawings) => {
+                    Drawing.find({ owner_googleId: req.params.id }).then((receiver_drawings) => {
+                        res.render('trade', {
+                            title: 'Trade',
+                            user: req.user,
+                            receiver: receiver[0],
+                            user_drawings,
+                            receiver_drawings,
+                        })
                     })
                 })
-            })
+            }
         })
     }
 }
@@ -38,16 +37,11 @@ const trade = (req, res) => {
 async function set_trade_state(drawings) {
     if (Array.isArray(drawings)) {
         for (const drawing of drawings) {
-            console.log(drawing)
-            Drawing.findOneAndUpdate({ _id: drawing }, { in_trade: true }).then((result) => {
-                // console.log(result)
-            })
+            Drawing.findOneAndUpdate({ _id: drawing }, { in_trade: true }).then((result) => {})
         }
     } else {
         console.log(drawings)
-        Drawing.findOneAndUpdate({ _id: drawings }, { in_trade: true }).then((result) => {
-            // console.log(result)
-        })
+        Drawing.findOneAndUpdate({ _id: drawings }, { in_trade: true }).then((result) => {})
     }
 }
 
@@ -55,8 +49,6 @@ const trade_post = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
     } else {
-        console.log(req.body)
-
         const body = {
             sender_id: req.user.googleId,
             receiver_id: req.params.id,

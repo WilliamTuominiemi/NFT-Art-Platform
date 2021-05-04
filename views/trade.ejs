@@ -9,7 +9,7 @@
         <form action="/trade/<%= receiver.googleId%>" method="POST">
             <div class="items">
                 <div class="myItems">
-                    <p><img src="<%= user.image %>" height="20px" width="20px"/><%= user.displayName %></p>
+                    <p><img src="<%= user.image %>" height="20px" width="20px"/><a href="/user/<%= user.googleId %>"> <%= user.displayName %></a></p>
                     <p><b>your: </b></p>
                     <% user_drawings.forEach(drawing => { %>
                         <div class="trade_drawing">
@@ -20,7 +20,7 @@
                 </div>
                 <br />
                 <div class="theirItems">
-                    <p><img src="<%= receiver.image %>" height="20px" width="20px"/> <%= receiver.displayName %></p>
+                    <p><img src="<%= receiver.image %>" height="20px" width="20px"/><a href="/user/<%= receiver.googleId %>"> <%= receiver.displayName %></a></p>
                     <p><b>for their: </b></p>
                     <% receiver_drawings.forEach(drawing => { %>
                         <div class="trade_drawing">

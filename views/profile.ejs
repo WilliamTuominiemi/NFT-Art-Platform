@@ -6,10 +6,13 @@
     <%- include("./partials/nav.ejs") %>
 
     <main role="main" class="container">
-        <img src="<%= profile_user.image %>" alt="<%= profile_user.googleId %>" height="50px" width="50px">
-        <h1> <%= profile_user.displayName %></h1>
+        <div class="profile-header">
+            <img src="<%= profile_user.image %>" alt="<%= profile_user.googleId %>" height="50px" width="50px">
+            <h1> <%= profile_user.displayName %></h1>
+            <p><a href="/user/block/<%= profile_user.googleId %>">Block</a></p>
+        </div>
         <% if(profile_user.googleId != user.googleId) { %>
-            <h2> Send <a href="/trade/<%= profile_user.googleId %>">trade offer</a></h2>
+            <h2> Send <a href="/trade/<%= profile_user.googleId %>">trade offer</a></h2>    
         <% } %>
         <% drawings.forEach(drawing => { %>
             <div class="drawing">
