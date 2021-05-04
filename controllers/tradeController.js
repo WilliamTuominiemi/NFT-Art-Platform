@@ -6,13 +6,13 @@ let BlockChain = require('../src/blockChain')
 let BlockChainModel = require('../src/database/model')
 
 const trade = (req, res) => {
-    if(req.user.googleId === req.params.id) {
-        res.redirect('/user/'+req.params.id)
-    }   else    {
-         // console.log(req.params.id)
+    if (req.user.googleId === req.params.id) {
+        res.redirect('/user/' + req.params.id)
+    } else {
+        // console.log(req.params.id)
         User.find({ googleId: req.params.id }).then((receiver) => {
-            Drawing.find({ googleId: req.user.googleId }).then((user_drawings) => {
-                Drawing.find({ googleId: req.params.id }).then((receiver_drawings) => {
+            Drawing.find({ owner_googleId: req.user.googleId }).then((user_drawings) => {
+                Drawing.find({ owner_googleId: req.params.id }).then((receiver_drawings) => {
                     // console.log(req.user)
                     // console.log(receiver)
                     res.render('trade', {
@@ -25,13 +25,13 @@ const trade = (req, res) => {
                 })
             })
         })
-    } 
+    }
 }
 
 const trade_post = (req, res) => {
-    if(req.user.googleId === req.params.id) {
-        res.redirect('/user/'+req.params.id)
-    }   else    {
+    if (req.user.googleId === req.params.id) {
+        res.redirect('/user/' + req.params.id)
+    } else {
         console.log(req.body)
 
         const body = {
@@ -40,21 +40,19 @@ const trade_post = (req, res) => {
             sender_drawings: req.body.sender_drawings,
             receiver_drawings: req.body.receiver_drawings,
         }
-    
+
         let trade = new Trade(body)
         trade.save().then((result) => {
             console.log(result)
             res.redirect('/trade/s')
         })
-    }  
+    }
 }
 
 const trades = (req, res) => {
-    Trade.find({receiver_id: req.user.googleId})
-    .then((incoming) => {
-        Trade.find({sender_id: req.user.googleId})
-        .then((outgoing) => {
-            res.render('trades', {title: "trades", user: req.user, incoming, outgoing})
+    Trade.find({ receiver_id: req.user.googleId }).then((incoming) => {
+        Trade.find({ sender_id: req.user.googleId }).then((outgoing) => {
+            res.render('trades', { title: 'trades', user: req.user, incoming, outgoing })
         })
     })
 }
@@ -71,46 +69,57 @@ const accept = (req, res) => {
 
         let PROOF = 420
 
-        console.log(Array.isArray(data.sender_drawings))
-        if(Array.isArray(data.sender_drawings))  {
-            console.log("receiver: "+ req.body.receiver+ "drawings" + data.sender_drawings)   
-            console.log('array')
-            data.sender_drawings.forEach(drawing => {
-                Drawing.findOneAndUpdate({_id: drawing}, {googleId: req.body.receiver})
-                .then((result) => {
-                    // console.log(result)
+        User.find({ googleId: req.body.receiver }).then((user_) => {
+            console.log(Array.isArray(data.sender_drawings))
+            if (Array.isArray(data.sender_drawings)) {
+                console.log('receiver: ' + req.body.receiver + 'drawings' + data.sender_drawings)
+                console.log('array')
+                data.sender_drawings.forEach((drawing) => {
+                    Drawing.findOneAndUpdate(
+                        { _id: drawing },
+                        { owner_googleId: req.body.receiver, owner_displayName: user_[0].displayName }
+                    ).then((result) => {
+                        console.log(result)
+                    })
                 })
-            })
-        }   else {
-            console.log("receiver: "+ req.body.receiver+ "drawings" + data.sender_drawings)   
-            console.log('not array')
-            Drawing.findOneAndUpdate({_id: data.sender_drawings}, {googleId: req.body.receiver})
-            .then((result) => {
-                // console.log(result)
-            })
-        }
-        
-        console.log(Array.isArray(data.receiver_drawings))
-        if(Array.isArray(data.receiver_drawings))  {
-            console.log("sender: " + req.body.sender + "drawings" + data.receiver_drawings)
-            console.log('array')
-            data.receiver_drawings.forEach(drawing => {
-                Drawing.findOneAndUpdate({_id: drawing}, {googleId: req.body.sender})
-                .then((result) => {
+            } else {
+                console.log('receiver: ' + req.body.receiver + 'drawings' + data.sender_drawings)
+                console.log('not array')
+                Drawing.findOneAndUpdate(
+                    { _id: data.sender_drawings },
+                    { owner_googleId: req.body.receiver, owner_displayName: user_[0].displayName }
+                ).then((result) => {
                     console.log(result)
                 })
-            })
-        }   else {   
-            console.log("sender: " + req.body.sender + "drawings" + data.receiver_drawings)
-            console.log('not array')
-            Drawing.findOneAndUpdate({_id: data.receiver_drawings}, {googleId: req.body.sender})
-            .then((result) => {
-                console.log(result)
-            })
-        }
+            }
+        })
 
-        Trade.findOneAndDelete(filter)
-        .then((result) => {
+        User.find({ googleId: req.body.receiver }).then((user_) => {
+            console.log(Array.isArray(data.receiver_drawings))
+            if (Array.isArray(data.receiver_drawings)) {
+                console.log('sender: ' + req.body.sender + 'drawings' + data.receiver_drawings)
+                console.log('array')
+                data.receiver_drawings.forEach((drawing) => {
+                    Drawing.findOneAndUpdate(
+                        { _id: drawing },
+                        { owner_googleId: req.body.sender, owner_displayName: user_[0].displayName }
+                    ).then((result) => {
+                        console.log(result)
+                    })
+                })
+            } else {
+                console.log('sender: ' + req.body.sender + 'drawings' + data.receiver_drawings)
+                console.log('not array')
+                Drawing.findOneAndUpdate(
+                    { _id: data.receiver_drawings },
+                    { owner_googleId: req.body.sender, owner_displayName: user_[0].displayName }
+                ).then((result) => {
+                    console.log(result)
+                })
+            }
+        })
+
+        Trade.findOneAndDelete(filter).then((result) => {
             console.log(result)
         })
 
@@ -122,10 +131,9 @@ const accept = (req, res) => {
     }
 }
 
-const decline = (req ,res) => {
+const decline = (req, res) => {
     const filter = { _id: req.body._id }
-    Trade.findOneAndDelete(filter)
-    .then((result) => {
+    Trade.findOneAndDelete(filter).then((result) => {
         console.log(result)
         res.redirect('/trade/s')
     })
@@ -133,12 +141,11 @@ const decline = (req ,res) => {
 
 const cancel = (req, res) => {
     const filter = { _id: req.body._id }
-    Trade.findOneAndDelete(filter)
-    .then((result) => {
+    Trade.findOneAndDelete(filter).then((result) => {
         console.log(result)
         res.redirect('/trade/s')
     })
-} 
+}
 
 module.exports = {
     trade,
@@ -146,5 +153,5 @@ module.exports = {
     trades,
     accept,
     decline,
-    cancel
+    cancel,
 }
