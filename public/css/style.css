@@ -8,14 +8,20 @@
 
 .drawing {
     float: left;
-    height: 250px;
+    height: 260px;
     width: 200px;
     margin: 15px;
     border-style: solid;
     text-align: center;
 }
 
-.trade_drawing	{
+.img_i {
+    border: 5px solid #555;
+    height: 300px;
+    width: 300px;
+}
+
+.trade_drawing {
     text-align: left;
     padding: 5px;
 }
@@ -27,7 +33,7 @@
     margin: 10px;
 }
 
-.theirItems	{
+.theirItems {
     border-style: solid;
     text-align: center;
     width: 25%;
@@ -37,4 +43,3 @@
 .items {
     text-align: left;
 }
-
