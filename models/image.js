@@ -1,40 +1,39 @@
 var mongoose = require('mongoose')
 
-var drawingSchema = new mongoose.Schema({
-    src: {
-		type: String,
-		required: true,
-	},
-    owner: {
-        googleId: {
+var drawingSchema = new mongoose.Schema(
+    {
+        src: {
             type: String,
             required: true,
         },
-        displayName: {
-            type: String,
-            required: true,
-        }     
-    },
-    artist: {
-        googleId: {
+        owner_googleId: {
             type: String,
             required: true,
         },
-        displayName: {
+        owner_displayName: {
             type: String,
             required: true,
         },
-        avatar: {
+        artist_googleId: {
             type: String,
             required: true,
-        },   
+        },
+        artist_displayName: {
+            type: String,
+            required: true,
+        },
+        artist_avatar: {
+            type: String,
+            required: true,
+        },
+        likes: {
+            type: Number,
+        },
+        likers: {
+            type: Array,
+        },
     },
-    likes: {
-        type: Number,
-    },
-    likers: {
-        type: Array,
-    },
-}, { timestamps: true });
-  
+    { timestamps: true }
+)
+
 module.exports = new mongoose.model('Drawing', drawingSchema)
