@@ -178,19 +178,41 @@ const accept = (req, res) => {
     }
 }
 
+async function set_trade_state_false(drawings) {
+    if (Array.isArray(drawings)) {
+        for (const drawing of drawings) {
+            console.log(drawing)
+            Drawing.findOneAndUpdate({ _id: drawing }, { in_trade: false }).then((result) => {
+                // console.log(result)
+            })
+        }
+    } else {
+        console.log(drawings)
+        Drawing.findOneAndUpdate({ _id: drawings }, { in_trade: false }).then((result) => {
+            // console.log(result)
+        })
+    }
+}
+
 const decline = (req, res) => {
     const filter = { _id: req.body._id }
     Trade.findOneAndDelete(filter).then((result) => {
-        console.log(result)
-        res.redirect('/trade/s')
+        set_trade_state_false(result.sender_drawings).then(() => {
+            set_trade_state_false(result.receiver_drawings).then(() => {
+                res.redirect('/trade/s')
+            })
+        })
     })
 }
 
 const cancel = (req, res) => {
     const filter = { _id: req.body._id }
     Trade.findOneAndDelete(filter).then((result) => {
-        console.log(result)
-        res.redirect('/trade/s')
+        set_trade_state_false(result.sender_drawings).then(() => {
+            set_trade_state_false(result.receiver_drawings).then(() => {
+                res.redirect('/trade/s')
+            })
+        })
     })
 }
 
