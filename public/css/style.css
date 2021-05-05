@@ -1,3 +1,8 @@
+.profile_avatar {
+    float: left;
+    padding: 5px;
+}
+
 .trade {
     border-style: solid;
     text-align: center;

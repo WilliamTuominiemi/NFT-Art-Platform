@@ -7,8 +7,8 @@
 
     <main role="main" class="container">
         <div class="profile-header">
-            <img src="<%= user.image %>" alt="<%= user.displayName %>" height="50px" width="50px">
-            <h1> <%= user.displayName %></h1>
+            <img class="profile_avatar" src="<%= user.image %>" alt="<%= user.displayName %>" height="50px" width="50px">
+            <h1 class="profile_title"> <%= user.displayName %></h1>
             <p> Joined on: <%= user.createdAt.getDate() %>/<%= user.createdAt.getMonth() + 1 %>/<%= user.createdAt.getFullYear() %> </p>
         </div>
 
@@ -19,7 +19,7 @@
 
         <div class="trades">
             <h3> Incoming and outgoing trades</h3>
-            <p><a href="/trade/s">Trades</a> (outgoing/incoming)</p>
+            <p><a href="/trade/s">Trades</a></p>
         </div>
         
         <div class="drawings">

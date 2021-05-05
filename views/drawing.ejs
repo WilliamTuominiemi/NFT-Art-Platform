@@ -10,8 +10,8 @@
             <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/><b> <%= drawing.artist_displayName %></b></a>  drew: </p>
             <p> Drawn on: <%= drawing.createdAt.getDate() %>/<%= drawing.createdAt.getMonth() + 1 %>/<%= drawing.createdAt.getFullYear() %></p>
             <a href="/drawing/<%= drawing._id%>"><img src="<%= drawing.src %>" class="img_i"/> </a><br />                 
+            <%= drawing.likes %> like(s)
             <p> Owned by <a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/> <%= drawing.owner_displayName %></a></p>
-            <a href="/like/<%= drawing._id %>">Like</a> (<%= drawing.likes %>)
         </center>
     </main>
 </body>
