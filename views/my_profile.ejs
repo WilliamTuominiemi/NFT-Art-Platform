@@ -9,7 +9,7 @@
         <div class="profile-header">
             <img src="<%= user.image %>" alt="<%= user.displayName %>" height="50px" width="50px">
             <h1> <%= user.displayName %></h1>
-            <p> Joined on: <%= user.createdAt %> </p>
+            <p> Joined on: <%= user.createdAt.getDate() %>/<%= user.createdAt.getMonth() + 1 %>/<%= user.createdAt.getFullYear() %> </p>
         </div>
 
         <div class="new_drawing">
