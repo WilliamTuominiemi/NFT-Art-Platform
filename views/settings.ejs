@@ -1,0 +1,37 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <div class="profile-header">
+            <img src="<%= user.image %>" alt="<%= user.googleId %>" height="50px" width="50px">
+            <h1> <%= user.displayName %></h1>
+        </div>
+        <div class="blocked_users">
+            <h3> Blocked users </h3>
+            <% user.blocked.forEach(blocked_user => { %>
+                <div class="blocked_user">
+                    <p> <%= blocked_user %> <a href="/settings/unblock/<%= blocked_user %>">Unblock user</a></p>
+                </div>
+            <% }) %>
+        </div>
+        <div class="profile_privacy">
+            <h3> Privacy options </h3>
+            <form action="/settings/privacy" method="POST">
+                <p>Who can send you trade request's?</p>
+                <input type="radio" id="no_one" name="privacy" value="no_one">
+                <label for="no_one">No one</label><br>
+                <input type="radio" id="friends" name="privacy" value="friends">
+                <label for="friends">Friends</label><br>  
+                <input type="radio" id="everyone" name="privacy" value="everyone">
+                <label for="everyone">Everyone</label><br><br>
+                <input type="submit" value="Submit">
+            </form> 
+        </div>
+    </main>
+</body>
+
+</html>
