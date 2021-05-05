@@ -11,10 +11,10 @@
 	<% } else { %>
 		<nav class="my-2 my-md-0 mr-md-3">
 			<a class="p-2 text-dark" href="/">Home</a>
-			<a class="p-2 text-dark" href="/draw">New drawing</a>
-			<a class="p-2 text-dark" href="/trade/s">Trades</a>
+			<a class="p-2 text-dark" href="/user">Profile</a>
+			<a class="p-2 text-dark" href="/settings">Settings</a>
 			<a class="p-2 text-dark" href="/auth/logout">Logout</a>
-			<a href="/user/<%= user.googleId %>"><img src="<%= user.image %>" height="40px" width="40px"/></a>
+			<a href="/user/"><img src="<%= user.image %>" height="40px" width="40px"/></a>
 		</nav>
 	<% } %>
 </div>

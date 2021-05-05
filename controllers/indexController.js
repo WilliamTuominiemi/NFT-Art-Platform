@@ -1,6 +1,27 @@
 const Drawing = require('../models/image')
 const User = require('../models/User')
 
+/*
+TODO:::STRUCTURE REVAMP
+HOMEPAGE
+- View transaction blockchain
+- Every drawing
+    - Sort by likes, newest first or oldest first
+PROFILE
+- Create a new drawing
+- My owned drawings
+- My trades
+SETTINGS
+- Blocked users
+- Profile privacy
+
+TODO:::MAKE SITE LOOK NOT LIKE SHIT
+- Bootsrap
+
+TODO:::MAKE BLOCKCHAIN MAKE MORE SENSE
+- 2 transactions, 1 for the sender's drawings, 1 for the other's
+*/
+
 const main = (req, res) => {
     Drawing.find()
         .sort({ likes: -1 })
@@ -13,12 +34,23 @@ const main = (req, res) => {
         })
 }
 
+const my_profile = (req, res) => {
+    Drawing.find({ owner_googleId: req.user.googleId })
+        .sort({ likes: -1 })
+        .then((result) => {
+            res.render('my_profile', {
+                title: req.user.displayName,
+                user: req.user,
+                drawings: result,
+            })
+        })
+}
+
 const profile = (req, res) => {
     User.find({ googleId: req.params.id }).then((result) => {
         Drawing.find({ owner_googleId: req.params.id })
             .sort({ likes: -1 })
             .then((result1) => {
-                console.log(result1)
                 res.render('profile', {
                     title: result[0].displayName,
                     user: req.user,
@@ -66,4 +98,5 @@ module.exports = {
     like,
     profile,
     block,
+    my_profile,
 }

@@ -5,11 +5,6 @@ const User = require('../models/User')
 let BlockChain = require('../src/blockChain')
 let BlockChainModel = require('../src/database/model')
 
-/* 
-To minimalize spam, you can block people from sending trade requests and put on an option
-where you can set your trading private, then no one can send you trade requests.
-*/
-
 const trade = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)

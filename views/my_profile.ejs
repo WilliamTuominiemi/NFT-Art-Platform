@@ -1,0 +1,35 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main role="main" class="container">
+        <div class="profile-header">
+            <img src="<%= user.image %>" alt="<%= user.displayName %>" height="50px" width="50px">
+            <h1> <%= user.displayName %></h1>
+            <p> Joined on: <%= user.createdAt %> </p>
+        </div>
+
+        <div class="trades">
+            <h3> Incoming and outgoing trades</h3>
+            <p><a href="/trade/s">Trades</a> (outgoing/incoming)</p>
+        </div>
+        
+        <div class="drawings">
+            <h3>Drawings that you own: </h3>
+            <% drawings.forEach(drawing => { %>
+                <div class="drawing">
+                    <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/><b><%= drawing.artist_displayName %></b> </a> drew: </p>
+                    <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                     
+                    <a href="/like/<%= drawing._id %>">
+                        Like (<%= drawing.likes %>)
+                    </a>
+                </div> 
+            <% }) %>
+        </div>  
+    </main>
+</body>
+
+</html>
