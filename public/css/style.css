@@ -17,6 +17,8 @@
     width: 200px;
     margin: 15px;
     border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
     text-align: center;
 }
 

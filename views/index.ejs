@@ -6,11 +6,19 @@
     <%- include("./partials/nav.ejs") %>
 
     <main role="main" class="container">
-        <div class="drawings">
-            <h3>Blockchain</h3>
-            <p><a href="/blockchain">View</a> blockchain</p>
-            <h3> Drawings</h3>
-            <p> sort by | <a href="/top">most liked</a> | <a href="/new">Newest first</a> | <a href="/old">Oldest first</a> |</p>
+        <div class="card-body">
+            <h3 class="card-title">Blockchain</h3>
+            <p class="card-text"><a href="/blockchain">View</a> blockchain</p>
+        </div>
+        <div class="card-body">
+            <div class="drawings">
+                <h3 class="card-title"> Drawings</h3>
+                <div class="card">
+                    <div class="card-body">
+                    <p class="card-text"> sort by | <a href="/top">most liked</a> | <a href="/new">Newest first</a> | <a href="/old">Oldest first</a> |</p>
+                </div>
+            </div>
+            </div>
             <% drawings.forEach(drawing => { %>
                 <div class="drawing">
                     <p><a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> </a><br /> owns: </p>
