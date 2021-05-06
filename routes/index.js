@@ -1,7 +1,6 @@
 const express = require('express')
 const indexController = require('../controllers/indexController')
 const drawController = require('../controllers/drawController')
-const blockchainController = require('../controllers/blockchainController')
 
 const router = express.Router()
 
@@ -10,8 +9,6 @@ router.get('/new', indexController.new_first_main)
 router.get('/old', indexController.old_first_main)
 router.get('/like/:id', indexController.like)
 router.get('/user', indexController.my_profile)
-
-router.get('/blockchain', blockchainController.blockchain)
 
 router.get('/user/block/:id', indexController.block)
 router.get('/user/:id', indexController.profile)

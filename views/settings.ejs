@@ -10,7 +10,11 @@
             <img src="<%= user.image %>" alt="<%= user.googleId %>" height="50px" width="50px">
             <h1> <%= user.displayName %></h1>
         </div>
-        <div class="blocked_users">
+        <div class="card-body">
+            <h3 class="card-title">Blockchain</h3>
+            <p class="card-text">View <a href="/settings/blockchain">blockchain</a></p>
+        </div>
+        <div class="card-body">
             <h3> Blocked users </h3>
             <% user.blocked.forEach(blocked_user => { %>
                 <div class="blocked_user">
@@ -18,7 +22,7 @@
                 </div>
             <% }) %>
         </div>
-        <div class="profile_privacy">
+        <div class="card-body">
             <h3> Privacy options </h3>
             <form action="/settings/privacy" method="POST">
                 <p>Who can send you trade request's?</p>
@@ -27,8 +31,8 @@
                 <input type="radio" id="friends" name="privacy" value="friends">
                 <label for="friends">Friends</label><br>  
                 <input type="radio" id="everyone" name="privacy" value="everyone">
-                <label for="everyone">Everyone</label><br><br>
-                <input type="submit" value="Submit">
+                <label for="everyone">Everyone</label><br>
+                <input class="btn btn-dark" type="submit" value="Save changes">
             </form> 
         </div>
     </main>

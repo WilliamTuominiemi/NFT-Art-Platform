@@ -11,26 +11,25 @@
         <center>
             <% blocks.forEach(block => { %>
                 <div class="card" style="width: 50%;">
-                <div class="card-body">
-                    <p class="card-text">
-                        <b>Hash</b>: <%= block.hash %> <br />
-                        <b>Hash of previous block</b>: <%= block.prevHash %> <br />
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>Hash</b>: <%= block.hash %> <br />
+                            <b>Hash of previous block</b>: <%= block.prevHash %> <br />
 
-                        <div class="dropdown">
-                            <button class="btn btn-dark">Dropdown</button>
-                            <div class="dropdown-content">
-                                <p>
-                                    <b> Traders: </b>
-                                    <a href="/user/<%= block.transactions[0].sender %> %>"><%= block.transactions[0].sender %></a>
-                                    <b> and </b>
-                                    <a href="/user/<%= block.transactions[0].recipient %>"><%= block.transactions[0].recipient %></a>
-                                </p>
-                            </div>
-                        </div>
-                          
-                    </p>
-                </div>
-                </div>
+                            <div class="dropdown">
+                                <button class="btn btn-dark">Dropdown</button>
+                                <div class="dropdown-content">
+                                    <p>
+                                        <b> Traders: </b>
+                                        <a href="/user/<%= block.transactions[0].sender %> %>"><%= block.transactions[0].sender %></a>
+                                        <b> and </b>
+                                        <a href="/user/<%= block.transactions[0].recipient %>"><%= block.transactions[0].recipient %></a>
+                                    </p>
+                                </div>
+                            </div>     
+                        </p>
+                    </div>
+                </div> <br />
             <% }) %>
         </center>
     </main>
