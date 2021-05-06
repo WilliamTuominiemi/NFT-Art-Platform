@@ -5,17 +5,8 @@
 <body>
     <%- include("./partials/nav.ejs") %>
 
-    <script type="text/javascript" src="/javascript/filters.js"></script>
-    <script>
-        function toggle() {
-            var x = document.getElementById('filters')
-            if (x.style.display === 'none') {
-                x.style.display = 'block'
-            } else {
-                x.style.display = 'none'
-            }
-        }
-    </script>
+    <script type="text/javascript" src="/javascript/toggle.js"></script>
+
     <main role="main" class="container">
         <div class="card-body">
             <h3 class="card-title">Blockchain</h3>
@@ -26,7 +17,7 @@
                 <h3 class="card-title"> Drawings</h3>
                 <div class="card-body">
                     <button class="btn btn-dark" onclick="toggle()">Filters</button>
-                    <div id="filters" style="display: none;">
+                    <div id="toggle-obj" style="display: none;">
                         <p class="card-text"> Sort by: <a href="/">most liked</a> | <a href="/new">newest first</a> | <a href="/old">oldest first</a></p>
                     </div>               
                 </div>
