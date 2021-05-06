@@ -34,6 +34,30 @@ const main = (req, res) => {
         })
 }
 
+const new_first_main = (req, res) => {
+    Drawing.find()
+        .sort({ createdAt: -1 })
+        .then((result) => {
+            if (req.user === undefined) {
+                res.render('index', { title: 'Home', drawings: result, user: 'undefined' })
+            } else {
+                res.render('index', { title: 'Home', drawings: result, user: req.user })
+            }
+        })
+}
+
+const old_first_main = (req, res) => {
+    Drawing.find()
+        .sort({ createdAt: 1 })
+        .then((result) => {
+            if (req.user === undefined) {
+                res.render('index', { title: 'Home', drawings: result, user: 'undefined' })
+            } else {
+                res.render('index', { title: 'Home', drawings: result, user: req.user })
+            }
+        })
+}
+
 const my_profile = (req, res) => {
     Drawing.find({ owner_googleId: req.user.googleId })
         .sort({ likes: -1 })
@@ -99,4 +123,6 @@ module.exports = {
     profile,
     block,
     my_profile,
+    new_first_main,
+    old_first_main,
 }
