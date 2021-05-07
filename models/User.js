@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
     blocked: {
         type: Array,
     },
+    strikes: {
+        type: Number,
+    },
 })
 
 module.exports = mongoose.model('User', UserSchema)
