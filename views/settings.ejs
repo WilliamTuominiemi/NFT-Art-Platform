@@ -7,20 +7,26 @@
 
     <main role="main" class="container">
         <div class="profile-header">
-            <img src="<%= user.image %>" alt="<%= user.googleId %>" height="50px" width="50px">
-            <h1> <%= user.displayName %></h1>
+            <img class="profile_avatar" src="<%= user.image %>" alt="<%= user.displayName %>" height="50px" width="50px">
+            <h1 class="profile_title"> <%= user.displayName %></h1>
         </div>
+
         <div class="card-body">
             <h3 class="card-title">Blockchain</h3>
             <p class="card-text">View <a href="/settings/blockchain">blockchain</a></p>
         </div>
         <div class="card-body">
             <h3> Blocked users </h3>
-            <% user.blocked.forEach(blocked_user => { %>
-                <div class="blocked_user">
-                    <p> <%= blocked_user %> <a href="/settings/unblock/<%= blocked_user %>">Unblock user</a></p>
-                </div>
-            <% }) %>
+            <% if(user.blocked != 0) { %>
+                <% user.blocked.forEach(blocked_user => { %>
+                    <div class="blocked_user">
+                        <p> <%= blocked_user %> <a href="/settings/unblock/<%= blocked_user %>">Unblock user</a></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="card-text"> You haven't blocked anyone ...yet </p>
+            <% } %>
+            
         </div>
         <div class="card-body">
             <h3> Privacy options </h3>

@@ -24,15 +24,19 @@
         
         <div class="drawings">
             <h3>Drawings that you own: </h3>
-            <% drawings.forEach(drawing => { %>
-                <div class="drawing">
-                    <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/><b><%= drawing.artist_displayName %></b> </a> drew: </p>
-                    <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                     
-                    <a href="/like/<%= drawing._id %>">
-                        Like (<%= drawing.likes %>)
-                    </a>
-                </div> 
-            <% }) %>
+            <% if(drawings.length != 0) { %>
+                <% drawings.forEach(drawing => { %>
+                    <div class="drawing">
+                        <p><a href="/user/<%= drawing.artist_googleId %>"><img src="<%= drawing.artist_avatar%>" height="25px" width="25px"/><b><%= drawing.artist_displayName %></b> </a> drew: </p>
+                        <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                     
+                        <%= drawing.likes %> Like(s) 
+                    </div> 
+                <% }) %>
+            <% } else { %>
+                <div class="card-body">
+                    <p class="card-text"> ...There doesn't seem to be anything here, <a href="/draw">draw</a> your first drawing! </p>
+                </div>  
+            <% } %>
         </div>  
     </main>
 </body>

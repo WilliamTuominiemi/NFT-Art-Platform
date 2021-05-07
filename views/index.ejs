@@ -9,22 +9,28 @@
 
     <main role="main" class="container">
         <div class="card-body">
-            <div class="drawings">
-                <h3 class="card-title"> Drawings</h3>
-                <div class="card-body">
-                    <button class="btn btn-dark" onclick="toggle()">Filters</button>
-                    <div id="toggle-obj" style="display: none;">
-                        <p class="card-text"> Sort by: <a href="/">most liked</a> | <a href="/new">newest first</a> | <a href="/old">oldest first</a></p>
-                    </div>               
+            <% if(drawings.length != 0)  { %>
+                <div class="drawings">
+                    <h3 class="card-title"> Drawings</h3>
+                    <div class="card-body">
+                        <button class="btn btn-dark" onclick="toggle()">Filters</button>
+                        <div id="toggle-obj" style="display: none;">
+                            <p class="card-text"> Sort by: <a href="/">most liked</a> | <a href="/new">newest first</a> | <a href="/old">oldest first</a></p>
+                        </div>               
+                    </div>
+                    <% drawings.forEach(drawing => { %>
+                        <div class="drawing">
+                            <p><a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> </a><br /> owns: </p>
+                            <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                 
+                            <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"></img></a> <%= drawing.likes %>
+                        </div> 
+                    <% }) %> 
                 </div>
-            </div>
-            <% drawings.forEach(drawing => { %>
-                <div class="drawing">
-                    <p><a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> </a><br /> owns: </p>
-                    <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                 
-                    <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"></img></a> <%= drawing.likes %>
-                </div> 
-            <% }) %>   
+            <% } else { %>   
+                <div class="card-body">
+                    <p class="card-text"> ...There doesn't seem to be anything here, be the first one by creating a painting on your <a href="/user">profile page</a></p>
+                </div>  
+            <% } %>
         </div>
     </main>
 </body>
