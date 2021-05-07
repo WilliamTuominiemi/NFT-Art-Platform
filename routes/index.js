@@ -12,6 +12,7 @@ router.get('/user', indexController.my_profile)
 router.get('/rules', indexController.rules)
 
 router.get('/user/block/:id', indexController.block)
+router.get('/user/unblock/:id', indexController.unblock)
 router.get('/user/:id', indexController.profile)
 router.get('/draw', drawController.draw)
 router.get('/drawing/:id', drawController.drawing)

@@ -96,6 +96,12 @@ const block = (req, res) => {
     })
 }
 
+const unblock = (req, res) => {
+    User.findOneAndUpdate({ googleId: req.user.googleId }, { $pull: { blocked: req.params.id } }).then((result) => {
+        res.redirect('/')
+    })
+}
+
 const rules = (req, res) => {
     res.render('rules', {
         title: 'Rules',
@@ -111,5 +117,6 @@ module.exports = {
     my_profile,
     new_first_main,
     old_first_main,
-    rules
+    rules,
+    unblock
 }

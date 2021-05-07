@@ -20,11 +20,11 @@
             <% if(user.blocked != 0) { %>
                 <% user.blocked.forEach(blocked_user => { %>
                     <div class="blocked_user">
-                        <p> <%= blocked_user %> <a href="/settings/unblock/<%= blocked_user %>">Unblock user</a></p>
+                        <p> <%= blocked_user %> <a href="/user/unblock/<%= blocked_user %>">Unblock user</a></p>
                     </div>
                 <% }) %>
             <% } else { %>
-                <p class="card-text"> You haven't blocked anyone ...yet </p>
+                <p class="card-text"> You haven't blocked anyone ...for now </p>
             <% } %>
         </div>
 
