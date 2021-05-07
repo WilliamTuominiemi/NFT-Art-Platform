@@ -15,15 +15,29 @@
                         <p class="card-text">
                             <b>Hash</b>: <%= block.hash %> <br />
                             <b>Hash of previous block</b>: <%= block.prevHash %> <br />
-
                             <div class="dropdown">
-                                <button class="btn btn-dark">Dropdown</button>
+                                <button class="btn btn-dark">Transactions</button>
                                 <div class="dropdown-content">
                                     <p>
-                                        <b> Traders: </b>
-                                        <a href="/user/<%= block.transactions[0].sender %> %>"><%= block.transactions[0].sender %></a>
-                                        <b> and </b>
-                                        <a href="/user/<%= block.transactions[0].recipient %>"><%= block.transactions[0].recipient %></a>
+                                        <a href="/user/<%= block.transactions[0].sender %>"><%= block.transactions[0].sender %></a>
+                                        <b> sent: </b>
+                                        <% if(Array.isArray(block.transactions[0].sender_data)) { %>
+                                           <% block.transactions[0].sender_data.forEach(drawing => { %>
+                                                <a href="/drawing/<%= drawing %> "><%= drawing %> </a>     
+                                            <% }) %>
+                                        <% } else   { %>
+                                            <a href="/drawing/<%= block.transactions[0].sender_data %> "><%= block.transactions[0].sender_data %> </a>
+                                        <% } %>
+                                        <hr>
+                                        <a href="/user/<%= block.transactions[1].recipient %>"><%= block.transactions[1].recipient %></a>
+                                        <b> sent: </b>
+                                        <% if(Array.isArray(block.transactions[1].receiver_data)) { %>
+                                            <% block.transactions[1].receiver_data.forEach(drawing => { %>
+                                                 <a href="/drawing/<%= drawing %> "><%= drawing %> </a>     
+                                             <% }) %>
+                                         <% } else   { %>
+                                             <a href="/drawing/<%= block.transactions[1].receiver_data %> "><%= block.transactions[1].receiver_data %> </a>
+                                         <% } %>
                                     </p>
                                 </div>
                             </div>     
