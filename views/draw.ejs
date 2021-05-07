@@ -24,9 +24,11 @@
             <img id="painting"/>
         </div>
 
-        <button class="btn btn-dark" onclick="toImage()" >Save image</button>
+        <button class="btn btn-dark" onclick="toImage()" >Save image</button> 
 
         <div id="submit_button" style="visibility: hidden;">
+            <br /><p> Make sure to read the <a href="/rules" target="_blank">rules</a> before posting!</p>
+
             <form action="/draw" method="POST">
                 <div class="form-group">
                     <input type="hidden" id="src" value="" name="src" required>

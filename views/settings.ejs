@@ -26,8 +26,13 @@
             <% } else { %>
                 <p class="card-text"> You haven't blocked anyone ...yet </p>
             <% } %>
-            
         </div>
+
+        <div class="card-body">
+            <h3 class="card-title">Rules</h3>
+            <p class="card-text">View <a href="/rules">rules</a></p>
+        </div>
+
         <div class="card-body">
             <h3> Privacy options </h3>
             <form action="/settings/privacy" method="POST">
@@ -40,7 +45,7 @@
                 <label for="everyone">Everyone</label><br>
                 <input class="btn btn-dark" type="submit" value="Save changes">
             </form> 
-        </div>
+        </div>  
     </main>
 </body>
 
