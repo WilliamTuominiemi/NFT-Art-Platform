@@ -67,10 +67,16 @@ class BlockChain {
     addNewTransaction(sender, recipient, data) {
         console.log(chalk.green(`sender ${sender}, receiver ${recipient}`))
 
+        const sender_data = data.sender_drawings
+        const receiver_data = data.receiver_drawings
+
         this.curr_transactions.push({
             sender,
+            sender_data,
+        })
+        this.curr_transactions.push({
             recipient,
-            data,
+            receiver_data,
         })
     }
 

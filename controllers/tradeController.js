@@ -98,7 +98,7 @@ const accept = (req, res) => {
                             in_trade: false,
                         }
                     ).then((result) => {
-                        console.log(result)
+                        // console.log(result)
                     })
                 })
             } else {
@@ -113,7 +113,7 @@ const accept = (req, res) => {
                         in_trade: false,
                     }
                 ).then((result) => {
-                    console.log(result)
+                    // console.log(result)
                 })
             }
         })
@@ -133,7 +133,7 @@ const accept = (req, res) => {
                             in_trade: false,
                         }
                     ).then((result) => {
-                        console.log(result)
+                        // console.log(result)
                     })
                 })
             } else {
@@ -148,7 +148,7 @@ const accept = (req, res) => {
                         in_trade: false,
                     }
                 ).then((result) => {
-                    console.log(result)
+                    // console.log(result)
                 })
             }
         })
