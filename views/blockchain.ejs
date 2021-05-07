@@ -13,8 +13,8 @@
                 <div class="card" style="width: 50%;">
                     <div class="card-body">
                         <p class="card-text">
-                            <b>Hash</b>: <%= block.hash %> <br />
-                            <b>Hash of previous block</b>: <%= block.prevHash %> <br />
+                            <b>Hash</b>: <a href="/settings/block/<%= block.hash %>"><%= block.hash %></a> <br />
+                            <b>Hash of previous block</b>: <a href="/settings/block/<%= block.prevHash %>"><%= block.prevHash %></a> <br />
                             <div class="dropdown">
                                 <button class="btn btn-dark">Transactions</button>
                                 <div class="dropdown-content">

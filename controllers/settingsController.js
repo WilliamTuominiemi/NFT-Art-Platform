@@ -15,7 +15,15 @@ const blockchain = (req, res) => {
         })
 }
 
+const block = (req, res) => {
+    BlockChainModel.find({ hash: req.params.id})
+        .then((result) => {
+            res.render('blockchain', { title: 'blockchain', user: req.user, blocks: result })
+        })
+}
+
 module.exports = {
     settings,
     blockchain,
+    block
 }
