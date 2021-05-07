@@ -13,8 +13,14 @@
                     <p><b>your: </b></p>
                     <% user_drawings.forEach(drawing => { %>
                         <div class="trade_drawing">
-                            <img  src="<%= drawing.src %>" height="50px" width="50px"/>   
-                            <input type="checkbox" id="sender_drawings" value="<%= drawing._id %>" name="sender_drawings">
+                            <% if(!drawing.in_trade) { %>
+                                <img  src="<%= drawing.src %>" height="50px" width="50px"/>   
+                                <input type="checkbox" id="sender_drawings" value="<%= drawing._id %>" name="sender_drawings">
+                            <% } else   { %>
+                                <p><img class="grey-out-img" src="<%= drawing.src %>" height="50px" width="50px"/> In another trade</p>
+                            <% } %>  
+
+                            
                         </div>
                     <% }) %>   
                 </div>
