@@ -7,4 +7,6 @@ router.get('/', settingsController.settings)
 router.get('/blockchain', settingsController.blockchain)
 router.get('/block/:id', settingsController.block)
 
+router.post('/privacy', settingsController.privacy)
+
 module.exports = router

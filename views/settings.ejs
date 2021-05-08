@@ -38,12 +38,17 @@
             <h3> Privacy options </h3>
             <form action="/settings/privacy" method="POST">
                 <p>Who can send you trade request's?</p>
-                <input type="radio" id="no_one" name="privacy" value="no_one">
-                <label for="no_one">No one</label><br>
-                <input type="radio" id="friends" name="privacy" value="friends">
-                <label for="friends">Friends</label><br>  
-                <input type="radio" id="everyone" name="privacy" value="everyone">
-                <label for="everyone">Everyone</label><br>
+                <% if(user.privacy === 0) { %>
+                    <input type="radio" id="everyone" name="privacy" value="0" checked>
+                    <label for="everyone">Everyone</label><br>
+                    <input type="radio" id="no_one" name="privacy" value="1">
+                    <label for="no_one">No one</label><br>
+                <% } else { %>
+                    <input type="radio" id="everyone" name="privacy" value="0" >
+                    <label for="everyone">Everyone</label><br>
+                    <input type="radio" id="no_one" name="privacy" value="1" checked>
+                    <label for="no_one">No one</label><br>
+                <% } %>
                 <input class="btn btn-dark" type="submit" value="Save changes">
             </form> 
         </div>  

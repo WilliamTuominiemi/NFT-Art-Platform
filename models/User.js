@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
     blocked: {
         type: Array,
     },
+    privacy: {
+        type: Number,
+    },
     strikes: {
         type: Number,
     },

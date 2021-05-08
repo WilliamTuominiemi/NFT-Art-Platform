@@ -1,4 +1,5 @@
 let BlockChainModel = require('../src/database/model')
+const User = require('../models/User')
 
 const settings = (req, res) => {
     res.render('settings', {
@@ -22,8 +23,20 @@ const block = (req, res) => {
         })
 }
 
+const privacy = (req, res) => {
+    User.findOneAndUpdate(
+        { googleId: req.user.googleId },
+        {
+            privacy: req.body.privacy,
+        }
+    ).then((result) => {
+        res.redirect('/settings')
+    })
+}
+
 module.exports = {
     settings,
     blockchain,
-    block
+    block,
+    privacy
 }
