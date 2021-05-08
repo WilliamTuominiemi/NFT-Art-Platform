@@ -17,6 +17,7 @@ const index = require('./routes/index')
 const trade = require('./routes/trade')
 const draw = require('./routes/draw')
 const settings = require('./routes/settings')
+const profile = require('./routes/profile')
 
 const connectDB = require('./config/db')
 
@@ -74,6 +75,7 @@ function loggedIn(req, res, next) {
 
 app.use('/', index)
 app.use('/auth', auth)
+app.use('/user', loggedIn, profile)
 app.use('/trade', loggedIn, trade)
 app.use('/drawing', loggedIn, draw)
 app.use('/settings', loggedIn, settings)
