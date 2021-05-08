@@ -7,11 +7,6 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
-const fs = require('fs')
-const path = require('path')
-
-const Drawing = require('./models/image')
-
 const auth = require('./routes/auth')
 const index = require('./routes/index')
 const trade = require('./routes/trade')
