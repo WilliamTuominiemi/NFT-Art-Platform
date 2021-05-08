@@ -15,6 +15,7 @@ const Drawing = require('./models/image')
 const auth = require('./routes/auth')
 const index = require('./routes/index')
 const trade = require('./routes/trade')
+const draw = require('./routes/draw')
 const settings = require('./routes/settings')
 
 const connectDB = require('./config/db')
@@ -74,6 +75,7 @@ function loggedIn(req, res, next) {
 app.use('/', index)
 app.use('/auth', auth)
 app.use('/trade', loggedIn, trade)
+app.use('/drawing', loggedIn, draw)
 app.use('/settings', loggedIn, settings)
 
 app.listen(port, (err) => {

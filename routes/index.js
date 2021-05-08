@@ -1,6 +1,5 @@
 const express = require('express')
 const indexController = require('../controllers/indexController')
-const drawController = require('../controllers/drawController')
 
 const router = express.Router()
 
@@ -14,9 +13,5 @@ router.get('/rules', indexController.rules)
 router.get('/user/block/:id', indexController.block)
 router.get('/user/unblock/:id', indexController.unblock)
 router.get('/user/:id', indexController.profile)
-router.get('/draw', drawController.draw)
-router.get('/drawing/:id', drawController.drawing)
-
-router.post('/draw', drawController.draw_post)
 
 module.exports = router
