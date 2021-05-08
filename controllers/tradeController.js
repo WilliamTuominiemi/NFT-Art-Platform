@@ -10,7 +10,7 @@ const trade = (req, res) => {
         res.redirect('/user/' + req.params.id)
     } else {
         User.find({ googleId: req.params.id }).then((receiver) => {
-            if (receiver[0].blocked.includes(req.user.googleId)) {
+            if (receiver[0].blocked.includes(req.user.googleId) || receiver[0].privacy === 1 ) {
                 res.redirect('/user/' + req.params.id)
             } else {
                 Drawing.find({ owner_googleId: req.user.googleId }).then((user_drawings) => {
