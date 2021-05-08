@@ -63,10 +63,18 @@ app.use(
 
 app.use(bodyParser.json({ limit: '50mb' }))
 
+function loggedIn(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/auth/google')
+    }
+}
+
 app.use('/', index)
 app.use('/auth', auth)
-app.use('/trade', trade)
-app.use('/settings', settings)
+app.use('/trade', loggedIn, trade)
+app.use('/settings', loggedIn, settings)
 
 app.listen(port, (err) => {
     if (err) throw err

@@ -38,7 +38,8 @@ const old_first_main = (req, res) => {
 }
 
 const my_profile = (req, res) => {
-    Drawing.find({ owner_googleId: req.user.googleId })
+    if(req.user != undefined) { 
+        Drawing.find({ owner_googleId: req.user.googleId })
         .sort({ likes: -1 })
         .then((result) => {
             res.render('my_profile', {
@@ -47,6 +48,9 @@ const my_profile = (req, res) => {
                 drawings: result,
             })
         })
+    }   else    {
+        res.redirect('/')
+    }
 }
 
 const profile = (req, res) => {

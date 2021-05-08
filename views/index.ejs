@@ -20,9 +20,19 @@
                     </div>
                     <% drawings.forEach(drawing => { %>
                         <div class="drawing">
-                            <p><a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> </a><br /> owns: </p>
-                            <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />                 
-                            <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"></img></a> <%= drawing.likes %>
+                            <% if(user != 'undefined') { %> 
+                                <p><a href="/user/<%= drawing.owner_googleId %>"><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> </a><br /> owns: </p>
+                                <a href="/drawing/<%= drawing._id%>"><img  src="<%= drawing.src %>" height="150px" width="150px"/> </a><br />
+                            <% } else { %>
+                                <p><img src="<%= drawing.owner_avatar%>" height="25px" width="25px"/><b> <%= drawing.owner_displayName %></b> <br /> owns: </p>
+                                <img  src="<%= drawing.src %>" height="150px" width="150px"/><br />
+                            <% } %>
+                            
+                            <% if(user != 'undefined') { %>          
+                                <a href="/like/<%= drawing._id %>"><img src="heart.png" height="25px" width="25px"></img></a>       
+                            <% } %>
+                 
+                             <%= drawing.likes %> like(s)
                         </div> 
                     <% }) %> 
                 </div>
