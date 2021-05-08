@@ -24,12 +24,18 @@
             <img id="painting"/>
         </div>
 
+        <button class="btn btn-dark" onclick="changeColor(0)">Black</button>
+        <button class="btn btn-danger" onclick="changeColor(1)">Red</button>
+        <button class="btn btn-primary" onclick="changeColor(2)">Blue</button>
+        <br />
+        <br />
+
         <button class="btn btn-dark" onclick="toImage()" >Save image</button> 
 
         <div id="submit_button" style="visibility: hidden;">
             <br /><p> Make sure to read the <a href="/rules" target="_blank">rules</a> before posting!</p>
 
-            <form action="/draw" method="POST">
+            <form action="/drawing/new" method="POST">
                 <div class="form-group">
                     <input type="hidden" id="src" value="" name="src" required>
                     <input type="hidden" id="googleId" value="<%= user.googleId %>" name="googleId" required>
