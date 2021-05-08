@@ -1,12 +1,12 @@
 {
-  "name": "imageupload",
+  "name": "bayynet",
   "version": "1.0.0",
-  "description": "",
+  "description": "NFT art platform ",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "author": "",
+  "author": "William Tuominiemi",
   "license": "ISC",
   "dependencies": {
     "@types/html2canvas": "^0.0.36",
@@ -26,5 +26,16 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamTuominiemi/NFT-art-marketplace.git"
+  },
+  "keywords": [
+    "NFT"
+  ],
+  "bugs": {
+    "url": "https://github.com/WilliamTuominiemi/NFT-art-marketplace/issues"
+  },
+  "homepage": "https://github.com/WilliamTuominiemi/NFT-art-marketplace#readme"
 }
