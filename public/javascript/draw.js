@@ -20,8 +20,13 @@ document.addEventListener('mousemove', draw);
 document.addEventListener('mousedown', setPosition);
 document.addEventListener('mouseenter', setPosition);
 
+function customColor() {
+    console.log(document.getElementById("hex_color").value)
+    color = document.getElementById("hex_color").value
+}
+
 function changeColor(_color) {
-    console.log(color)
+    console.log(_color)
 
     if(_color === 0) {
         console.log('black')
@@ -33,8 +38,6 @@ function changeColor(_color) {
         console.log('blue')
         color = '#378bde'
     }
-
-
 }
 
 function getColor() {
