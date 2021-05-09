@@ -63,7 +63,7 @@ function draw(e) {
     if (e.buttons !== 1) return;
     ctx.beginPath(); // begin
 
-    ctx.lineWidth = 5;
+    ctx.lineWidth = document.getElementById("thickness_slider").value;
     ctx.lineCap = 'round';
     ctx.strokeStyle = getColor();
 
@@ -75,7 +75,6 @@ function draw(e) {
 }  
 
 function toImage() {
-    console.log("pogU")
     var img = canvas.toDataURL('image/jpeg', 0.1);
 
     var element = document.getElementById("src");;
