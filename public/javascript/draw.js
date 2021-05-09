@@ -37,6 +37,9 @@ function changeColor(_color) {
     }   else if(_color === 2)   {
         console.log('blue')
         color = '#378bde'
+    }   else if(_color === 'eraser')   {
+        console.log('eraser')
+        color = '#ffffff '
     }
 }
 
