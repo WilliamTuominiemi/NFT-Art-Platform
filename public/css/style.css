@@ -1,107 +1,107 @@
 .profile_avatar {
-    float: left;
-    padding: 5px;
+  float: left;
+  padding: 5px;
 }
 
 .trade {
-    border-style: solid;
-    text-align: center;
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
+  border-style: solid;
+  text-align: center;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .drawing {
-    float: left;
-    height: 260px;
-    width: 200px;
-    margin: 15px;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 1px;
-    text-align: center;
+  float: left;
+  height: 300px;
+  width: 225px;
+  margin: 15px;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  text-align: center;
 }
 
 .grey-out-img {
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .img_i {
-    border: 5px solid #555;
-    height: 300px;
-    width: 300px;
+  border: 5px solid #555;
+  height: 300px;
+  width: 300px;
 }
 
 .trade_drawing {
-    text-align: left;
-    padding: 5px;
+  text-align: left;
+  padding: 5px;
 }
 
 .myItems {
-    border-style: solid;
-    text-align: center;
-    width: 25%;
-    margin: 10px;
+  border-style: solid;
+  text-align: center;
+  width: 25%;
+  margin: 10px;
 }
 
 .theirItems {
-    border-style: solid;
-    text-align: center;
-    width: 25%;
-    margin: 10px;
+  border-style: solid;
+  text-align: center;
+  width: 25%;
+  margin: 10px;
 }
 
 .items {
-    text-align: left;
+  text-align: left;
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #04aa6d;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  display: none;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+  background-color: #3e8e41;
 }
