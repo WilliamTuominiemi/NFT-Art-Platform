@@ -88,3 +88,8 @@ function toImage() {
 
     document.getElementById("submit_button").style.visibility = "visible";
 }  
+
+function _clear() {
+    console.log('clear')
+    location.reload()
+}
