@@ -1,6 +1,7 @@
 const Drawing = require('../models/image')
 const User = require('../models/User')
 
+// Render homepage, with the highest rated image on top
 const main = (req, res) => {
     Drawing.find()
         .sort({ likes: -1 })
@@ -13,6 +14,7 @@ const main = (req, res) => {
         })
 }
 
+// Render homepage, but the newest images first
 const new_first_main = (req, res) => {
     Drawing.find()
         .sort({ createdAt: -1 })
@@ -25,6 +27,7 @@ const new_first_main = (req, res) => {
         })
 }
 
+// Render homepage, but the oldest images first
 const old_first_main = (req, res) => {
     Drawing.find()
         .sort({ createdAt: 1 })
@@ -37,10 +40,13 @@ const old_first_main = (req, res) => {
         })
 }
 
+// Like drawing and remove like
 const like = (req, res) => {
     if (req.user != undefined) {
         Drawing.find({ _id: req.params.id }).then((result) => {
+            // Check if user has already liked drawing
             if (result[0].likers.includes(req.user.googleId)) {
+                // Remove like
                 Drawing.findOneAndUpdate({ _id: req.params.id }, { $inc: { likes: -1 } }).then((result1) => {
                     Drawing.findOneAndUpdate({ _id: req.params.id }, { $pull: { likers: req.user.googleId } }).then(
                         (result2) => {
@@ -49,6 +55,7 @@ const like = (req, res) => {
                     )
                 })
             } else {
+                // Add like
                 Drawing.findOneAndUpdate({ _id: req.params.id }, { $inc: { likes: 1 } }).then((result1) => {
                     Drawing.findOneAndUpdate({ _id: req.params.id }, { $push: { likers: req.user.googleId } }).then(
                         (result2) => {
@@ -63,6 +70,7 @@ const like = (req, res) => {
     }
 }
 
+// Render the rules of the website
 const rules = (req, res) => {
     res.render('rules', {
         title: 'Rules',

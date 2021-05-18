@@ -5,12 +5,13 @@ const User = require('../models/User')
 let BlockChain = require('../src/blockChain')
 let BlockChainModel = require('../src/database/model')
 
+// Render trade offer page
 const trade = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
     } else {
         User.find({ googleId: req.params.id }).then((receiver) => {
-            if (receiver[0].blocked.includes(req.user.googleId) || receiver[0].privacy === 1 ) {
+            if (receiver[0].blocked.includes(req.user.googleId) || receiver[0].privacy === 1) {
                 res.redirect('/user/' + req.params.id)
             } else {
                 Drawing.find({ owner_googleId: req.user.googleId }).then((user_drawings) => {
@@ -29,6 +30,7 @@ const trade = (req, res) => {
     }
 }
 
+// Set drawing trade state so that it cannot be in two trade offers at a time
 async function set_trade_state(drawings) {
     if (Array.isArray(drawings)) {
         for (const drawing of drawings) {
@@ -40,6 +42,7 @@ async function set_trade_state(drawings) {
     }
 }
 
+// POST request to save trade on database
 const trade_post = (req, res) => {
     if (req.user.googleId === req.params.id) {
         res.redirect('/user/' + req.params.id)
@@ -63,6 +66,7 @@ const trade_post = (req, res) => {
     }
 }
 
+// Render inocming and outcoming trade offers
 const trades = (req, res) => {
     Trade.find({ receiver_id: req.user.googleId }).then((incoming) => {
         Trade.find({ sender_id: req.user.googleId }).then((outgoing) => {
@@ -71,6 +75,7 @@ const trades = (req, res) => {
     })
 }
 
+// Accept incoming trade offer
 const accept = (req, res) => {
     if (req.user != undefined) {
         const filter = { _id: req.body._id }
@@ -84,10 +89,10 @@ const accept = (req, res) => {
         let PROOF = 420
 
         User.find({ googleId: req.body.receiver }).then((user_) => {
-            console.log(Array.isArray(data.sender_drawings))
+            // Check if drawings is an array of drawings or just a single one
             if (Array.isArray(data.sender_drawings)) {
                 console.log('receiver: ' + req.body.receiver + 'drawings' + data.sender_drawings)
-                console.log('array')
+                // Set drawings trade status to false
                 data.sender_drawings.forEach((drawing) => {
                     Drawing.findOneAndUpdate(
                         { _id: drawing },
@@ -103,7 +108,7 @@ const accept = (req, res) => {
                 })
             } else {
                 console.log('receiver: ' + req.body.receiver + 'drawings' + data.sender_drawings)
-                console.log('not array')
+                // Set drawing trade status to false
                 Drawing.findOneAndUpdate(
                     { _id: data.sender_drawings },
                     {
@@ -119,10 +124,10 @@ const accept = (req, res) => {
         })
 
         User.find({ googleId: req.body.sender }).then((user_) => {
-            console.log(Array.isArray(data.receiver_drawings))
+            // Check if drawings is an array of drawings or just a single one
             if (Array.isArray(data.receiver_drawings)) {
                 console.log('sender: ' + req.body.sender + 'drawings' + data.receiver_drawings)
-                console.log('array')
+                // Set drawings trade status to false
                 data.receiver_drawings.forEach((drawing) => {
                     Drawing.findOneAndUpdate(
                         { _id: drawing },
@@ -138,7 +143,7 @@ const accept = (req, res) => {
                 })
             } else {
                 console.log('sender: ' + req.body.sender + 'drawings' + data.receiver_drawings)
-                console.log('not array')
+                // Set drawing trade status to false
                 Drawing.findOneAndUpdate(
                     { _id: data.receiver_drawings },
                     {
@@ -153,10 +158,12 @@ const accept = (req, res) => {
             }
         })
 
+        // Delete finalized trade from database
         Trade.findOneAndDelete(filter).then((result) => {
             console.log(result)
         })
 
+        // Add transaction to blockchain
         blockChain.addNewTransaction(req.body.sender, req.body.receiver, data)
         blockChain.addNewBlock(null)
         res.redirect('/trade/s')
@@ -165,6 +172,7 @@ const accept = (req, res) => {
     }
 }
 
+// Set drawing trade state so that it can be put in a trade offer again
 async function set_trade_state_false(drawings) {
     if (Array.isArray(drawings)) {
         for (const drawing of drawings) {
@@ -181,6 +189,7 @@ async function set_trade_state_false(drawings) {
     }
 }
 
+// Decline incoming trade offer
 const decline = (req, res) => {
     const filter = { _id: req.body._id }
     Trade.findOneAndDelete(filter).then((result) => {
@@ -192,6 +201,7 @@ const decline = (req, res) => {
     })
 }
 
+// Cancel outgoing trade offer
 const cancel = (req, res) => {
     const filter = { _id: req.body._id }
     Trade.findOneAndDelete(filter).then((result) => {
