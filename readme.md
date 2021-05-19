@@ -1,7 +1,5 @@
 # BayyNet NFT art platform
 
-https://bayynet.herokuapp.com/
-
 <p>
     <a href="#About">About</a> •
     <a href="#Features">Features</a> •
@@ -11,7 +9,7 @@ https://bayynet.herokuapp.com/
 
 ## About
 
-A NFT-art marketplace where you can create new NFTs and trade them with others. Trades are added to a blockchain for increased security.
+A NFT-art marketplace where you can create new NFTs and trade them with others. Trades are added to a blockchain for increased security. Visit the website here: https://bayynet.herokuapp.com/
 
 ## Features
 
