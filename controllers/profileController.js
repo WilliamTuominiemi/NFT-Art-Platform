@@ -20,18 +20,22 @@ const my_profile = (req, res) => {
 
 // Render the profile of another user
 const profile = (req, res) => {
-    User.find({ googleId: req.params.id }).then((result) => {
-        Drawing.find({ owner_googleId: req.params.id })
-            .sort({ likes: -1 })
-            .then((result1) => {
-                res.render('profile', {
-                    title: result[0].displayName,
-                    user: req.user,
-                    profile_user: result[0],
-                    drawings: result1,
+    if (req.params.id === req.user.googleId) {
+        res.redirect('/user')
+    } else {
+        User.find({ googleId: req.params.id }).then((result) => {
+            Drawing.find({ owner_googleId: req.params.id })
+                .sort({ likes: -1 })
+                .then((result1) => {
+                    res.render('profile', {
+                        title: result[0].displayName,
+                        user: req.user,
+                        profile_user: result[0],
+                        drawings: result1,
+                    })
                 })
-            })
-    })
+        })
+    }
 }
 
 // Block user from sending trade requests
