@@ -43,11 +43,11 @@ const block = (req, res) => {
     User.find({ googleId: req.user.googleId }).then((result) => {
         console.log(result)
         if (result[0].blocked.includes(req.params.id) || req.user.googleId === req.params.id) {
-            res.redirect('/settings')
+            res.redirect('/user/' + req.params.id)
         } else {
             User.findOneAndUpdate({ googleId: req.user.googleId }, { $push: { blocked: req.params.id } }).then(
                 (result) => {
-                    res.redirect('/settings')
+                    res.redirect('/user/' + req.params.id)
                 }
             )
         }
@@ -57,7 +57,7 @@ const block = (req, res) => {
 // Unblock user
 const unblock = (req, res) => {
     User.findOneAndUpdate({ googleId: req.user.googleId }, { $pull: { blocked: req.params.id } }).then((result) => {
-        res.redirect('/')
+        res.redirect('/user/' + req.params.id)
     })
 }
 
