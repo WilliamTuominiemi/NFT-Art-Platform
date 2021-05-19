@@ -9,7 +9,14 @@
         <div class="profile-header">
             <img class="profile_avatar" src="<%= profile_user.image %>" alt="<%= profile_user.googleId %>" height="50px" width="50px">
             <h1><%= profile_user.displayName %></h1>
-            <p> Joined on: <%= profile_user.createdAt.getDate() %>/<%= profile_user.createdAt.getMonth() + 1 %>/<%= profile_user.createdAt.getFullYear() %> <a href="/user/block/<%= profile_user.googleId %>">Block</a></ </p>
+            <p> 
+                Joined on: <%= profile_user.createdAt.getDate() %>/<%= profile_user.createdAt.getMonth() + 1 %>/<%= profile_user.createdAt.getFullYear() %> 
+                <% if(user.blocked.includes(profile_user.googleId)) { %>
+                    <a href="/user/unblock/<%= profile_user.googleId %>">Unblock</a>
+                <% } else { %>
+                    <a href="/user/block/<%= profile_user.googleId %>">Block</a>
+                <% } %>
+            </p>
         </div>
         <% if(profile_user.googleId != user.googleId) { %>
             <a class="btn btn-dark" href="/trade/<%= profile_user.googleId %>">Send trade offer</a>  
