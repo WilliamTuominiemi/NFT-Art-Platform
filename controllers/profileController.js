@@ -36,8 +36,17 @@ const profile = (req, res) => {
 
 // Block user from sending trade requests
 const block = (req, res) => {
-    User.findOneAndUpdate({ googleId: req.user.googleId }, { $push: { blocked: req.params.id } }).then((result) => {
-        res.redirect('/')
+    User.find({ googleId: req.user.googleId }).then((result) => {
+        console.log(result)
+        if (result[0].blocked.includes(req.params.id) || req.user.googleId === req.params.id) {
+            res.redirect('/settings')
+        } else {
+            User.findOneAndUpdate({ googleId: req.user.googleId }, { $push: { blocked: req.params.id } }).then(
+                (result) => {
+                    res.redirect('/settings')
+                }
+            )
+        }
     })
 }
 
