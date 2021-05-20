@@ -1,3 +1,16 @@
+.canvas {
+    float: left;
+    border: 20px solid #555;
+    width: 510px;
+    height: 510px;
+}
+.dashboard {
+    float: left;
+    border: 5px solid rgb(0, 0, 0);
+    padding: 5px;
+    margin: 5px;
+}
+
 .profile_avatar {
     float: left;
     padding: 5px;
