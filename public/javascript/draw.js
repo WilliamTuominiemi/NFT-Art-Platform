@@ -19,31 +19,6 @@ document.addEventListener('mousemove', draw)
 document.addEventListener('mousedown', setPosition)
 document.addEventListener('mouseenter', setPosition)
 
-// Set pen color as custom user inputted hex
-function customColor() {
-    console.log(document.getElementById('hex_color').value)
-    color = document.getElementById('hex_color').value
-}
-
-// Set color as one of predefined hexes
-function changeColor(_color) {
-    hexCode = document.getElementById('hex_color')
-    if (_color === 0) {
-        hexCode.value = '#000000'
-    } else if (_color === 1) {
-        hexCode.value = '#d94c4c'
-    } else if (_color === 2) {
-        hexCode.value = '#378bde'
-    } else if (_color === 'eraser') {
-        hexCode.value = '#ffffff'
-    }
-}
-
-// Set pen color as defined color
-function getColor() {
-    return color
-}
-
 // new position from mouse event
 function setPosition(e) {
     pos.x = e.clientX
@@ -63,13 +38,23 @@ function draw(e) {
     if (e.buttons !== 1) return
     ctx.beginPath() // begin
 
+    document.getElementById('dashboard').style.borderColor = `rgb(
+        ${Math.floor(document.getElementById('red_slider').value)},
+        ${Math.floor(document.getElementById('green_slider').value)},
+        ${Math.floor(document.getElementById('blue_slider').value)}
+    )`
+
+    document.getElementById('colorText').style.color = `rgb(
+        ${Math.floor(document.getElementById('red_slider').value)},
+        ${Math.floor(document.getElementById('green_slider').value)},
+        ${Math.floor(document.getElementById('blue_slider').value)}
+    )`
     // Set pen thickness as user defined thickness
     ctx.lineWidth = document.getElementById('thickness_slider').value
 
     ctx.lineCap = 'round'
 
     // Set pen color as user defined color
-    console.log(document.getElementById('hex_color').value)
     ctx.strokeStyle = `rgb(
         ${Math.floor(document.getElementById('red_slider').value)},
         ${Math.floor(document.getElementById('green_slider').value)},

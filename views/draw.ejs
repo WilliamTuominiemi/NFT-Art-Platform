@@ -8,6 +8,21 @@
             crossorigin="anonymous"
         />
 
+        <style>
+            .canvas {
+                float:left;
+                border: 20px solid #555;
+                width: 510px;
+                height: 510px;
+            }
+            .dashboard {
+                float:left;
+                border: 5px solid rgb(0,0,0);
+                width: 45%;
+                padding: 5px;
+                margin: 5px;
+            }
+        </style>
         <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
         
@@ -15,18 +30,20 @@
     <body>
         <script type="text/javascript" src="/javascript/draw.js"></script>
 
-        <div class="capture">
+        <div class="capture" id="canvasDiv">
             <canvas class="canvas" id="canvas" height="500px" width="500px" style="padding: 10px; border: 2px solid black;"></canvas>
         </div>
 
         <br />
-        <div class="dashboard">
-            <button class="btn btn-dark" onclick="changeColor(0)">Black</button>
-            <button class="btn btn-danger" onclick="changeColor(1)">Red</button>
-            <button class="btn btn-primary" onclick="changeColor(2)">Blue</button>
-            <input id="hex_color" type="text" value="#000000" placeholder="#000000" />    
-            <br />
-            <br />
+        <div class="dashboard" id="dashboard">
+            
+            <div class="colorPicker">
+                <h3 id="colorText">Color picker</h3> 
+                <p style="color:red;">Red <input id="red_slider" type="range" min="1" max="255" value="0"></p>
+                <p style="color:green;">Green <input id="green_slider" type="range" min="1" max="255" value="0"></p>
+                <p style="color:blue;">Blue <input id="blue_slider" type="range" min="1" max="255" value="0"></p>
+            </div>
+            
     
             <button class="btn btn-warning" onclick="_clear()">Clear</button>
             <button class="btn btn-secondary" onclick="changeColor('eraser')">Eraser</button>
@@ -34,15 +51,9 @@
             <br />
             <br />
     
-            Thickness: <input id="thickness_slider" type="range" min="1" max="100" value="5">
+            Thickness <input id="thickness_slider" type="range" min="1" max="100" value="5">
 
-            Color: 
-            Red:
-            <input id="red_slider" type="range" min="1" max="255" value="0">
-            Green:
-            <input id="green_slider" type="range" min="1" max="255" value="0">
-            Blue:
-            <input id="blue_slider" type="range" min="1" max="255" value="0">
+            
 
 
             <br />
