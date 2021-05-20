@@ -17,7 +17,7 @@ A NFT-art marketplace where you can create new NFTs and trade them with others. 
 
 Draw drawings and dave them to your profile. Drawings are saved on the database as Base64 strings.
 
-<img src="./public/draw.png/" alt="Draw" width="200"/>
+<img src="./public/draw.png/" alt="Draw" width="400"/>
 
 ### Trading
 
