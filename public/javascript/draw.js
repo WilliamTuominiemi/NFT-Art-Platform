@@ -27,20 +27,14 @@ function customColor() {
 
 // Set color as one of predefined hexes
 function changeColor(_color) {
-    // console.log(_color)
     hexCode = document.getElementById('hex_color')
-    // console.log(document.getElementById('hex_color').value)
     if (_color === 0) {
-        // console.log('black')
         hexCode.value = '#000000'
     } else if (_color === 1) {
-        // console.log('red')
         hexCode.value = '#d94c4c'
     } else if (_color === 2) {
-        // console.log('blue')
         hexCode.value = '#378bde'
     } else if (_color === 'eraser') {
-        // console.log('eraser')
         hexCode.value = '#ffffff'
     }
 }
@@ -76,7 +70,11 @@ function draw(e) {
 
     // Set pen color as user defined color
     console.log(document.getElementById('hex_color').value)
-    ctx.strokeStyle = document.getElementById('hex_color').value
+    ctx.strokeStyle = `rgb(
+        ${Math.floor(document.getElementById('red_slider').value)},
+        ${Math.floor(document.getElementById('green_slider').value)},
+        ${Math.floor(document.getElementById('blue_slider').value)}
+    )`
 
     ctx.moveTo(pos.x, pos.y) // from
     setPosition(e)
