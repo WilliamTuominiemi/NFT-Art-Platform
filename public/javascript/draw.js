@@ -19,6 +19,16 @@ document.addEventListener('mousemove', draw)
 document.addEventListener('mousedown', setPosition)
 document.addEventListener('mouseenter', setPosition)
 
+let eraserOn = false
+
+const eraser = () => {
+    if (eraserOn) {
+        eraserOn = false
+    } else {
+        eraserOn = true
+    }
+}
+
 // new position from mouse event
 function setPosition(e) {
     pos.x = e.clientX
@@ -55,11 +65,15 @@ function draw(e) {
     ctx.lineCap = 'round'
 
     // Set pen color as user defined color
-    ctx.strokeStyle = `rgb(
-        ${Math.floor(document.getElementById('red_slider').value)},
-        ${Math.floor(document.getElementById('green_slider').value)},
-        ${Math.floor(document.getElementById('blue_slider').value)}
-    )`
+    if (eraserOn) {
+        ctx.strokeStyle = 'rgb(255,255,255)'
+    } else {
+        ctx.strokeStyle = `rgb(
+            ${Math.floor(document.getElementById('red_slider').value)},
+            ${Math.floor(document.getElementById('green_slider').value)},
+            ${Math.floor(document.getElementById('blue_slider').value)}
+        )`
+    }
 
     ctx.moveTo(pos.x, pos.y) // from
     setPosition(e)
