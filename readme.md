@@ -17,19 +17,19 @@ A NFT-art marketplace where you can create new NFTs and trade them with others. 
 
 Draw drawings and save them to your profile. Drawings are saved on the database as Base64 strings.
 
-<img src="./public/draw.png/" alt="Draw" width="400"/>
+<img src="./public/images/draw.png/" alt="Draw" width="400"/>
 
 ### Trading
 
 Trade drawings you own with other users.
 
-<img src="./public/trade.png/" alt="Trade" width="200"/>
+<img src="./public/images/trade.png/" alt="Trade" width="200"/>
 
 ### Blockchain
 
 Basic ledger that saves information about the trade transactions.
 
-<img src="./public/blockchain.png/" alt="Block" width="200"/>
+<img src="./public/images/blockchain.png/" alt="Block" width="200"/>
 
 ## Installation
 

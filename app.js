@@ -56,7 +56,7 @@ app.use(passport.session())
 app.use(express.urlencoded())
 
 // Favicon
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')))
 
 app.use(
     bodyParser.urlencoded({
