@@ -6,6 +6,8 @@ const dotenv = require('dotenv')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
+const path = require('path')
+const favicon = require('serve-favicon')
 
 const auth = require('./routes/auth')
 const index = require('./routes/index')
@@ -25,7 +27,7 @@ require('./config/passport')(passport)
 // Express app
 const app = express()
 
-app.enable("trust proxy");
+app.enable('trust proxy')
 
 // Port number
 const port = process.env.PORT || '3000'
@@ -53,6 +55,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.urlencoded())
 
+// Favicon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
 app.use(
     bodyParser.urlencoded({
         limit: '50mb',
@@ -64,7 +69,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 
 function loggedIn(req, res, next) {
     if (req.user) {
-        next();
+        next()
     } else {
         res.redirect('/auth/google')
     }
