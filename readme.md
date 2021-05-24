@@ -38,7 +38,7 @@ Basic ledger that saves information about the trade transactions.
 3. extract the project folder and open it in a terminal
 4. Set up Google credentials
 5. Fill out .env according to example env
-6. run `npm install` and `node index` in the project directory
+6. run `npm install` and `node app` in the project directory
 7. open "localhost:3000" in browser
 
 ## My socials
