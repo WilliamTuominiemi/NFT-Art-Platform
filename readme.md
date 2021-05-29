@@ -1,3 +1,5 @@
+<img src="./public/favicon.png/" alt="Draw" width="200"/>
+
 # BayyNet NFT art platform
 
 <p>
