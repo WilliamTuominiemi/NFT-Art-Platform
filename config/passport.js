@@ -2,8 +2,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const User = require('../models/User')
 const dotenv = require('dotenv')
 
-console.log(process.env.GOOGLE_CLIENT_ID)
-
 dotenv.config({ path: './config/.env' })
 
 module.exports = function (passport) {
@@ -15,6 +13,10 @@ module.exports = function (passport) {
 				callbackURL: '/auth/google/callback',
 			},
 			async (accessToken, refreshToken, profile, done) => {
+				console.log('access token: '+accessToken)
+				console.log('refresh token: '+refreshToken)
+
+
 				const newUser = {
 					googleId: profile.id,
 					displayName: profile.displayName,
