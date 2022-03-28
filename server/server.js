@@ -1,7 +1,17 @@
 const express = require('express')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
 const port = 8080
+
+// Load config
+dotenv.config({ path: './config/.env' })
+
+const connectDB = require('./config/db')
+
+// Connect to MongoDB
+connectDB()
 
 app.use(cors())
 
