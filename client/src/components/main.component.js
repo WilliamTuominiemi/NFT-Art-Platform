@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Row } from 'react-bootstrap'
 import axios from 'axios'
 
 const Post = (props) => (
@@ -38,6 +38,9 @@ export default class Main extends Component {
     }
 
     render() {
-        return <div style={{ float: 'left' }}>{this.drawingList()}</div>
+        return <Row xs={1} md={2} className="g-4">
+            {this.drawingList()}
+            </Row>
+
     }
 }
