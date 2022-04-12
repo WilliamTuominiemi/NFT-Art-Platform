@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
 const Post = (props) => (
-    <Card style={{ width: '18rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Card className="text-center" style={{ width: '18rem'}}>
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
             <Card.Title>
