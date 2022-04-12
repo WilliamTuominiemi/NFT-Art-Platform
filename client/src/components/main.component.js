@@ -3,11 +3,14 @@ import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
 const Post = (props) => (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
-            <Card.Title>Owned by: ***</Card.Title>
-            <Card.Text>420 Likes</Card.Text>
+            <Card.Title>
+                <img height="50px" src={props.post.artist_avatar}></img>
+                {props.post.artist_displayName}
+            </Card.Title>
+            <Card.Text>{props.post.likes} Likes</Card.Text>
             <Button variant="primary">View</Button>
         </Card.Body>
     </Card>
@@ -35,6 +38,6 @@ export default class Main extends Component {
     }
 
     render() {
-        return <div>{this.drawingList()}</div>
+        return <div style={{ float: 'left' }}>{this.drawingList()}</div>
     }
 }
