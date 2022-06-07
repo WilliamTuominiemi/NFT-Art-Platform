@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Card, Button, Row } from 'react-bootstrap'
+import { Card, Button, Row, Container } from 'react-bootstrap'
 import axios from 'axios'
 
 const Post = (props) => (
-    <Card className="text-center" style={{ width: '18rem'}}>
+    <Card className="text-center" style={{ width: '18rem', margin: '1%'}}>
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
             <Card.Title>
@@ -38,9 +38,12 @@ export default class Main extends Component {
     }
 
     render() {
-        return <Row xs={1} md={2} className="g-4">
-            {this.drawingList()}
-            </Row>
-
+        return (
+            <Container>
+                <Row xs={1} md={2} className="g-4">
+                {this.drawingList()}
+                </Row>
+            </Container>
+        )
     }
 }
