@@ -11,7 +11,7 @@ const Post = (props) => (
                 {props.post.artist_displayName}
             </Card.Title>
             <Card.Text>{props.post.likes} Likes</Card.Text>
-            <Button variant="primary">View</Button>
+            <Button variant="primary" href={props.post._id}>View</Button>
         </Card.Body>
     </Card>
 )
@@ -32,7 +32,6 @@ export default class Main extends Component {
 
     drawingList() {
         return this.state.drawings.map((currentdrawing) => {
-            console.log(currentdrawing)
             return <Post post={currentdrawing} key={currentdrawing._id} />
         })
     }

@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Navbar from "./components/navbar.component"
 import Main  from "./components/main.component"
-
+import Drawing  from "./components/drawing.component"
 
 export default function App() {
   return (
@@ -17,6 +17,7 @@ export default function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />   
+        <Route path="/:id" element={<Drawing />} />   
       </Routes>
     </div>
   );
