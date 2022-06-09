@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import "./App.css"
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Navbar from "./components/navbar.component"
 import Main  from "./components/main.component"
-import Drawing  from "./components/drawing.component"
+import Drawing  from "./components/drawing"
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />   
-        <Route path="/:id" element={<Drawing />} />   
+        <Route path=":id" element={<Drawing />} />   
       </Routes>
     </div>
   );
