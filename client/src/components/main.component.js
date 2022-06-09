@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Row, Container } from 'react-bootstrap'
 import axios from 'axios'
 
 const Post = (props) => (
-    <Card style={{ width: '18rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Card className="text-center" style={{ width: '18rem', margin: '1%'}}>
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
             <Card.Title>
@@ -11,7 +11,7 @@ const Post = (props) => (
                 {props.post.artist_displayName}
             </Card.Title>
             <Card.Text>{props.post.likes} Likes</Card.Text>
-            <Button variant="primary">View</Button>
+            <Button variant="primary" href={props.post._id}>View</Button>
         </Card.Body>
     </Card>
 )
@@ -32,12 +32,17 @@ export default class Main extends Component {
 
     drawingList() {
         return this.state.drawings.map((currentdrawing) => {
-            console.log(currentdrawing)
             return <Post post={currentdrawing} key={currentdrawing._id} />
         })
     }
 
     render() {
-        return <div style={{ float: 'left' }}>{this.drawingList()}</div>
+        return (
+            <Container>
+                <Row xs={1} md={2} className="g-4">
+                {this.drawingList()}
+                </Row>
+            </Container>
+        )
     }
 }
