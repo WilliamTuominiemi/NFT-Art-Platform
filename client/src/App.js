@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Navbar from "./components/navbar.component"
-import Main  from "./components/main.component"
+import Main  from "./components/main"
 import Drawing  from "./components/drawing"
 
 export default function App() {
