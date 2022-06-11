@@ -1,7 +1,6 @@
 const Drawing = require('../models/image')
 
 const main = (req, res) => {
-    console.log('request')
     Drawing.find()
         //.sort({ likes: -1 })
         .sort({ createdAt: -1 })
@@ -10,6 +9,14 @@ const main = (req, res) => {
         })
 }
 
+const drawing = (req,res) => {
+    Drawing.find({ _id: req.params.id })
+        .then((result) => {
+            res.send(result[0])
+        })
+}
+
 module.exports = {
     main,
+    drawing
 }
