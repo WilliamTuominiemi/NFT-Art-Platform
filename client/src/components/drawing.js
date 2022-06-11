@@ -9,8 +9,8 @@ export default function Drawing() {
     const [post, setPost] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/`).then((res) => {
-            setPost(res.data[2])       
+        axios.get(`http://localhost:8080/${id}`).then((res) => {
+            setPost(res.data)       
         })
     }, [])
 
