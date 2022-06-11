@@ -17,8 +17,7 @@ const Post = (props) => {
         </Card.Body>
         </Card>
     )
-  }
-
+}
 
 
 export default function Main() {
@@ -26,31 +25,17 @@ export default function Main() {
 
     useEffect(()=>{
         axios.get(`http://localhost:8080/`).then((res) => {
-            return(
-                res.data.map(drawing => {
-                    let drawings = posts
-                    drawings.push(drawing)
-                    setPosts(drawings)
-                })
-            )        
+            setPosts(res.data)       
         })
-    })
-
-    const drawingList = () => {
-        return posts.map((currentdrawing) => {
-            return <Post post={currentdrawing} key={currentdrawing._id} />
-        })
-    }
-
-    console.log(posts)
+    }, [])
 
     return (
         <Container>
-            <Container>
-                <Row xs={1} md={2} className="g-4">
-                {drawingList()}
-                </Row>
-            </Container>
+            <Row xs={1} md={2} className="g-4">
+                {posts.map((post) => (
+                    <Post post={post} key={post._id} />             
+                ))}  
+            </Row> 
         </Container>
     )
 }
