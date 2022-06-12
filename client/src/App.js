@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./components/navbar"
 import Main  from "./components/main"
 import Drawing  from "./components/drawing"
+import User  from "./components/user"
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />   
+        <Route path="/user/:id" element={<User />} />   
         <Route path=":id" element={<Drawing />} />   
       </Routes>
     </div>
