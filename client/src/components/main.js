@@ -8,11 +8,11 @@ const Post = (props) => {
         <Card className="text-center" style={{ width: '18rem', margin: '1%'}}>
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
-            <Card.Title>
+            <Card.Text>
                 <img height="50px" src={props.post.artist_avatar}></img>
-                {props.post.artist_displayName}
-            </Card.Title>
-            <Card.Text>{props.post.likes} Likes</Card.Text>
+                &nbsp;{props.post.artist_displayName}
+            </Card.Text>
+            <Card.Title>{props.post.likes} ❤️</Card.Title>
             <Button variant="primary" href={props.post._id}>View</Button>
         </Card.Body>
         </Card>
