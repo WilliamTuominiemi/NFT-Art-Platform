@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import {BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useParams, Link } from 'react-router-dom';
 import { Card, Button, Row, Container } from 'react-bootstrap'
 import axios from 'axios'
 import Drawing from './drawing'
@@ -14,7 +14,9 @@ const Post = (props) => {
                 &nbsp;{props.post.artist_displayName}
             </Card.Text>
             <Card.Title>{props.post.likes} ❤️</Card.Title>
-            <Button variant="primary" href={props.post._id}>View</Button>
+            <Link to={"/"+props.post._id}>
+                <Button variant="primary">View</Button>
+            </Link>
         </Card.Body>
         </Card>
     )
