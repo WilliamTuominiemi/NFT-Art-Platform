@@ -27,7 +27,7 @@ export default function Main() {
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/user/${id}`).then((res) => {
+        axios.get(`http://localhost:8080/drawings/${id}`).then((res) => {
             setPosts(res.data)       
         })
     }, [])

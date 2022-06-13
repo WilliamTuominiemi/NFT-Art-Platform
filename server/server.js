@@ -11,6 +11,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
 const index = require('./routes/index')
+const drawing = require('./routes/drawing')
 const user = require('./routes/user')
 const auth = require('./routes/auth')
 
@@ -49,7 +50,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 app.use('/', index)
-app.use('/user', user)
+app.use('/drawings', drawing)
 app.use('/auth', auth)
 
 app.listen(port, () => {
