@@ -24,7 +24,7 @@ export default function Drawing() {
                             {post.artist_displayName} drew:
                         </Card.Title>
                         <Card.Img variant="top" src={post.src} />    
-                        <Card.Text>{post.likes} Likes</Card.Text>
+                        <Card.Title>{post.likes} ❤️</Card.Title>
                         <Card.Text>
                             owned by <img height="25px" src={post.owner_avatar}/> {post.owner_displayName}
                         </Card.Text>
