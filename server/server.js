@@ -12,7 +12,7 @@ const MongoStore = require('connect-mongo')
 
 const index = require('./routes/index')
 const drawing = require('./routes/drawing')
-const user = require('./routes/user')
+// const user = require('./routes/user')
 const auth = require('./routes/auth')
 
 // Load config

@@ -13,7 +13,7 @@ export default function Menu() {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/profile">Profile</Nav.Link>
                     <Nav.Link href="/settings">Settings</Nav.Link>
-                    <Nav.Link href="/login">Log in</Nav.Link>
+                    <Nav.Link href="http://localhost:8080/auth/google">Log in</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
