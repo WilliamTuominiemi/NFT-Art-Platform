@@ -18,6 +18,7 @@ export default function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />   
+        <Route path="/profile" element={<User />} />   
         <Route path="/user/:id" element={<User />} />   
         <Route path=":id" element={<Drawing />} />   
       </Routes>

@@ -6,8 +6,8 @@ const router = express.Router()
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/posts' }), (req, res) => {
-    res.redirect('http://localhost:3000/')
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    res.redirect('http://localhost:3000/profile')
 })
 
 router.get('/logout', authController.auth_logout)
