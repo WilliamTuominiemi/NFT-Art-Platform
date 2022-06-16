@@ -12,7 +12,7 @@ const MongoStore = require('connect-mongo')
 
 const index = require('./routes/index')
 const drawing = require('./routes/drawing')
-// const user = require('./routes/user')
+const user = require('./routes/user')
 const auth = require('./routes/auth')
 
 // Load config
@@ -49,9 +49,10 @@ app.use(express.urlencoded())
 app.use(express.json())
 app.use(express.static('public'))
 
-app.use('/', index)
 app.use('/drawings', drawing)
+app.use('/users', user)
 app.use('/auth', auth)
+app.use('/', index)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

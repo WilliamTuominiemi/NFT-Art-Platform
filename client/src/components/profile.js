@@ -28,6 +28,7 @@ export default function Main() {
     const [user, setUser] = useState({})
 
     useEffect(()=>{
+        console.log("get user")
         axios.get(`http://localhost:8080/users/`, {
             method: 'GET',
             credentials: 'include',
@@ -42,13 +43,14 @@ export default function Main() {
     }, [])
 
     return (
-        <Container>
-            <h1>{id} owns:</h1>
-            <Row xs={1} md={2} className="g-4">
-                {posts.map((post) => (
-                    <Post post={post} key={post._id} />             
-                ))}  
-            </Row> 
-        </Container>
+        <h1>hello</h1>
+        // <Container>
+        //     <h1>{id} owns:</h1>
+        //     <Row xs={1} md={2} className="g-4">
+        //         {posts.map((post) => (
+        //             <Post post={post} key={post._id} />             
+        //         ))}  
+        //     </Row> 
+        // </Container>
     )
 }
