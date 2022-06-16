@@ -1,8 +1,10 @@
-const express = require('express')
+const router = require('express').Router()
+let User = require('../models/User.js')
+
 const userController = require('../controllers/userController')
 
-const router = express.Router()
+router.get('/', userController.getProfile)
 
-router.get('/:id', userController.userDrawings)
+router.get('/:id', userController.getProfileById)
 
 module.exports = router
