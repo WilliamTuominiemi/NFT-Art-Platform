@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import { Card, Button, Row, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Drawing from './drawing'
 
@@ -9,7 +10,9 @@ const Post = (props) => {
         <Card.Img variant="top" src={props.post.src} />
         <Card.Body>
             <Card.Text>
-                <img height="50px" src={props.post.artist_avatar}></img>
+                <a href={"/user/"+props.post.owner_googleId}>
+                    <img height="50px" src={props.post.artist_avatar}></img>
+                </a>        
                 &nbsp;{props.post.artist_displayName}
             </Card.Text>
             <Card.Title>{props.post.likes} ❤️</Card.Title>
