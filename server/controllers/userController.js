@@ -26,6 +26,10 @@ const getProfileById = async (req, res) => {
     // } catch (err) {
     //     console.log(err)
     // }
+    User.find({ googleId: req.params.id })
+        .then((result) => {
+            res.send(result[0])
+        })
 }
 
 module.exports = {

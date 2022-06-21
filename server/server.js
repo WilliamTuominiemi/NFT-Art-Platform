@@ -50,7 +50,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 app.use('/drawings', drawing)
-app.use('/users', user)
+app.use('/user', user)
 app.use('/auth', auth)
 app.use('/', index)
 

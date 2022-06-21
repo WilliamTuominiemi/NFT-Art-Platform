@@ -27,16 +27,26 @@ export default function Main() {
     let { id } = useParams();
 
     const [posts, setPosts] = useState([])
+    const [user, setUser] = useState([])
 
     useEffect(()=>{
         axios.get(`http://localhost:8080/drawings/${id}`).then((res) => {
             setPosts(res.data)       
         })
+
+        axios.get(`http://localhost:8080/user/${id}`).then((res) => {
+            setUser(res.data)       
+        })
     }, [])
 
     return (
         <Container>
-            <h1>{id} owns:</h1>
+            <div>
+                <h1><img src={user.image}></img>{user.displayName}</h1>
+                <p> joined on: {user.createdAt}</p>
+            </div>
+            <br/>
+            <h2>Owned drawings:</h2>
             <Row xs={1} md={2} className="g-4">
                 {posts.map((post) => (
                     <Post post={post} key={post._id} />             
