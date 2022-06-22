@@ -6,7 +6,7 @@ export default function Menu() {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-            <Navbar.Brand href="#home">BayyNet</Navbar.Brand>
+            <Navbar.Brand href="/">BayyNet</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
