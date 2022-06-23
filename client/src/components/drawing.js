@@ -14,19 +14,24 @@ export default function Drawing() {
         })
     }, [])
 
+    console.log(post)
+
     return (
         <Container>
             <Row className="justify-content-md-center">
                     <Card className="text-center" style={{ width: '50%', margin: '1%'}}>
                     <Card.Body>
                         <Card.Title>
-                            <img height="50px" src={post.artist_avatar}></img>
+                            <a href={"/user/"+post.artist_googleId}>
+                            <img height="50px" src={post.artist_avatar}/>
+                            </a>
                             {post.artist_displayName} drew:
                         </Card.Title>
                         <Card.Img variant="top" src={post.src} />    
                         <Card.Title>{post.likes} ❤️</Card.Title>
                         <Card.Text>
-                            owned by <img height="25px" src={post.owner_avatar}/> {post.owner_displayName}
+                            owned by 
+                            <a href={"/user/"+post.owner_googleId}><img height="25px" src={post.owner_avatar}/></a> {post.owner_displayName}
                         </Card.Text>
                     </Card.Body>
                     </Card>
