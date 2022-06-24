@@ -16,20 +16,16 @@ const getProfile = async (req, res) => {
 }
 
 const getProfileById = async (req, res) => {
-    // try {
-    //     if(typeof req.params.id != 'undefined') {
-    //         const profile = await User.find({googleId: req.params.id})
-    //         res.json(profile[0])
-    //     }  else {
-    //         res.json('undefined')
-    //     }
-    // } catch (err) {
-    //     console.log(err)
-    // }
-    User.find({ googleId: req.params.id })
-        .then((result) => {
-            res.send(result[0])
-        })
+    try {
+        if(typeof req.params.id != 'undefined') {
+            const profile = await User.find({googleId: req.params.id})
+            res.json(profile[0])
+        }  else {
+            res.json('undefined')
+        }
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 module.exports = {
