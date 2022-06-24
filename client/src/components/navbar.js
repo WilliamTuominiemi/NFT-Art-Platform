@@ -1,8 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {  Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 
 export default function Menu() {
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        const getUser = fetch('http://localhost:8080/user/', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+                'Access-Control-Allow-Credentials': true
+            }
+        })
+
+        getUser 
+          .then(user => user.json())
+          .then(user => {       
+            console.log(user)
+            setUser(user)       
+          })
+          .catch((error) => {
+            console.error(error)
+        })
+    }, [])
+
+    function logButton() {
+        if(user === 'undefined') {
+            return <Nav.Link href="http://localhost:8080/auth/google">Log in</Nav.Link>
+        } else {
+            return <Nav.Link href="http://localhost:8080/auth/logout">Log out</Nav.Link>
+        }
+    }
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -13,7 +45,7 @@ export default function Menu() {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/profile">Profile</Nav.Link>
                     <Nav.Link href="/settings">Settings</Nav.Link>
-                    <Nav.Link href="http://localhost:8080/auth/google">Log in</Nav.Link>
+                    {logButton()}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
