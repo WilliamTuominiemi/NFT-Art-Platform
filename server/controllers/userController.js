@@ -1,8 +1,6 @@
 const User = require('../models/User')
 
 const getProfile = async (req, res) => {
-    console.log('get user')
-    console.log(req.user)
     try {
         if(typeof req.user != 'undefined') {
             const profile = await User.find({googleId: req.user.googleId})

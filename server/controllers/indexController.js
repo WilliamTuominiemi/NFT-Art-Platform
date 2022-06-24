@@ -9,11 +9,17 @@ const main = (req, res) => {
         })
 }
 
-const drawing = (req,res) => {
-    Drawing.find({ _id: req.params.id })
-        .then((result) => {
-            res.send(result[0])
-        })
+const drawing = async (req,res) => {
+    try {
+        if(typeof req.params.id != 'undefined') {
+            const drawing = await Drawing.find({_id: req.params.id})
+            res.json(drawing[0])
+        }  else {
+            res.json('undefined')
+        }
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 module.exports = {
