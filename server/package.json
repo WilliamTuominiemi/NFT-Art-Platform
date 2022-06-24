@@ -4,7 +4,8 @@
   "license": "MIT",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "cross-env NODE_ENV=production node src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -14,5 +15,9 @@
     "mongoose": "^6.4.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.18"
   }
 }
