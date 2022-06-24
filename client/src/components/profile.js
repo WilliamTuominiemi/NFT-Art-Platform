@@ -1,8 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import {BrowserRouter as Router, Route, Routes, useParams, Link } from 'react-router-dom';
 import { Card, Button, Row, Container } from 'react-bootstrap'
-import axios from 'axios'
-import Drawing from './drawing'
 
 const Post = (props) => {
     return (
@@ -22,14 +20,14 @@ const Post = (props) => {
     )
 }
 
-
 export default function Main() {
     const [posts, setPosts] = useState([])
     const [user, setUser] = useState({})
 
     useEffect(()=>{
         console.log("get user")
-        axios.get(`http://localhost:8080/users/`, {
+
+        const getUser = fetch('http://localhost:8080/user/', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -37,20 +35,52 @@ export default function Main() {
                 'Content-type': 'application/json',
                 'Access-Control-Allow-Credentials': true
             }
-        }).then((res) => {
-            console.log(res.data) 
         })
+
+        const getPosts = (id) => fetch(`http://localhost:8080/drawings/${id}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              Accept: 'application/json',
+              'Content-type': 'application/json',
+              'Access-Control-Allow-Credentials': true
+            }
+          })
+
+          getUser 
+          .then(user => user.json())
+          .then(user => {       
+            getPosts(user.googleId) 
+              .then(data => data.json())
+              .then(data => {
+                console.log(data)
+                setPosts(data)       
+              })
+              .catch((error) => {
+                console.error(error)
+            })
+            console.log(user)
+            setUser(user)       
+          })
+          .catch((error) => {
+            console.error(error)
+        })
+    
     }, [])
 
     return (
-        <h1>hello</h1>
-        // <Container>
-        //     <h1>{id} owns:</h1>
-        //     <Row xs={1} md={2} className="g-4">
-        //         {posts.map((post) => (
-        //             <Post post={post} key={post._id} />             
-        //         ))}  
-        //     </Row> 
-        // </Container>
+        <Container>
+            <div>
+                <h1><img src={user.image}></img>{user.displayName}</h1>
+                <p> joined on: {user.createdAt}</p>
+            </div>
+            <br/>
+            <h2>Drawings that you own:</h2>
+            <Row xs={1} md={2} className="g-4">
+                {posts.map((post) => (
+                    <Post post={post} key={post._id} />             
+                ))}  
+            </Row> 
+        </Container>
     )
 }
