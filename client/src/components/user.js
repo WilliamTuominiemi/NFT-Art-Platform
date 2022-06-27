@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as useParams, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useParams, Link } from 'react-router-dom'
 import { Card, Button, Row, Container } from 'react-bootstrap'
 import axios from 'axios'
 
