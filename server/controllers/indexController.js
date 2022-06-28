@@ -9,12 +9,12 @@ const main = (req, res) => {
         })
 }
 
-const drawing = async (req,res) => {
+const drawing = async (req, res) => {
     try {
-        if(typeof req.params.id != 'undefined') {
-            const drawing = await Drawing.find({_id: req.params.id})
+        if (typeof req.params.id != 'undefined') {
+            const drawing = await Drawing.find({ _id: req.params.id })
             res.json(drawing[0])
-        }  else {
+        } else {
             res.json('undefined')
         }
     } catch (err) {
@@ -24,5 +24,5 @@ const drawing = async (req,res) => {
 
 module.exports = {
     main,
-    drawing
+    drawing,
 }
