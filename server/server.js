@@ -19,6 +19,9 @@ const auth = require('./routes/auth')
 // Load config
 dotenv.config({ path: './config/.env' })
 
+const variables = require('./config/config')
+const uri = variables.MONGO_URI.toString()
+
 require('./config/passport')(passport)
 
 const connectDB = require('./config/db')
@@ -32,7 +35,7 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+        store: MongoStore.create({ mongoUrl: uri }),
     })
 )
 

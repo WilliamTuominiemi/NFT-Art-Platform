@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
-const uri = process.env.MONGO_URI
+
+const variables = require('./config')
+
+const uri = variables.MONGO_URI.toString()
 
 const connectDB = () => {
     mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })

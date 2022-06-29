@@ -17,7 +17,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.3",
     "mongoose": "^6.3.6",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.18",
     "passport": "^0.5.3",
     "passport-google-oauth20": "^2.0.0"
   }
