@@ -7,12 +7,9 @@ import Canvas from './canvas'
 
 export default function Create() {
     return (
-        <div>
-            <Canvas
-                width={700}
-                height={500}
-            />
-        </div>
-        
+        <Canvas
+            width={700}
+            height={500}
+        />        
     )
 }
