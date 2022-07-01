@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, useParams, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useParams, Link, useNavigate  } from 'react-router-dom'
 import { Card, Button, Row, Container } from 'react-bootstrap'
-import axios from 'axios'
 
 const Post = (props) => {
     return (
@@ -22,19 +21,54 @@ const Post = (props) => {
 }
 
 export default function Main() {
+    const navigate = useNavigate();
+
     let { id } = useParams()
 
     const [posts, setPosts] = useState([])
     const [user, setUser] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/drawings/${id}`).then((res) => {
-            setPosts(res.data)
+        console.log('get user')
+
+        const getUser = fetch(`http://localhost:8080/user/${id}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+                'Access-Control-Allow-Credentials': true,
+            },
         })
 
-        axios.get(`http://localhost:8080/user/${id}`).then((res) => {
-            setUser(res.data)
-        })
+        const getPosts = (id) =>
+            fetch(`http://localhost:8080/drawings/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                },
+            })
+
+        getUser
+            .then((user) => user.json())
+            .then((user) => {
+                if(user === 'this') navigate('/profile')
+                getPosts(user.googleId)
+                    .then((data) => data.json())
+                    .then((data) => {
+                        setPosts(data)
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+                setUser(user)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
     }, [])
 
     return (

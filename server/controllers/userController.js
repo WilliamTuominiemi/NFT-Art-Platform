@@ -15,7 +15,9 @@ const getProfile = async (req, res) => {
 
 const getProfileById = async (req, res) => {
     try {
-        if (typeof req.params.id != 'undefined') {
+        console.log(req.user)
+        if(req.user.googleId === req.params.id) res.json('this')
+        else if (typeof req.params.id != 'undefined') {
             const profile = await User.find({ googleId: req.params.id })
             res.json(profile[0])
         } else {
