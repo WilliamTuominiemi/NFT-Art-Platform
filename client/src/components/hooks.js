@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-export function useOnDraw() {
+export function useOnDraw(onDraw) {
     const canvasRef = useRef(null)
 
     function setCanvasRef(ref) {
@@ -12,6 +12,8 @@ export function useOnDraw() {
     function initMouseMoveListener() {
         const mouseMoveListener = (e) => {
             const point = computePointInCanvas(e.clientX, e.clientY)
+            const ctx = canvasRef.current.getContext('2d')
+            if(onDraw) onDraw(ctx, point)
             console.log(point)
         }
         window.addEventListener("mousemove", mouseMoveListener)

@@ -7,7 +7,14 @@ const Canvas = ({
     height
 }) => {
 
-    const setCanvasRef = useOnDraw()
+    const setCanvasRef = useOnDraw(onDraw)
+
+    function onDraw(ctx,point) {
+        ctx.fillStyle = '#000000'
+        ctx.beginPath()
+        ctx.arc(point.x,point.y,2,0,2*Math.PI)
+        ctx.fill() 
+    }
 
     return(
         <canvas
