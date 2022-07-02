@@ -60,6 +60,7 @@ export function useOnDraw(onDraw) {
         if(!canvasRef.current) return
         const listener = () => {
             isDrawingRef.current = false
+            prevPointRef.current = null
         }
         mouseUpListenerRef.current = listener
         window.addEventListener("mouseup", listener)
