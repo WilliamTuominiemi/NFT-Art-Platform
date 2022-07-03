@@ -40,7 +40,6 @@ export function useOnDraw(onDraw) {
                 const ctx = canvasRef.current.getContext('2d')
                 if(onDraw) onDraw(ctx, point, prevPointRef.current)
                 prevPointRef.current = point
-                console.log(point)
             }          
         }
         mouseMoveListenerRef.current = mouseMoveListener
@@ -76,7 +75,6 @@ export function useOnDraw(onDraw) {
         }   else    {
             return null
         }
-    
     }
 
     return setCanvasRef

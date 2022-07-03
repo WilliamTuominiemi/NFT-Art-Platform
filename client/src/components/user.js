@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, useParams, Link, useNavigate  } from 'react-router-dom'
+import { BrowserRouter as Router, useParams, Link, useNavigate  } from 'react-router-dom'
 import { Card, Button, Row, Container } from 'react-bootstrap'
 
 const Post = (props) => {

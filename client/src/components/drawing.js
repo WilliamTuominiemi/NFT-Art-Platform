@@ -1,6 +1,6 @@
-import {BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
-import React, { Component, useEffect, useState } from 'react'
-import { Card, Button, Row, Col, Container } from 'react-bootstrap'
+import {BrowserRouter as Router, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Card, Row, Container } from 'react-bootstrap'
 import axios from 'axios'
 
 export default function Drawing() {

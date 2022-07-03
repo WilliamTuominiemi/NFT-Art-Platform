@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, useParams, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { Card, Button, Row, Container } from 'react-bootstrap'
 
 const Post = (props) => {
@@ -25,8 +25,6 @@ export default function Main() {
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        console.log('get user')
-
         const getUser = fetch('http://localhost:8080/user/', {
             method: 'GET',
             credentials: 'include',
@@ -54,13 +52,11 @@ export default function Main() {
                 getPosts(user.googleId)
                     .then((data) => data.json())
                     .then((data) => {
-                        console.log(data)
                         setPosts(data)
                     })
                     .catch((error) => {
                         console.error(error)
                     })
-                console.log(user)
                 setUser(user)
             })
             .catch((error) => {

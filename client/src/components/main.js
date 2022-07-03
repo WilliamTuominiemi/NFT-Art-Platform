@@ -1,8 +1,6 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Button, Row, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Drawing from './drawing'
 
 const Post = (props) => {
     return (

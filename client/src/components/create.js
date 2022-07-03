@@ -1,7 +1,4 @@
-import {BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
-import React, { Component, useEffect, useState } from 'react'
-import { Card, Button, Row, Col, Container } from 'react-bootstrap'
-import axios from 'axios'
+import React from 'react'
 
 import Canvas from './canvas'
 
