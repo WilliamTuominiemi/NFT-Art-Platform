@@ -29,8 +29,6 @@ export default function Main() {
     const [user, setUser] = useState([])
 
     useEffect(() => {
-        console.log('get user')
-
         const getUser = fetch(`http://localhost:8080/user/${id}`, {
             method: 'GET',
             credentials: 'include',

@@ -1,5 +1,11 @@
 import { useEffect, useRef } from "react"
 
+const CanvasRef = null
+
+export function uploadButton() {
+    console.log(CanvasRef)
+}
+
 export function useOnDraw(onDraw) {
     const canvasRef = useRef(null)
 
