@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react"
 
-const CanvasRef = null
+let CanvasRef = null
 
 export function uploadButton() {
     console.log(CanvasRef)
+    const img = CanvasRef.toDataURL('image/jpeg', 0.1)
+    console.log(img)
 }
 
 export function useOnDraw(onDraw) {
@@ -34,6 +36,7 @@ export function useOnDraw(onDraw) {
             canvasRef.current.removeEventListener("mousedown", mouseDownListenerRef.current)
         }
         canvasRef.current = ref
+        CanvasRef = canvasRef.current
         initMouseMoveListener()
         initMouseDownListener()
         initMouseUpListener()
