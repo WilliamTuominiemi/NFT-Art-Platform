@@ -22,7 +22,33 @@ const drawing = async (req, res) => {
     }
 }
 
+const newDrawing = (req,res) => {
+    const obj = {
+        src: req.body.img,
+        owner_googleId: req.user.googleId,
+        owner_displayName: req.user.displayName,
+        owner_avatar: req.user.image,
+        artist_googleId: req.user.googleId,
+        artist_displayName: req.user.displayName,
+        artist_avatar: req.user.image,
+        likes: 0,
+        likers: [],
+        in_trade: false,
+    }
+
+    console.log(obj.src)
+
+    Drawing.create(obj, (err, item) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect('/')
+        }
+    })
+}
+
 module.exports = {
     main,
     drawing,
+    newDrawing
 }

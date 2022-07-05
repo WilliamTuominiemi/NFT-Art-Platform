@@ -3,10 +3,29 @@ import { useEffect, useRef } from "react"
 let CanvasRef = null
 
 export function uploadButton() {
-    console.log(CanvasRef)
-    const img = CanvasRef.toDataURL('image/jpeg', 0.1)
-    console.log(img)
+    postData('http://localhost:8080/new', { img: CanvasRef.toDataURL('image/jpeg', 0.1) })
+    .then(data => {
+        console.log(data);
+    });
 }
+
+async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors', 
+        cache: 'no-cache', 
+        credentials: 'include',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        body: JSON.stringify(data) 
+    });
+    return response.json();
+  }
 
 export function useOnDraw(onDraw) {
     const canvasRef = useRef(null)
