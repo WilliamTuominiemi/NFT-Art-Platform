@@ -72,6 +72,9 @@ export default function Main() {
                     &nbsp;{user.displayName}
                 </h1>
                 <p> Joined on: {user.createdAt}</p>
+                <Link to={'/create'}>
+                    <Button variant="primary">Paint A Drawing</Button>
+                </Link>
             </div>
             <h2>Drawings that you own:</h2>
             <Row xs={1} md={2} className="g-4">
