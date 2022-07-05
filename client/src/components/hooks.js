@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react"
 
 let CanvasRef = null
 
-export function uploadButton() {
-    postData('http://localhost:8080/new', { img: CanvasRef.toDataURL('image/jpeg', 0.1) })
+export function uploadButton() {    
+    postData('http://localhost:8080/new', { img: CanvasRef.toDataURL('image/webp', 0.2) })
     .then(data => {
-        console.log(data);
+        console.log(data)
     });
 }
 

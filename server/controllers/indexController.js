@@ -36,13 +36,11 @@ const newDrawing = (req,res) => {
         in_trade: false,
     }
 
-    console.log(obj.src)
-
     Drawing.create(obj, (err, item) => {
         if (err) {
             console.log(err)
         } else {
-            res.redirect('/')
+            console.log(item)
         }
     })
 }
