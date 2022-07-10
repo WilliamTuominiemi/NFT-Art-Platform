@@ -4,6 +4,11 @@ let CanvasRef = null
 
 export let color = '#000000'
 
+export function changeNewColor(newColor) {
+    color = newColor
+    console.log(color)
+} 
+
 export function uploadButton() {    
     postData('http://localhost:8080/new', { img: CanvasRef.toDataURL('image/webp', 0.2) })
     .then(data => {
