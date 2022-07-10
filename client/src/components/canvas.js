@@ -2,6 +2,8 @@ import React from 'react'
 
 import {useOnDraw} from './hooks'
 
+import {color} from './hooks'
+
 const Canvas = ({
     width,
     height
@@ -10,7 +12,7 @@ const Canvas = ({
     const setCanvasRef = useOnDraw(onDraw)
 
     function onDraw(ctx,point,prevPoint) {
-        drawLine(prevPoint, point, ctx, '#000000', 5)
+        drawLine(prevPoint, point, ctx, color, 5)
     }
 
     function drawLine(
