@@ -3,10 +3,16 @@ import { useEffect, useRef } from "react"
 let CanvasRef = null
 
 export let color = '#000000'
+export let thickness = 5
 
 export function changeNewColor(newColor) {
     color = newColor
     console.log(color)
+} 
+
+export function changeThickness(newThickness) {
+    thickness = newThickness
+    console.log(thickness)
 } 
 
 export function uploadButton() {    

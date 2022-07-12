@@ -2,7 +2,7 @@ import React from 'react'
 
 import {useOnDraw} from './hooks'
 
-import {color} from './hooks'
+import {color, thickness} from './hooks'
 
 const Canvas = ({
     width,
@@ -12,7 +12,7 @@ const Canvas = ({
     const setCanvasRef = useOnDraw(onDraw)
 
     function onDraw(ctx,point,prevPoint) {
-        drawLine(prevPoint, point, ctx, color, 5)
+        drawLine(prevPoint, point, ctx, color, thickness*2)
     }
 
     function drawLine(
@@ -32,7 +32,7 @@ const Canvas = ({
 
         ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(start.x, start.y, 2, 0, 2 * Math.PI);
+        ctx.arc(start.x, start.y, thickness, 0, 2 * Math.PI);
         ctx.fill();
     }
 

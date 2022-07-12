@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Canvas from './canvas'
 
-import {uploadButton, changeNewColor} from './hooks'
+import {uploadButton, changeNewColor, changeThickness} from './hooks'
 
 import { BrowserRouter as Router, useParams, Link, useNavigate  } from 'react-router-dom'
 
@@ -42,7 +42,7 @@ export default function Create() {
                     name='thickness' 
                     placeholder='thiccness' 
                     defaultValue='5'
-                    onChange = { (event) => { console.log(event.target.value) } }
+                    onChange = { (event) => { changeThickness(event.target.value) } }
                     min="0" max="50" step="0.5"
                     />
             </FormGroup>
