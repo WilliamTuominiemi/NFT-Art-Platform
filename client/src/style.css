@@ -1,0 +1,32 @@
+canvas {
+    float: left;
+    margin: 40px;
+
+}
+
+.controlPanel {
+    padding: 40px;
+    margin: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 50%;
+  }
+
+  .postButton {
+    margin: 5px;
+
+    width: 25%;
+
+  }
+
+  .formGroup {
+    margin: 5px;
+
+    width: 30%;
+  }
+
+  .chromePicker {
+    margin: 5px;
+
+  }
