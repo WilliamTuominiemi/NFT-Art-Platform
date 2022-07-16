@@ -1,33 +1,26 @@
 {
-  "name": "react-client",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.3",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
-    "http": "^0.0.1-security",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.1.2",
-    "react-color": "^2.19.3",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^2.1.3",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix src",
+    "format": "prettier --write src"
   },
   "browserslist": {
     "production": [
@@ -40,9 +33,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  }
 }

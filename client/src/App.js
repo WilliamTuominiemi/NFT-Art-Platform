@@ -1,30 +1,38 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
-import "./App.css"
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { UserProvider } from './context/userContext'
+import PrivateRoute from './components/PrivateRoute'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import User from './pages/User'
+import Drawing from './pages/Drawing'
+import Create from './pages/Create'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-
-import "bootstrap/dist/css/bootstrap.min.css"
-
-import Navbar from "./components/navbar"
-import Main  from "./components/main"
-import Drawing  from "./components/drawing"
-import User  from "./components/user"
-import Profile  from "./components/profile"
-import Create  from "./components/create"
-
-export default function App() {
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <br />
-      <Routes>
-        <Route path="/" element={<Main />} />   
-        <Route path="/profile" element={<Profile />} />  
-        <Route path="/create" element={<Create />} />   
-        <Route path="/user/:id" element={<User />} />   
-        <Route path=":id" element={<Drawing />} />   
-      </Routes>
-    </div>
-  );
+    <UserProvider>
+      <Layout>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/user/:id" element={<User />} />
+            <Route path="/drawing/:id" element={<Drawing />} />
+            <Route
+              path="/create"
+              element={
+                <PrivateRoute>
+                  <Create />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Router>
+      </Layout>
+    </UserProvider>
+  )
 }
+
+export default App

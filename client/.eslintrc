@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["react-app", "eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react", "prettier"],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-shadow": "warn",
+    "no-console": "warn",
+    "prettier/prettier": "error",
+    "react/prop-types": "off"
+  }
+}
