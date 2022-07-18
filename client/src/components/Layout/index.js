@@ -1,12 +1,12 @@
 import React from 'react'
+import { Box } from '@chakra-ui/react'
 import MyNavbar from './MyNavbar'
 
 const Layout = ({ children }) => {
   return (
     <>
       <MyNavbar />
-      <br />
-      <main>{children}</main>
+      <Box p={4}>{children}</Box>
     </>
   )
 }

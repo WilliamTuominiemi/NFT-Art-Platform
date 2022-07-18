@@ -1,37 +1,37 @@
 import React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { UserProvider } from './context/userContext'
 import PrivateRoute from './components/PrivateRoute'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Login from './pages/Login'
-import User from './pages/User'
 import Drawing from './pages/Drawing'
 import Create from './pages/Create'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import User from './pages/User'
 
 const App = () => {
   return (
-    <UserProvider>
-      <Layout>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/user/:id" element={<User />} />
-            <Route path="/drawing/:id" element={<Drawing />} />
-            <Route
-              path="/create"
-              element={
-                <PrivateRoute>
-                  <Create />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </Router>
-      </Layout>
-    </UserProvider>
+    <ChakraProvider>
+      <UserProvider>
+        <Layout>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/user/:id" element={<User />} />
+              <Route path="/drawing/:id" element={<Drawing />} />
+              <Route
+                path="/create"
+                element={
+                  <PrivateRoute>
+                    <Create />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </Router>
+        </Layout>
+      </UserProvider>
+    </ChakraProvider>
   )
 }
 
