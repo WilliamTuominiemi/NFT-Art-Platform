@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Card, Container, Row } from 'react-bootstrap'
+import { Box, Image } from '@chakra-ui/react'
 import useFetch from '../hooks/useFetch'
 
 export default function Drawing() {
@@ -11,28 +11,35 @@ export default function Drawing() {
   if (isError) return <div>Error</div>
 
   return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Card className="text-center" style={{ width: '50%', margin: '1%' }}>
-          <Card.Body>
-            <Card.Title>
-              <a href={`/user/${drawing.artist._id}`}>
-                <img height="50px" src={drawing.artist.image} alt="artist" />
-              </a>
-              {drawing.artist.displayName} drew:
-            </Card.Title>
-            <Card.Img variant="top" src={drawing.src} />
-            <Card.Title>{drawing.likes} ❤️</Card.Title>
-            <Card.Text>
-              owned by
-              <a href={`/user/${drawing.owner._id}`}>
-                <img height="25px" src={drawing.owner.image} alt="owner" />
-              </a>{' '}
-              {drawing.owner.displayName}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Row>
-    </Container>
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Image src={drawing.src} alt="Drawing" />
+
+      <Box p="6">
+        <Box display="flex" alignItems="baseline">
+          <Box
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xs"
+            textTransform="uppercase"
+            ml="2"
+          >
+            <a href={`/user/${drawing.artist._id}`}>
+              Artist: {drawing.artist.displayName}
+            </a>
+            <br />
+            <a href={`/user/${drawing.owner._id}`}>
+              Owner: {drawing.owner.displayName}
+            </a>
+          </Box>
+        </Box>
+
+        <Box mt="1">{drawing.likes} ❤️</Box>
+
+        <Box>
+          <a href={`/drawing/${drawing._id}`}>View</a>
+        </Box>
+      </Box>
+    </Box>
   )
 }

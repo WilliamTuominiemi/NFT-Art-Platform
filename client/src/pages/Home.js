@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Container } from 'react-bootstrap'
+import { SimpleGrid } from '@chakra-ui/react'
 import Drawing from '../components/Drawing'
 import useFetch from '../hooks/useFetch'
 
@@ -11,17 +11,15 @@ const Home = () => {
   if (isError) return <div>Error</div>
 
   return (
-    <Container>
-      <Row xs={1} md={2} className="g-4">
-        {drawings && (
-          <>
-            {drawings.map((drawing) => (
-              <Drawing key={drawing._id} drawing={drawing} />
-            ))}
-          </>
-        )}
-      </Row>
-    </Container>
+    <SimpleGrid columns={2} spacing={10}>
+      {drawings && (
+        <>
+          {drawings.map((drawing) => (
+            <Drawing key={drawing._id} drawing={drawing} />
+          ))}
+        </>
+      )}
+    </SimpleGrid>
   )
 }
 
