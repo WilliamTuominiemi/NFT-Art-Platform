@@ -1,12 +1,12 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch'
 
-export const UserContext = React.createContext({ user: null, isAuth: false })
+export const UserContext = React.createContext({ user: null })
 
 export const UserProvider = ({ children }) => {
-  const { data: user, loading } = useFetch('/users/me')
+  const { data: user, isLoading } = useFetch('/users/me')
 
-  if (loading) return <div>Loading...</div>
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
