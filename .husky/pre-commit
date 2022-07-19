@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'Formatting and linting server...'
+cd server
+npm run format
+npm run lint
+
+echo 'Formatting and linting client...'
+cd ../client
+npm run format
+npm run lint

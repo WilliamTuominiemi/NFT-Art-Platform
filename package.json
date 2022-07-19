@@ -1,0 +1,11 @@
+{
+  "name": "bayynet",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}
