@@ -2,6 +2,7 @@ import React from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { UserProvider } from './context/userContext'
+import { CanvasProvider } from './context/canvasContext'
 import PrivateRoute from './components/PrivateRoute'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -23,7 +24,9 @@ const App = () => {
                 path="/create"
                 element={
                   <PrivateRoute>
-                    <Create />
+                    <CanvasProvider>
+                      <Create />
+                    </CanvasProvider>
                   </PrivateRoute>
                 }
               />

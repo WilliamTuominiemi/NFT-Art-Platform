@@ -1,26 +1,27 @@
 import React, { useEffect } from 'react'
+import { useCanvas } from '../../context/canvasContext'
 
-const Canvas = ({ canvasRef, color }) => {
+export const Canvas = () => {
+  const { canvasRef, prepareCanvas, startDrawing, finishDrawing, draw } =
+    useCanvas()
+
   useEffect(() => {
-    const canvas = canvasRef.current
-    const context = canvas.getContext('2d')
-
-    context.fillStyle = color
-  }, [canvasRef, color])
+    prepareCanvas()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <canvas
+      onMouseDown={startDrawing}
+      onMouseUp={finishDrawing}
+      onMouseMove={draw}
       ref={canvasRef}
-      height="500px"
-      width="500px"
       style={{
         borderColor: '#000',
         borderStyle: 'solid',
         borderWidth: '1px',
       }}
-    >
-      Canvas
-    </canvas>
+    />
   )
 }
 
