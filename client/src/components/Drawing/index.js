@@ -7,6 +7,7 @@ import {
   Button,
   Stack,
   Avatar,
+  AspectRatio,
 } from '@chakra-ui/react'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import kFormatter from '../../utils/kFormatter'
@@ -17,7 +18,6 @@ const Drawing = ({ drawing }) => {
 
   return (
     <Box
-      maxW="300px"
       borderWidth="1px"
       rounded="lg"
       shadow="lg"
@@ -25,16 +25,16 @@ const Drawing = ({ drawing }) => {
         boxShadow: 'xl',
       }}
     >
-      <Image
-        src={drawing.src}
-        boxSize="300px"
-        roundedTop="lg"
-        borderBottom="1px"
-        borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-        onClick={() => (window.location.href = `/drawings/${drawing.id}`)}
-        _hover={{ cursor: 'pointer', filter: 'brightness(0.9)' }}
-      />
-
+      <AspectRatio ratio={1}>
+        <Image
+          src={drawing.src}
+          roundedTop="lg"
+          borderBottom="1px"
+          borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+          onClick={() => (window.location.href = `/drawings/${drawing.id}`)}
+          _hover={{ cursor: 'pointer', roundedBottom: 'lg' }}
+        />
+      </AspectRatio>
       <Box p="4">
         <Stack
           direction="row"
