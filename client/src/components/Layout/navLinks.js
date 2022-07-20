@@ -1,6 +1,6 @@
 const navLinks = [
   {
-    name: 'Home',
+    name: 'Explore',
     path: '/',
   },
   {

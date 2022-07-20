@@ -1,36 +1,86 @@
 import React from 'react'
-import { Box, Image } from '@chakra-ui/react'
+import {
+  Box,
+  Image,
+  useColorModeValue,
+  Text,
+  Button,
+  Stack,
+  Avatar,
+} from '@chakra-ui/react'
+import { BsHeart, BsHeartFill } from 'react-icons/bs'
+import kFormatter from '../../utils/kFormatter'
+import dateFormatter from '../../utils/dateFormatter'
 
 const Drawing = ({ drawing }) => {
+  const [isLiked, setIsLiked] = React.useState(false)
+
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Image src={drawing.src} alt="Drawing" />
+    <Box
+      maxW="300px"
+      borderWidth="1px"
+      rounded="lg"
+      shadow="lg"
+      _hover={{
+        boxShadow: 'xl',
+      }}
+    >
+      <Image
+        src={drawing.src}
+        boxSize="300px"
+        roundedTop="lg"
+        borderBottom="1px"
+        borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+        onClick={() => (window.location.href = `/drawings/${drawing.id}`)}
+        _hover={{ cursor: 'pointer', filter: 'brightness(0.9)' }}
+      />
 
-      <Box p="6">
-        <Box display="flex" alignItems="baseline">
-          <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
+      <Box p="4">
+        <Stack
+          direction="row"
+          spacing={3}
+          align="center"
+          onClick={() => (window.location.href = `/user/${drawing.artist._id}`)}
+          _hover={{ cursor: 'pointer' }}
+        >
+          <Avatar src={drawing.artist.image} size="sm" />
+          <Stack direction="column" spacing={0} fontSize="sm">
+            <Text fontWeight={600}>{drawing.artist.displayName}</Text>
+            <Text color="gray.500">{dateFormatter(drawing.createdAt)}</Text>
+          </Stack>
+        </Stack>
+
+        <Stack
+          direction="row"
+          align="center"
+          justifyContent="space-between"
+          mt={4}
+        >
+          <Button
+            colorScheme="red"
+            size="sm"
+            variant="ghost"
+            rounded="full"
+            leftIcon={isLiked ? <BsHeartFill /> : <BsHeart />}
+            onClick={() => setIsLiked(!isLiked)}
           >
-            <a href={`/user/${drawing.artist._id}`}>
-              Artist: {drawing.artist.displayName}
-            </a>
-            <br />
-            <a href={`/user/${drawing.owner._id}`}>
-              Owner: {drawing.owner.displayName}
-            </a>
-          </Box>
-        </Box>
-
-        <Box mt="1">{drawing.likes} ❤️</Box>
-
-        <Box>
-          <a href={`/drawing/${drawing._id}`}>View</a>
-        </Box>
+            {kFormatter(Number(drawing.likes))}
+          </Button>
+          <Text
+            fontSize="xs"
+            textAlign="right"
+            color="gray.500"
+            onClick={() =>
+              (window.location.href = `/user/${drawing.owner._id}`)
+            }
+            _hover={{
+              cursor: 'pointer',
+              color: useColorModeValue('black', 'gray.400'),
+            }}
+          >
+            {drawing.owner.displayName} (Owner)
+          </Text>
+        </Stack>
       </Box>
     </Box>
   )

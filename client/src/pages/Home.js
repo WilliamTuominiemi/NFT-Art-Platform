@@ -1,5 +1,5 @@
 import React from 'react'
-import { SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid, Box } from '@chakra-ui/react'
 import Drawing from '../components/Drawing'
 import useFetch from '../hooks/useFetch'
 
@@ -11,15 +11,17 @@ const Home = () => {
   if (isError) return <div>Error</div>
 
   return (
-    <SimpleGrid columns={2} spacing={10}>
-      {drawings && (
-        <>
-          {drawings.map((drawing) => (
-            <Drawing key={drawing._id} drawing={drawing} />
-          ))}
-        </>
-      )}
-    </SimpleGrid>
+    <Box w="full" display="flex" justifyContent="center">
+      <SimpleGrid columns={[1, 2, 4]} spacing={4}>
+        {drawings && (
+          <>
+            {drawings.map((drawing) => (
+              <Drawing key={drawing._id} drawing={drawing} />
+            ))}
+          </>
+        )}
+      </SimpleGrid>
+    </Box>
   )
 }
 

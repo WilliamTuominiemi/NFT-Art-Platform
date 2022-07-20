@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <MyNavbar />
-      <Box p={4}>{children}</Box>
+      <Box p={8}>{children}</Box>
     </>
   )
 }
