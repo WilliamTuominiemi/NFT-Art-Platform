@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <Box w="full" display="flex" justifyContent="center">
-      <SimpleGrid columns={[1, 2, 4]} spacing={4}>
+      <SimpleGrid columns={[1, 2, 4]} spacing={4} w="full" maxW="1500px">
         {drawings && (
           <>
             {drawings.map((drawing) => (
