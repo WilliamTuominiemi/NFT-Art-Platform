@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useColorModeValue } from '@chakra-ui/react'
 import { useCanvas } from '../../context/canvasContext'
 
 export const Canvas = () => {
@@ -17,7 +18,7 @@ export const Canvas = () => {
       onMouseMove={draw}
       ref={canvasRef}
       style={{
-        borderColor: '#000',
+        borderColor: useColorModeValue('gray.200', 'gray.700'),
         borderStyle: 'solid',
         borderWidth: '1px',
       }}

@@ -21,6 +21,8 @@ export const CanvasProvider = ({ children }) => {
     context.lineCap = 'round'
     context.strokeStyle = 'black'
     context.lineWidth = 5
+    context.fillStyle = 'white'
+    context.fillRect(0, 0, canvas.width, canvas.height)
     contextRef.current = context
   }
 
