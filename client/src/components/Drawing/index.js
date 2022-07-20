@@ -19,7 +19,7 @@ const Drawing = ({ drawing }) => {
   return (
     <Box
       borderWidth="1px"
-      rounded="lg"
+      rounded="xl"
       shadow="lg"
       _hover={{
         boxShadow: 'xl',
@@ -28,11 +28,11 @@ const Drawing = ({ drawing }) => {
       <AspectRatio ratio={1}>
         <Image
           src={drawing.src}
-          roundedTop="lg"
+          roundedTop="xl"
           borderBottom="1px"
           borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
           onClick={() => (window.location.href = `/drawings/${drawing.id}`)}
-          _hover={{ cursor: 'pointer', roundedBottom: 'lg' }}
+          _hover={{ cursor: 'pointer', roundedBottom: 'xl' }}
         />
       </AspectRatio>
       <Box p="4">
