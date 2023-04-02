@@ -1,3 +1,4 @@
+import UserAvatar from "@/components/layout/user-avatar";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
             </Link>
           </nav>
         </div>
-        <div>Avatar</div>
+        <UserAvatar />
       </div>
     </header>
   );
