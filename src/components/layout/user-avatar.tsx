@@ -7,17 +7,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Settings, User } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslations";
+import { LogOut, Settings, User } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const UserAvatar = () => {
+  const { t } = useTranslation();
+  const router = useRouter();
   const { data: session } = useSession();
 
   if (!session?.user)
     return (
       <Button size="sm" className="px-4" onClick={() => signIn()}>
-        Login
+        {t.navbar.login}
       </Button>
     );
 
@@ -45,13 +48,23 @@ const UserAvatar = () => {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={(e) => {
+            e.preventDefault();
+            router.push("/profile");
+          }}
+        >
           <User className="mr-2 h-4 w-4" />
-          <Link href="#">Profile</Link>
+          <p>{t.navbar.profile}</p>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={(e) => {
+            e.preventDefault();
+            router.push("/settings");
+          }}
+        >
           <Settings className="mr-2 h-4 w-4" />
-          <Link href="#">Settings</Link>
+          <p>{t.navbar.settings}</p>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
@@ -61,7 +74,8 @@ const UserAvatar = () => {
             signOut();
           }}
         >
-          Sign out
+          <LogOut className="mr-2 h-4 w-4" />
+          <p>{t.navbar.logout}</p>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,4 +1,5 @@
 import UserAvatar from "@/components/layout/user-avatar";
+import { useTranslation } from "@/hooks/useTranslations";
 import { Menu, PenTool, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -6,15 +7,16 @@ import { useState } from "react";
 const links = [
   {
     href: "/",
-    label: "Home",
+    label: "home",
   },
   {
     href: "/create",
-    label: "Create",
+    label: "create",
   },
 ];
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
@@ -31,7 +33,7 @@ const Navbar = () => {
                 href={link.href}
                 className="flex items-center text-lg font-semibold text-slate-600 hover:text-slate-900 sm:text-sm"
               >
-                {link.label}
+                {t.navbar[link.label as keyof typeof t.navbar]}
               </Link>
             </nav>
           ))}
@@ -55,7 +57,7 @@ const Navbar = () => {
                       href={link.href}
                       className="flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline"
                     >
-                      {link.label}
+                      {t.navbar[link.label as keyof typeof t.navbar]}
                     </Link>
                   ))}
                 </nav>
