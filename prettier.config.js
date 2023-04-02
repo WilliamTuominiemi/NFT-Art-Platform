@@ -1,5 +1,5 @@
 /** @type {import("prettier").Config} */
-const config = {
+module.exports = {
   bracketSpacing: true,
   printWidth: 80,
   singleQuote: false,
@@ -10,5 +10,3 @@ const config = {
   arrowParens: "always",
   plugins: [require.resolve("prettier-plugin-tailwindcss")],
 };
-
-module.exports = config;
