@@ -1,6 +1,5 @@
 import en from "@/locales/en";
 import fi from "@/locales/fi";
-import ru from "@/locales/ru";
 import sv from "@/locales/sv";
 import type Translations from "@/locales/Translations";
 import { useRouter } from "next/router";
@@ -22,9 +21,6 @@ export const useTranslation = (): {
       break;
     case "fi":
       t = fi;
-      break;
-    case "ru":
-      t = ru;
       break;
     default:
       t = en;

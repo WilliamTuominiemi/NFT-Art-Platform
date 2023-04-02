@@ -2,16 +2,16 @@ import type Translations from "@/locales/Translations";
 
 const translations: Translations = {
   navbar: {
-    home: "",
-    create: "",
-    login: "",
-    logout: "",
-    profile: "",
-    settings: "",
+    home: "Hem",
+    create: "Skapa",
+    login: "Logga in",
+    logout: "Logga ut",
+    profile: "Profil",
+    settings: "Inställningar",
   },
   footer: {
-    builtBy: "Hej",
-    sourceCode: "",
+    builtBy: "Byggd av",
+    sourceCode: "Kod är tillgänglig på",
   },
 };
 
