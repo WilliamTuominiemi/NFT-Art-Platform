@@ -1,13 +1,15 @@
 import Layout from "@/components/layout";
+import { api } from "@/utils/api";
 import { type NextPage } from "next";
-import { useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
-  const { data: sessionData } = useSession();
+  const { data, isLoading } = api.example.hello.useQuery({
+    text: "team",
+  });
 
   return (
     <Layout title="Home">
-      <p>{sessionData && <span>Logged in as {sessionData.user?.name}</span>}</p>
+      <p>{isLoading ? "Loading..." : data?.greeting}</p>
     </Layout>
   );
 };
