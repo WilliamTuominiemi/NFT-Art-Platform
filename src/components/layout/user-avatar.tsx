@@ -12,7 +12,7 @@ import { LogOut, Settings, User } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-const UserAvatar = () => {
+export const UserAvatar = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { data: session } = useSession();
@@ -81,5 +81,3 @@ const UserAvatar = () => {
     </DropdownMenu>
   );
 };
-
-export default UserAvatar;

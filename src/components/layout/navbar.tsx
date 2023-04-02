@@ -1,4 +1,4 @@
-import UserAvatar from "@/components/layout/user-avatar";
+import { UserAvatar } from "@/components/layout/user-avatar";
 import { useTranslation } from "@/hooks/useTranslations";
 import { Framer, Menu, PenTool, X } from "lucide-react";
 import Link from "next/link";
@@ -15,7 +15,7 @@ const links = [
   },
 ];
 
-const Navbar = () => {
+export const Navbar = () => {
   const { t } = useTranslation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -70,5 +70,3 @@ const Navbar = () => {
     </header>
   );
 };
-
-export default Navbar;

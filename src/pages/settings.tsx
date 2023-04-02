@@ -1,5 +1,5 @@
-import LanguageSelect from "@/components/common/language-select";
-import ThemeToggle from "@/components/common/theme-toggle";
+import { LanguageSelect } from "@/components/common/language-select";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 import Layout from "@/components/layout";
 import { type NextPage } from "next";
 

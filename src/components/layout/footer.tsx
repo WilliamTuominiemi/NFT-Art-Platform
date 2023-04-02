@@ -1,7 +1,7 @@
 import { useTranslation } from "@/hooks/useTranslations";
 import { Framer } from "lucide-react";
 
-const Footer = () => {
+export const Footer = () => {
   const { t } = useTranslation();
   return (
     <footer className="container bg-white text-slate-600 dark:bg-slate-900 dark:text-slate-400">
@@ -31,5 +31,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

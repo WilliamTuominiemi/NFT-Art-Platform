@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import { useTranslation } from "@/hooks/useTranslations";
 
-const LanguageSelect = () => {
+export const LanguageSelect = () => {
   const { changeLanguage, currentLanguage } = useTranslation();
 
   return (
@@ -31,5 +31,3 @@ const LanguageSelect = () => {
     </Select>
   );
 };
-
-export default LanguageSelect;

@@ -1,7 +1,7 @@
-import en from "@/locales/en";
-import fi from "@/locales/fi";
-import sv from "@/locales/sv";
-import type Translations from "@/locales/Translations";
+import { englishTranslations } from "@/locales/en";
+import { finnishTranslations } from "@/locales/fi";
+import { swedishTranslations } from "@/locales/sv";
+import { type Translations } from "@/locales/Translations";
 import { useRouter } from "next/router";
 
 export const useTranslation = (): {
@@ -14,16 +14,16 @@ export const useTranslation = (): {
   let t: Translations;
   switch (router.locale) {
     case "en":
-      t = en;
+      t = englishTranslations;
       break;
     case "sv":
-      t = sv;
+      t = swedishTranslations;
       break;
     case "fi":
-      t = fi;
+      t = finnishTranslations;
       break;
     default:
-      t = en;
+      t = englishTranslations;
       break;
   }
 

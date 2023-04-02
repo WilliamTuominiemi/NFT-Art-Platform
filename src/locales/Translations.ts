@@ -1,4 +1,4 @@
-export default interface Translations {
+export interface Translations {
   navbar: {
     home: string;
     create: string;

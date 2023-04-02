@@ -1,6 +1,6 @@
-import type Translations from "@/locales/Translations";
+import { type Translations } from "@/locales/Translations";
 
-const translations: Translations = {
+export const swedishTranslations: Translations = {
   navbar: {
     home: "Hem",
     create: "Skapa",
@@ -14,5 +14,3 @@ const translations: Translations = {
     sourceCode: "Kod är tillgänglig på",
   },
 };
-
-export default translations;

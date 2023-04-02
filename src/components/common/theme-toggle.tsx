@@ -8,7 +8,7 @@ import {
 import { Laptop, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-const ThemeToggle = () => {
+export const ThemeToggle = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -37,5 +37,3 @@ const ThemeToggle = () => {
     </DropdownMenu>
   );
 };
-
-export default ThemeToggle;

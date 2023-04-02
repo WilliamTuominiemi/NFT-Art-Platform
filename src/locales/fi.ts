@@ -1,6 +1,6 @@
-import type Translations from "@/locales/Translations";
+import { type Translations } from "@/locales/Translations";
 
-const translations: Translations = {
+export const finnishTranslations: Translations = {
   navbar: {
     home: "Koti",
     create: "Luo",
@@ -14,5 +14,3 @@ const translations: Translations = {
     sourceCode: "Koodi on saatavilla",
   },
 };
-
-export default translations;
