@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import { cn } from "@/utils/helpers";
 import { Inter } from "next/font/google";
@@ -6,6 +7,7 @@ import Head from "next/head";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
 });
 
 interface LayoutProps {
@@ -23,11 +25,10 @@ const Layout = ({ title, children }: LayoutProps) => {
       </Head>
       <div className={cn("mx-auto flex flex-col space-y-6", inter.className)}>
         <Navbar />
-        <div className="container">
-          <main className="flex w-full flex-1 flex-col overflow-hidden">
-            {children}
-          </main>
-        </div>
+        <main className="flex-1">
+          <div className="container flex w-full flex-col">{children}</div>
+        </main>
+        <Footer />
       </div>
     </>
   );
