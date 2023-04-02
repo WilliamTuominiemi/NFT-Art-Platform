@@ -17,7 +17,7 @@ const Layout = ({ title, children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>{`${title} | Bayynet`}</title>
+        <title>{`${title} | Baynet`}</title>
         <meta name="description" content="Social media for drawings" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
