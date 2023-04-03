@@ -4,6 +4,7 @@ import { useTranslation } from "@/hooks/useTranslations";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
 import { type NextPage } from "next";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 import {
@@ -15,6 +16,11 @@ const Create: NextPage = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const ctx = api.useContext();
+  const { data: session, status } = useSession();
+
+  if (!session?.user && status !== "loading") {
+    signIn("google");
+  }
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
 
