@@ -3,6 +3,7 @@ import { api } from "@/utils/api";
 import { Analytics } from "@vercel/analytics/react";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 import { type AppType } from "next/app";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -10,10 +11,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-      <Analytics />
-    </SessionProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+        <Analytics />
+      </SessionProvider>
+    </ThemeProvider>
   );
 };
 

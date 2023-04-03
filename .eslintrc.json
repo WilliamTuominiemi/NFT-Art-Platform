@@ -10,6 +10,8 @@
     "plugin:jsx-a11y/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-console": "error",
+    "no-shadow": "warn"
   }
 }
