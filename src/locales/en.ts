@@ -15,4 +15,7 @@ export const englishTranslations: Translations = {
     builtBy: "Built by",
     sourceCode: "The source code is available on",
   },
+  create: {
+    create: "Create",
+  },
 };

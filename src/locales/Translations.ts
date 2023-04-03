@@ -13,4 +13,7 @@ export interface Translations {
     builtBy: string;
     sourceCode: string;
   };
+  create: {
+    create: string;
+  };
 }
