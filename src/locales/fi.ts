@@ -15,4 +15,7 @@ export const finnishTranslations: Translations = {
     builtBy: "Rakennettu",
     sourceCode: "Koodi on saatavilla",
   },
+  create: {
+    create: "Luo",
+  },
 };

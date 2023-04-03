@@ -25,7 +25,7 @@ export const UserAvatar = () => {
 
   if (!session?.user)
     return (
-      <Button size="sm" className="px-4" onClick={() => signIn()}>
+      <Button size="sm" className="px-4" onClick={() => signIn("google")}>
         {t.navbar.login}
       </Button>
     );

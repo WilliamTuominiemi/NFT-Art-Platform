@@ -15,4 +15,7 @@ export const swedishTranslations: Translations = {
     builtBy: "Byggd av",
     sourceCode: "Kod är tillgänglig på",
   },
+  create: {
+    create: "Skapa",
+  },
 };
