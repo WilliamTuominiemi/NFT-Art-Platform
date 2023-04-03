@@ -8,6 +8,8 @@ export const swedishTranslations: Translations = {
     logout: "Logga ut",
     profile: "Profil",
     settings: "Inställningar",
+    theme: "Tema",
+    language: "Språk",
   },
   footer: {
     builtBy: "Byggd av",

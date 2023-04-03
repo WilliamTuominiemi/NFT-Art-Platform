@@ -8,6 +8,8 @@ export const englishTranslations: Translations = {
     logout: "Logout",
     profile: "Profile",
     settings: "Settings",
+    theme: "Theme",
+    language: "Language",
   },
   footer: {
     builtBy: "Built by",

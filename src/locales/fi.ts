@@ -8,6 +8,8 @@ export const finnishTranslations: Translations = {
     logout: "Kirjaudu ulos",
     profile: "Profiili",
     settings: "Asetukset",
+    theme: "Teema",
+    language: "Kieli",
   },
   footer: {
     builtBy: "Rakennettu",

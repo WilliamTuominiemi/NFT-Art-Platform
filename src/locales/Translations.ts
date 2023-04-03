@@ -6,6 +6,8 @@ export interface Translations {
     logout: string;
     profile: string;
     settings: string;
+    theme: string;
+    language: string;
   };
   footer: {
     builtBy: string;
