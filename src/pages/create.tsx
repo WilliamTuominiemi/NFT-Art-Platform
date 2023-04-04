@@ -96,10 +96,10 @@ const Create: NextPage = () => {
           </Button>
           <Button
             className="ml-2 mt-6"
-            variant={"outline"}
+            variant="outline"
             onClick={() => canvasRef.current?.clearCanvas()}
           >
-            <span>Clear</span>
+            Clear
           </Button>
         </div>
       </div>
