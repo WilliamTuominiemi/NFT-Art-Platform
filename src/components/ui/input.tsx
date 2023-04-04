@@ -1,6 +1,5 @@
-import * as React from "react";
-
 import { cn } from "@/utils/helpers";
+import * as React from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InputProps

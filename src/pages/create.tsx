@@ -25,7 +25,6 @@ const Create: NextPage = () => {
   }
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
-
   const [color, setColor] = useState("#000000");
 
   const { mutate, isLoading } = api.post.create.useMutation({
@@ -58,11 +57,10 @@ const Create: NextPage = () => {
             exportWithBackgroundImage
           />
         </div>
-
         <div>
           <div className="flex flex-col space-y-6">
             <div>
-              <Label htmlFor="colorText">Color</Label>
+              <Label htmlFor="colorText">{t.create.color}</Label>
               <div className="space-between-4 flex flex-row">
                 <Input
                   type="text"
