@@ -15,9 +15,11 @@ const Layout = ({ title, children }: LayoutProps) => {
         <meta name="description" content="Social media for drawings" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="mx-auto flex flex-col space-y-6">
+      <div className="mx-auto flex min-h-screen flex-col space-y-6">
         <Navbar />
-        <main className="container">{children}</main>
+        <main className="flex-1">
+          <div className="container">{children}</div>
+        </main>
         <Footer />
       </div>
     </>

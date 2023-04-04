@@ -18,5 +18,7 @@ export const finnishTranslations: Translations = {
   create: {
     create: "Luo",
     color: "Väri",
+    thickness: "Paksuus",
+    clear: "Tyhjennä",
   },
 };
