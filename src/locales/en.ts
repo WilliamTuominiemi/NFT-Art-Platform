@@ -17,5 +17,6 @@ export const englishTranslations: Translations = {
   },
   create: {
     create: "Create",
+    color: "Color",
   },
 };

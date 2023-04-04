@@ -15,5 +15,6 @@ export interface Translations {
   };
   create: {
     create: string;
+    color: string;
   };
 }
