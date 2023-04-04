@@ -89,9 +89,17 @@ const Create: NextPage = () => {
               onValueChange={(e) => setWidth(e[0])}
             />
           </div>
+
           <Button className="mt-6" onClick={handleCreate} disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             <span>{t.create.create}</span>
+          </Button>
+          <Button
+            className="ml-2 mt-6"
+            variant={"outline"}
+            onClick={() => canvasRef.current?.clearCanvas()}
+          >
+            <span>Clear</span>
           </Button>
         </div>
       </div>
