@@ -2,6 +2,7 @@ import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import { useTranslation } from "@/hooks/useTranslations";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
@@ -25,7 +26,9 @@ const Create: NextPage = () => {
   }
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
+
   const [color, setColor] = useState("#000000");
+  const [width, setWidth] = useState(10);
 
   const { mutate, isLoading } = api.post.create.useMutation({
     onSuccess: () => {
@@ -50,7 +53,7 @@ const Create: NextPage = () => {
             className="h-full w-full rounded-lg border border-slate-100"
             width="500"
             height="500"
-            strokeWidth={4}
+            strokeWidth={width}
             strokeColor={color}
             canvasColor="white"
             ref={canvasRef}
@@ -77,6 +80,14 @@ const Create: NextPage = () => {
                 />
               </div>
             </div>
+          </div>
+          <div className="mt-4 space-y-2">
+            <Label htmlFor="slider">Thickness</Label>
+            <Slider
+              defaultValue={[width]}
+              id="slider"
+              onValueChange={(e) => setWidth(e[0])}
+            />
           </div>
           <Button className="mt-6" onClick={handleCreate} disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
