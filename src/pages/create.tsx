@@ -1,12 +1,14 @@
 import Layout from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useTranslation } from "@/hooks/useTranslations";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { createRef } from "react";
+import { createRef, useState } from "react";
 import {
   ReactSketchCanvas,
   type ReactSketchCanvasRef,
@@ -23,6 +25,8 @@ const Create: NextPage = () => {
   }
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
+
+  const [color, setColor] = useState("#000000");
 
   const { mutate, isLoading } = api.post.create.useMutation({
     onSuccess: () => {
@@ -48,14 +52,35 @@ const Create: NextPage = () => {
             width="500"
             height="500"
             strokeWidth={4}
-            strokeColor="black"
+            strokeColor={color}
             canvasColor="white"
             ref={canvasRef}
             exportWithBackgroundImage
           />
         </div>
+
         <div>
-          <Button onClick={handleCreate} disabled={isLoading}>
+          <div className="flex flex-col space-y-6">
+            <div>
+              <Label htmlFor="colorText">Color</Label>
+              <div className="space-between-4 flex flex-row">
+                <Input
+                  type="text"
+                  id="colorText"
+                  placeholder="color"
+                  value={color}
+                  disabled
+                />
+                <input
+                  className="ml-2"
+                  type="color"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+          <Button className="mt-6" onClick={handleCreate} disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             <span>{t.create.create}</span>
           </Button>
