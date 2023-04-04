@@ -6,7 +6,7 @@ import { Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { createRef } from "react";
+import { createRef, useState } from "react";
 import {
   ReactSketchCanvas,
   type ReactSketchCanvasRef,
@@ -23,6 +23,8 @@ const Create: NextPage = () => {
   }
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
+
+  const [color, setColor] = useState("black");
 
   const { mutate, isLoading } = api.post.create.useMutation({
     onSuccess: () => {
@@ -48,13 +50,18 @@ const Create: NextPage = () => {
             width="500"
             height="500"
             strokeWidth={4}
-            strokeColor="black"
+            strokeColor={color}
             canvasColor="white"
             ref={canvasRef}
             exportWithBackgroundImage
           />
         </div>
         <div>
+          <input
+            type="color"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
           <Button onClick={handleCreate} disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             <span>{t.create.create}</span>
