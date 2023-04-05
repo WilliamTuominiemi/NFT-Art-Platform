@@ -26,8 +26,6 @@ export const finnishTranslations: Translations = {
     postNotCreated: "Postausta ei voitu luoda",
   },
   home: {
-    welcome: "Tervetuloa",
-    noPosts: "Ole ensimmäinen, joka luo postauksen.",
     feed: "Syöte",
     description: "Nauti kauniista piirroksista!",
     loadMore: "Lataa Lisää",

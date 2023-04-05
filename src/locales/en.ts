@@ -26,8 +26,6 @@ export const englishTranslations: Translations = {
     postNotCreated: "Your post could not be created",
   },
   home: {
-    welcome: "Welcome",
-    noPosts: "Be the first to create a post.",
     feed: "Feed",
     description: "Enjoy the beautiful doodles!",
     loadMore: "Load More",

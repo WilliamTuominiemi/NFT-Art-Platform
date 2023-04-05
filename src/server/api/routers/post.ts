@@ -7,10 +7,20 @@ import { z } from "zod";
 
 export const postRouter = createTRPCRouter({
   getAll: publicProcedure
-    .input(z.object({ limit: z.number() }))
+    .input(
+      z.object({
+        limit: z.number(),
+        cursor: z.string().nullish(),
+        skip: z.number().optional(),
+      }),
+    )
     .query(async ({ ctx, input }) => {
+      const { limit, skip, cursor } = input;
+
       const posts = await ctx.prisma.post.findMany({
-        take: input.limit,
+        take: limit + 1,
+        skip: skip,
+        cursor: cursor ? { id: cursor } : undefined,
         orderBy: {
           createdAt: "desc",
         },
@@ -18,7 +28,14 @@ export const postRouter = createTRPCRouter({
           user: true,
         },
       });
-      return posts;
+
+      let nextCursor: typeof cursor | undefined = undefined;
+      if (posts.length > limit) {
+        const nextItem = posts.pop();
+        nextCursor = nextItem?.id;
+      }
+
+      return { posts, nextCursor };
     }),
   create: protectedProcedure
     .input(z.object({ image: z.string() }))
