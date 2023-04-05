@@ -23,4 +23,10 @@ export interface Translations {
     postCreated: string;
     postNotCreated: string;
   };
+  home: {
+    welcome: string;
+    noPosts: string;
+    feed: string;
+    description: string;
+  };
 }

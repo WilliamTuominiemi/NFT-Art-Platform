@@ -34,7 +34,7 @@ export const PostCard = ({ post }: PostCardProps) => {
       <div className="flex flex-col space-y-4 p-4">
         <p className="truncate text-sm">
           <Link
-            className="font-medium underline-offset-4 hover:cursor-pointer hover:underline"
+            className="font-medium underline-offset-2 hover:cursor-pointer hover:underline"
             href={`/user/${post.user.id}`}
           >
             {post.user.name}
