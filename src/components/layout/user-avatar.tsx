@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "@/hooks/use-translations";
-import { Globe, Laptop, LogOut, Moon, Settings, Sun, User } from "lucide-react";
+import { Brush, Globe, Laptop, LogOut, Moon, Sun, User } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
@@ -57,7 +57,7 @@ export const UserAvatar = () => {
         <DropdownMenuItem
           onSelect={(e) => {
             e.preventDefault();
-            router.push("/profile");
+            router.push(`/user/${session.user.id}`);
           }}
         >
           <User className="mr-2 h-4 w-4" />
@@ -66,11 +66,11 @@ export const UserAvatar = () => {
         <DropdownMenuItem
           onSelect={(e) => {
             e.preventDefault();
-            router.push("/settings");
+            router.push("/create");
           }}
         >
-          <Settings className="mr-2 h-4 w-4" />
-          <span>{t.navbar.settings}</span>
+          <Brush className="mr-2 h-4 w-4" />
+          <span>{t.create.create}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
