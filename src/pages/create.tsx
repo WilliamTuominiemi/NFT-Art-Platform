@@ -6,11 +6,11 @@ import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
-import { Loader2 } from "lucide-react";
+import { Loader2, Redo, Trash, Undo } from "lucide-react";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import {
   ReactSketchCanvas,
   type ReactSketchCanvasRef,
@@ -59,6 +59,16 @@ const Create: NextPage = () => {
     }
   };
 
+  useEffect(() => {
+    addEventListener("keypress", (event) => {
+      if (event.key === "\x1A") {
+        canvasRef.current?.undo();
+      } else if (event.key === "\x19") {
+        canvasRef.current?.redo();
+      }
+    });
+  });
+
   return (
     <Layout title="Create">
       <div className="flex flex-col items-center space-x-0 space-y-12 md:flex-row md:items-start md:space-x-12 md:space-y-0">
@@ -104,15 +114,26 @@ const Create: NextPage = () => {
             />
           </div>
           <div className="flex flex-row space-x-4">
+            <Button variant="ghost" onClick={() => canvasRef.current?.undo()}>
+              <Undo className="mr-2 h-4 w-4" />
+              Undo
+            </Button>
+            <Button variant="ghost" onClick={() => canvasRef.current?.redo()}>
+              <Redo className="mr-2 h-4 w-4" />
+              Redo
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => canvasRef.current?.clearCanvas()}
+            >
+              <Trash className="mr-2 h-4 w-4" />
+              {t.create.clear}
+            </Button>
+          </div>
+          <div className="flex flex-row space-x-4">
             <Button onClick={handleCreate} disabled={isLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               <span>{t.create.create}</span>
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => canvasRef.current?.clearCanvas()}
-            >
-              {t.create.clear}
             </Button>
           </div>
         </div>
