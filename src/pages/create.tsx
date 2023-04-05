@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { useTranslation } from "@/hooks/useTranslations";
+import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
 import { Loader2 } from "lucide-react";
 import { type NextPage } from "next";
@@ -15,6 +16,8 @@ import {
   type ReactSketchCanvasRef,
 } from "react-sketch-canvas";
 
+const INITIAL_WIDTH = 10;
+
 const Create: NextPage = () => {
   const { data: session, status } = useSession();
   if (!session?.user && status !== "loading") {
@@ -22,15 +25,27 @@ const Create: NextPage = () => {
   }
 
   const { t } = useTranslation();
+  const { toast } = useToast();
   const router = useRouter();
   const ctx = api.useContext();
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
   const [color, setColor] = useState("#000000");
-  const [width, setWidth] = useState(10);
+  const [width, setWidth] = useState(INITIAL_WIDTH);
 
   const { mutate, isLoading } = api.post.create.useMutation({
+    onError: () => {
+      toast({
+        variant: "destructive",
+        title: t.create.error,
+        description: t.create.postNotCreated,
+      });
+    },
     onSuccess: () => {
+      toast({
+        title: t.create.success,
+        description: t.create.postCreated,
+      });
       ctx.invalidate();
       router.push("/");
     },
@@ -82,7 +97,9 @@ const Create: NextPage = () => {
             <div className="flex flex-col space-y-4">
               <Label htmlFor="slider">{t.create.thickness}</Label>
               <Slider
-                defaultValue={[width]}
+                min={1}
+                max={100}
+                defaultValue={[INITIAL_WIDTH]}
                 id="slider"
                 onValueChange={(e) => setWidth(e[0])}
               />

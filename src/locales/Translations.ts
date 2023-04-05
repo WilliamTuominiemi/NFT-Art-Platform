@@ -18,5 +18,9 @@ export interface Translations {
     color: string;
     thickness: string;
     clear: string;
+    success: string;
+    error: string;
+    postCreated: string;
+    postNotCreated: string;
   };
 }

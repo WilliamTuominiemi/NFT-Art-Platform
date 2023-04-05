@@ -20,5 +20,9 @@ export const finnishTranslations: Translations = {
     color: "Väri",
     thickness: "Paksuus",
     clear: "Tyhjennä",
+    success: "Onnistui",
+    error: "Virhe",
+    postCreated: "Postaus on luotu",
+    postNotCreated: "Postausta ei voitu luoda",
   },
 };
