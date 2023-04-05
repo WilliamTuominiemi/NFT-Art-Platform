@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/toaster";
 import "@/styles/globals.css";
 import { api } from "@/utils/api";
 import { Analytics } from "@vercel/analytics/react";
@@ -14,6 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <SessionProvider session={session}>
         <Component {...pageProps} />
+        <Toaster />
         <Analytics />
       </SessionProvider>
     </ThemeProvider>

@@ -1,5 +1,5 @@
 import { UserAvatar } from "@/components/layout/user-avatar";
-import { useTranslation } from "@/hooks/useTranslations";
+import { useTranslation } from "@/hooks/use-translations";
 import { Framer, Menu, PenTool, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import { useTranslation } from "@/hooks/useTranslations";
+import { useTranslation } from "@/hooks/use-translations";
 import { Framer } from "lucide-react";
 
 export const Footer = () => {

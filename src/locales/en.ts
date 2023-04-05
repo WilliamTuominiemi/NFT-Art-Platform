@@ -20,5 +20,9 @@ export const englishTranslations: Translations = {
     color: "Color",
     thickness: "Thickness",
     clear: "Clear",
+    success: "Success",
+    error: "Error",
+    postCreated: "Your post has been created",
+    postNotCreated: "Your post could not be created",
   },
 };

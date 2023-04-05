@@ -20,5 +20,9 @@ export const swedishTranslations: Translations = {
     color: "Färg",
     thickness: "Tjocklek",
     clear: "Rensa",
+    success: "Lyckades",
+    error: "Fel",
+    postCreated: "Ditt inlägg har skapats",
+    postNotCreated: "Ditt inlägg kunde inte skapas",
   },
 };

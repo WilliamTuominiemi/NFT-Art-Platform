@@ -11,7 +11,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTranslation } from "@/hooks/useTranslations";
+import { useTranslation } from "@/hooks/use-translations";
 import { Globe, Laptop, LogOut, Moon, Settings, Sun, User } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
