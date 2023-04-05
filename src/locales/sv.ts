@@ -26,9 +26,8 @@ export const swedishTranslations: Translations = {
     postNotCreated: "Ditt inlägg kunde inte skapas",
   },
   home: {
-    welcome: "Välkommen",
-    noPosts: "Var den första att skapa ett inlägg.",
     feed: "Flöde",
     description: "Njut av de vackra teckningarna!",
+    loadMore: "Ladda Mer",
   },
 };

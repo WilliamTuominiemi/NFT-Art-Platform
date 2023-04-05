@@ -24,9 +24,8 @@ export interface Translations {
     postNotCreated: string;
   };
   home: {
-    welcome: string;
-    noPosts: string;
     feed: string;
     description: string;
+    loadMore: string;
   };
 }

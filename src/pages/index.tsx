@@ -4,19 +4,31 @@ import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
-import { Brush } from "lucide-react";
+import { Brush, Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
+import React from "react";
+
+const LIMIT = 12;
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
   const {
-    data: posts,
+    data,
     isLoading,
     isError,
-  } = api.post.getAll.useQuery({ limit: 100 });
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = api.post.getAll.useInfiniteQuery(
+    { limit: LIMIT },
+    {
+      keepPreviousData: true,
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+    },
+  );
 
   if (isError) return <div>Error</div>;
 
@@ -24,12 +36,8 @@ const Home: NextPage = () => {
     <Layout title="Home">
       <div className="mb-12 flex justify-between">
         <div className="grid gap-1">
-          <h1 className="text-2xl font-bold tracking-wide">
-            {posts?.length === 0 ? t.home.welcome : t.home.feed}
-          </h1>
-          <p className="text-slate-500">
-            {posts?.length === 0 ? t.home.noPosts : t.home.description}
-          </p>
+          <h1 className="text-2xl font-bold tracking-wide">{t.home.feed}</h1>
+          <p className="text-slate-500">{t.home.description}</p>
         </div>
         <Button onClick={() => router.push("/create")}>
           <Brush className="mr-2 h-4 w-4" />
@@ -39,7 +47,7 @@ const Home: NextPage = () => {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
         {isLoading ? (
           <>
-            {Array(12)
+            {Array(LIMIT)
               .fill(1)
               .map((_, idx) => (
                 <LoadingCard key={`${idx}-loader`} />
@@ -47,11 +55,27 @@ const Home: NextPage = () => {
           </>
         ) : (
           <>
-            {posts.map((post) => (
-              <PostCard key={post.id} post={post} />
+            {data.pages.map((page) => (
+              <React.Fragment key={page.nextCursor || "lastPage"}>
+                {page.posts?.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+              </React.Fragment>
             ))}
           </>
         )}
+      </div>
+      <div className="mt-6 w-full text-center">
+        <Button
+          variant="subtle"
+          disabled={isLoading || isFetchingNextPage || !hasNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          {isLoading || isFetchingNextPage ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : null}
+          <span>{t.home.loadMore}</span>
+        </Button>
       </div>
     </Layout>
   );
