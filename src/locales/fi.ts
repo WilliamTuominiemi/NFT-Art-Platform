@@ -30,5 +30,6 @@ export const finnishTranslations: Translations = {
     noPosts: "Ole ensimmäinen, joka luo postauksen.",
     feed: "Syöte",
     description: "Nauti kauniista piirroksista!",
+    loadMore: "Lataa Lisää",
   },
 };

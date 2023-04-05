@@ -30,5 +30,6 @@ export const englishTranslations: Translations = {
     noPosts: "Be the first to create a post.",
     feed: "Feed",
     description: "Enjoy the beautiful doodles!",
+    loadMore: "Load More",
   },
 };

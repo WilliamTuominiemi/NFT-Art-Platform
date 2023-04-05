@@ -30,5 +30,6 @@ export const swedishTranslations: Translations = {
     noPosts: "Var den första att skapa ett inlägg.",
     feed: "Flöde",
     description: "Njut av de vackra teckningarna!",
+    loadMore: "Ladda Mer",
   },
 };

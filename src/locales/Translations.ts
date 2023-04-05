@@ -28,5 +28,6 @@ export interface Translations {
     noPosts: string;
     feed: string;
     description: string;
+    loadMore: string;
   };
 }

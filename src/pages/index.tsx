@@ -4,7 +4,7 @@ import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
-import { Brush } from "lucide-react";
+import { Brush, Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
 
@@ -52,6 +52,12 @@ const Home: NextPage = () => {
             ))}
           </>
         )}
+      </div>
+      <div className="mt-6 w-full text-center">
+        <Button variant="subtle" disabled={isLoading}>
+          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          <span>{t.home.loadMore}</span>
+        </Button>
       </div>
     </Layout>
   );
