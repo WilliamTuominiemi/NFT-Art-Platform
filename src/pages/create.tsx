@@ -32,6 +32,7 @@ const Create: NextPage = () => {
   const canvasRef = createRef<ReactSketchCanvasRef>();
   const [color, setColor] = useState("#000000");
   const [width, setWidth] = useState(INITIAL_WIDTH);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   const { mutate, isLoading } = api.post.create.useMutation({
     onError: () => {
@@ -82,6 +83,7 @@ const Create: NextPage = () => {
             canvasColor="#ffffff"
             ref={canvasRef}
             exportWithBackgroundImage
+            onStroke={() => setIsEmpty(false)}
           />
         </div>
         <div className="flex flex-col space-y-8">
@@ -124,14 +126,17 @@ const Create: NextPage = () => {
             </Button>
             <Button
               variant="ghost"
-              onClick={() => canvasRef.current?.clearCanvas()}
+              onClick={async () => {
+                await canvasRef.current?.clearCanvas();
+                setIsEmpty(true);
+              }}
             >
               <Trash className="mr-2 h-4 w-4" />
               <span>{t.create.clear}</span>
             </Button>
           </div>
           <div className="flex flex-row space-x-4">
-            <Button onClick={handleCreate} disabled={isLoading}>
+            <Button onClick={handleCreate} disabled={isLoading || isEmpty}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               <span>{t.create.create}</span>
             </Button>
