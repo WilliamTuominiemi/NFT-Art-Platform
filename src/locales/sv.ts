@@ -12,12 +12,16 @@ export const swedishTranslations: Translations = {
     profile: "Profil",
     theme: "Tema",
     language: "Språk",
+    light: "Ljus",
+    dark: "Mörk",
+    system: "System",
   },
   footer: {
     builtBy: "Byggd av",
     sourceCode: "Kod är tillgänglig på",
   },
   create: {
+    create: "Skapa",
     color: "Färg",
     thickness: "Tjocklek",
     clear: "Rensa",

@@ -12,12 +12,16 @@ export const finnishTranslations: Translations = {
     profile: "Profiili",
     theme: "Teema",
     language: "Kieli",
+    light: "Vaalea",
+    dark: "Tumma",
+    system: "Systeemi",
   },
   footer: {
     builtBy: "Rakennettu",
     sourceCode: "Koodi on saatavilla",
   },
   create: {
+    create: "Luo",
     color: "Väri",
     thickness: "Paksuus",
     clear: "Tyhjennä",

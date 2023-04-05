@@ -10,12 +10,16 @@ export interface Translations {
     profile: string;
     theme: string;
     language: string;
+    light: string;
+    dark: string;
+    system: string;
   };
   footer: {
     builtBy: string;
     sourceCode: string;
   };
   create: {
+    create: string;
     color: string;
     thickness: string;
     clear: string;

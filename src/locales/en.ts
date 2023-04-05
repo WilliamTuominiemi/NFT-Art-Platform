@@ -12,12 +12,16 @@ export const englishTranslations: Translations = {
     profile: "Profile",
     theme: "Theme",
     language: "Language",
+    light: "Light",
+    dark: "Dark",
+    system: "System",
   },
   footer: {
     builtBy: "Built by",
     sourceCode: "The source code is available on",
   },
   create: {
+    create: "Create",
     color: "Color",
     thickness: "Thickness",
     clear: "Clear",

@@ -37,14 +37,14 @@ const Create: NextPage = () => {
     onError: () => {
       toast({
         variant: "destructive",
-        title: t.create.error,
-        description: t.create.postNotCreated,
+        title: t.common.error,
+        description: t.create.errorDescription,
       });
     },
     onSuccess: () => {
       toast({
-        title: t.create.success,
-        description: t.create.postCreated,
+        title: t.common.success,
+        description: t.create.successDescription,
       });
       ctx.invalidate();
       router.push("/");
@@ -116,18 +116,18 @@ const Create: NextPage = () => {
           <div className="flex flex-row space-x-4">
             <Button variant="ghost" onClick={() => canvasRef.current?.undo()}>
               <Undo className="mr-2 h-4 w-4" />
-              Undo
+              <span>{t.create.undo}</span>
             </Button>
             <Button variant="ghost" onClick={() => canvasRef.current?.redo()}>
               <Redo className="mr-2 h-4 w-4" />
-              Redo
+              <span>{t.create.redo}</span>
             </Button>
             <Button
               variant="ghost"
               onClick={() => canvasRef.current?.clearCanvas()}
             >
               <Trash className="mr-2 h-4 w-4" />
-              {t.create.clear}
+              <span>{t.create.clear}</span>
             </Button>
           </div>
           <div className="flex flex-row space-x-4">

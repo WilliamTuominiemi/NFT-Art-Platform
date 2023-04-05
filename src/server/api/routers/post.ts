@@ -37,6 +37,7 @@ export const postRouter = createTRPCRouter({
 
       return { posts, nextCursor };
     }),
+
   create: protectedProcedure
     .input(z.object({ image: z.string() }))
     .mutation(async ({ ctx, input }) => {
