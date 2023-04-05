@@ -16,5 +16,7 @@ export interface Translations {
   create: {
     create: string;
     color: string;
+    thickness: string;
+    clear: string;
   };
 }

@@ -1,4 +1,5 @@
 import Layout from "@/components/layout";
+import { LoadingCard } from "@/components/loading-card";
 import { PostCard } from "@/components/post-card";
 import { api } from "@/utils/api";
 import { type NextPage } from "next";
@@ -14,9 +15,22 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="Home">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-        {!isLoading &&
-          posts.map((post) => <PostCard key={post.id} post={post} />)}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+        {isLoading ? (
+          <>
+            {Array(12)
+              .fill(1)
+              .map((_, idx) => (
+                <LoadingCard key={`${idx}-loader`} />
+              ))}
+          </>
+        ) : (
+          <>
+            {posts.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </>
+        )}
       </div>
     </Layout>
   );

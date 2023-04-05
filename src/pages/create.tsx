@@ -16,17 +16,16 @@ import {
 } from "react-sketch-canvas";
 
 const Create: NextPage = () => {
-  const { t } = useTranslation();
-  const router = useRouter();
-  const ctx = api.useContext();
   const { data: session, status } = useSession();
-
   if (!session?.user && status !== "loading") {
     signIn("google");
   }
 
-  const canvasRef = createRef<ReactSketchCanvasRef>();
+  const { t } = useTranslation();
+  const router = useRouter();
+  const ctx = api.useContext();
 
+  const canvasRef = createRef<ReactSketchCanvasRef>();
   const [color, setColor] = useState("#000000");
   const [width, setWidth] = useState(10);
 
@@ -47,24 +46,24 @@ const Create: NextPage = () => {
 
   return (
     <Layout title="Create">
-      <div className="flex flex-row space-x-6">
+      <div className="flex flex-row space-x-12">
         <div className="h-[500px] w-[500px]">
           <ReactSketchCanvas
-            className="h-full w-full rounded-lg border border-slate-100"
+            className="h-full w-full rounded-md border border-slate-200"
             width="500"
             height="500"
             strokeWidth={width}
             strokeColor={color}
-            canvasColor="white"
+            canvasColor="#ffffff"
             ref={canvasRef}
             exportWithBackgroundImage
           />
         </div>
-        <div>
-          <div className="flex flex-col space-y-6">
-            <div>
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-col space-y-8">
+            <div className="flex flex-col space-y-4">
               <Label htmlFor="colorText">{t.create.color}</Label>
-              <div className="space-between-4 flex flex-row">
+              <div className="flex flex-row space-x-4">
                 <Input
                   type="text"
                   id="colorText"
@@ -73,34 +72,34 @@ const Create: NextPage = () => {
                   disabled
                 />
                 <input
-                  className="ml-2"
+                  className="rounded-md"
                   type="color"
                   value={color}
                   onChange={(e) => setColor(e.target.value)}
                 />
               </div>
             </div>
+            <div className="flex flex-col space-y-4">
+              <Label htmlFor="slider">{t.create.thickness}</Label>
+              <Slider
+                defaultValue={[width]}
+                id="slider"
+                onValueChange={(e) => setWidth(e[0])}
+              />
+            </div>
           </div>
-          <div className="mt-4 space-y-2">
-            <Label htmlFor="slider">Thickness</Label>
-            <Slider
-              defaultValue={[width]}
-              id="slider"
-              onValueChange={(e) => setWidth(e[0])}
-            />
+          <div className="flex flex-row space-x-4">
+            <Button onClick={handleCreate} disabled={isLoading}>
+              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              <span>{t.create.create}</span>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => canvasRef.current?.clearCanvas()}
+            >
+              {t.create.clear}
+            </Button>
           </div>
-
-          <Button className="mt-6" onClick={handleCreate} disabled={isLoading}>
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            <span>{t.create.create}</span>
-          </Button>
-          <Button
-            className="ml-2 mt-6"
-            variant="outline"
-            onClick={() => canvasRef.current?.clearCanvas()}
-          >
-            Clear
-          </Button>
         </div>
       </div>
     </Layout>

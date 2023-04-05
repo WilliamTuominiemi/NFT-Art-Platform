@@ -18,5 +18,7 @@ export const swedishTranslations: Translations = {
   create: {
     create: "Skapa",
     color: "Färg",
+    thickness: "Tjocklek",
+    clear: "Rensa",
   },
 };
