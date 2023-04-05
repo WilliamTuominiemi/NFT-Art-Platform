@@ -70,7 +70,7 @@ export const UserAvatar = () => {
           }}
         >
           <Brush className="mr-2 h-4 w-4" />
-          <span>{t.create.create}</span>
+          <span>{t.common.create}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
@@ -102,15 +102,15 @@ export const UserAvatar = () => {
             <DropdownMenuSubContent>
               <DropdownMenuItem onSelect={() => setTheme("light")}>
                 <Sun className="mr-2 h-4 w-4" />
-                <span>Light</span>
+                {t.navbar.light}
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setTheme("dark")}>
                 <Moon className="mr-2 h-4 w-4" />
-                <span>Dark</span>
+                {t.navbar.dark}
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setTheme("system")}>
                 <Laptop className="mr-2 h-4 w-4" />
-                <span>System</span>
+                {t.navbar.system}
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuPortal>

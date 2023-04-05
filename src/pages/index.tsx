@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         </div>
         <Button onClick={() => router.push("/create")}>
           <Brush className="mr-2 h-4 w-4" />
-          <span>{t.create.create}</span>
+          <span>{t.common.create}</span>
         </Button>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">

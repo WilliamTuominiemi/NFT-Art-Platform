@@ -1,15 +1,20 @@
 import { type Translations } from "@/locales/Translations";
 
 export const finnishTranslations: Translations = {
+  common: {
+    success: "Onnistui",
+    error: "Virhe",
+    create: "Piirrä",
+  },
   navbar: {
-    home: "Koti",
-    create: "Luo",
     login: "Kirjaudu",
     logout: "Kirjaudu ulos",
     profile: "Profiili",
-    settings: "Asetukset",
     theme: "Teema",
     language: "Kieli",
+    light: "Vaalea",
+    dark: "Tumma",
+    system: "Systeemi",
   },
   footer: {
     builtBy: "Rakennettu",
@@ -20,14 +25,14 @@ export const finnishTranslations: Translations = {
     color: "Väri",
     thickness: "Paksuus",
     clear: "Tyhjennä",
-    success: "Onnistui",
-    error: "Virhe",
-    postCreated: "Postaus on luotu",
-    postNotCreated: "Postausta ei voitu luoda",
+    undo: "Kumoa",
+    redo: "Tee uudelleen",
+    errorDescription: "Piirustusta ei voitu luoda",
+    successDescription: "Piirustus luotiin",
   },
   home: {
-    feed: "Syöte",
+    feed: "Fiidi",
     description: "Nauti kauniista piirroksista!",
-    loadMore: "Lataa Lisää",
+    loadMore: "Lataa lisää",
   },
 };

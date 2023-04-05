@@ -1,15 +1,20 @@
 import { type Translations } from "@/locales/Translations";
 
 export const swedishTranslations: Translations = {
+  common: {
+    success: "Lyckades",
+    error: "Fel",
+    create: "Rita",
+  },
   navbar: {
-    home: "Hem",
-    create: "Skapa",
     login: "Logga in",
     logout: "Logga ut",
     profile: "Profil",
-    settings: "Inställningar",
     theme: "Tema",
     language: "Språk",
+    light: "Ljus",
+    dark: "Mörk",
+    system: "System",
   },
   footer: {
     builtBy: "Byggd av",
@@ -20,14 +25,14 @@ export const swedishTranslations: Translations = {
     color: "Färg",
     thickness: "Tjocklek",
     clear: "Rensa",
-    success: "Lyckades",
-    error: "Fel",
-    postCreated: "Ditt inlägg har skapats",
-    postNotCreated: "Ditt inlägg kunde inte skapas",
+    undo: "Ångra",
+    redo: "Gör om",
+    successDescription: "Ritningen skapades",
+    errorDescription: "Ditt inlägg kunde inte skapas",
   },
   home: {
     feed: "Flöde",
     description: "Njut av de vackra teckningarna!",
-    loadMore: "Ladda Mer",
+    loadMore: "Ladda mer",
   },
 };

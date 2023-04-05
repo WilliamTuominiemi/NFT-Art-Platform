@@ -1,13 +1,18 @@
 export interface Translations {
-  navbar: {
-    home: string;
+  common: {
+    success: string;
+    error: string;
     create: string;
+  };
+  navbar: {
     login: string;
     logout: string;
     profile: string;
-    settings: string;
     theme: string;
     language: string;
+    light: string;
+    dark: string;
+    system: string;
   };
   footer: {
     builtBy: string;
@@ -18,10 +23,10 @@ export interface Translations {
     color: string;
     thickness: string;
     clear: string;
-    success: string;
-    error: string;
-    postCreated: string;
-    postNotCreated: string;
+    undo: string;
+    redo: string;
+    errorDescription: string;
+    successDescription: string;
   };
   home: {
     feed: string;

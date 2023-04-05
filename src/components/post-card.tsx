@@ -5,7 +5,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { Heart, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 
 dayjs.extend(relativeTime);
@@ -17,7 +16,6 @@ interface PostCardProps {
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
-  const router = useRouter();
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -54,11 +52,7 @@ export const PostCard = ({ post }: PostCardProps) => {
               fill={isLiked ? "#f87171" : "transparent"}
             />
           </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => router.push(`/post/${post.id}`)}
-          >
+          <Button size="sm" variant="ghost">
             <MessageCircle className="text-blue-400" />
           </Button>
         </div>
