@@ -1,13 +1,15 @@
 import { type Translations } from "@/locales/Translations";
 
 export const englishTranslations: Translations = {
+  common: {
+    success: "Success",
+    error: "Error",
+    create: "Draw",
+  },
   navbar: {
-    home: "Home",
-    create: "Create",
     login: "Login",
     logout: "Logout",
     profile: "Profile",
-    settings: "Settings",
     theme: "Theme",
     language: "Language",
   },
@@ -16,18 +18,17 @@ export const englishTranslations: Translations = {
     sourceCode: "The source code is available on",
   },
   create: {
-    create: "Create",
     color: "Color",
     thickness: "Thickness",
     clear: "Clear",
-    success: "Success",
-    error: "Error",
-    postCreated: "Your post has been created",
-    postNotCreated: "Your post could not be created",
+    undo: "Undo",
+    redo: "Redo",
+    successDescription: "Drawing was created",
+    errorDescription: "Drawing could not be created",
   },
   home: {
     feed: "Feed",
     description: "Enjoy the beautiful doodles!",
-    loadMore: "Load More",
+    loadMore: "Load more",
   },
 };
