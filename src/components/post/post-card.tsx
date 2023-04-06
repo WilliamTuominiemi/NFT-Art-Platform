@@ -42,8 +42,14 @@ export const PostCard = ({ post }: PostCardProps) => {
         </p>
         <div className="flex flex-row space-x-2">
           <LikeButton post={post} />
-          <Button size="sm" variant="ghost" aria-label="Comment">
-            <MessageCircle className="text-blue-400" />
+          <Button
+            size="sm"
+            variant="ghost"
+            aria-label="Comment"
+            className="text-blue-400"
+          >
+            <MessageCircle className="mr-2 h-4 w-4" />
+            <span>4</span>
           </Button>
         </div>
       </div>
