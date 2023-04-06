@@ -1,9 +1,8 @@
+import { CommentButton } from "@/components/post/comment-button";
 import { LikeButton } from "@/components/post/like-button";
-import { Button } from "@/components/ui/button";
 import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,15 +41,7 @@ export const PostCard = ({ post }: PostCardProps) => {
         </p>
         <div className="flex flex-row space-x-2">
           <LikeButton post={post} />
-          <Button
-            size="sm"
-            variant="ghost"
-            aria-label="Comment"
-            className="text-blue-400"
-          >
-            <MessageCircle className="mr-2 h-4 w-4" />
-            <span>4</span>
-          </Button>
+          <CommentButton postImage={post.image} />
         </div>
       </div>
     </div>
