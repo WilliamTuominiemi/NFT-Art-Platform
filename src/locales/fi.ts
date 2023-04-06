@@ -5,6 +5,9 @@ export const finnishTranslations: Translations = {
     title: "Virhe",
     postError: "Piirustusta ei voitu lähettää",
     likeError: "Piirustusta ei voitu tykätä",
+    fetchPostsError: "Piirustuksia ei voitu ladata",
+    notFound: "Sivua ei löytynyt",
+    tryAgain: "Yritä uudelleen",
   },
   navbar: {
     draw: "Piirrä",

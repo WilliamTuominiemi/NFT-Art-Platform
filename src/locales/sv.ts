@@ -5,6 +5,9 @@ export const swedishTranslations: Translations = {
     title: "Fel",
     postError: "Kunde inte skapa ritningen",
     likeError: "Kunde inte gilla ritningen",
+    fetchPostsError: "Kunde inte hämta ritningar",
+    notFound: "Sidan kunde inte hittas",
+    tryAgain: "Försök igen",
   },
   navbar: {
     draw: "Rita",

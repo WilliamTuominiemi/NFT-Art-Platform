@@ -1,3 +1,4 @@
+import { ErrorPage } from "@/components/error-page";
 import Layout from "@/components/layout";
 import { LoadingCard } from "@/components/post/loading-card";
 import { PostCard } from "@/components/post/post-card";
@@ -30,7 +31,13 @@ const Home: NextPage = () => {
     },
   );
 
-  if (isError) return <div>Error</div>;
+  if (isError)
+    return (
+      <ErrorPage
+        title={t.errorMessages.title}
+        description={t.errorMessages.fetchPostsError}
+      />
+    );
 
   return (
     <Layout title="Home">

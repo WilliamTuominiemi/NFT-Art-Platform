@@ -3,6 +3,9 @@ export interface Translations {
     title: string;
     postError: string;
     likeError: string;
+    fetchPostsError: string;
+    notFound: string;
+    tryAgain: string;
   };
   navbar: {
     draw: string;

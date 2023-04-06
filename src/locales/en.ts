@@ -5,6 +5,9 @@ export const englishTranslations: Translations = {
     title: "Error",
     postError: "Could not post drawing",
     likeError: "Could not like drawing",
+    fetchPostsError: "Could not fetch drawings",
+    notFound: "Page not found",
+    tryAgain: "Try again",
   },
   navbar: {
     draw: "Draw",
