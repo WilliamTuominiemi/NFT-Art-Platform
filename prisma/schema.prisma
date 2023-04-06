@@ -14,8 +14,21 @@ model Post {
   image     String   @db.LongText
   user      User     @relation(fields: [userId], references: [id])
   userId    String
+  likes     Like[]
 
   @@index([userId])
+}
+
+model Like {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+  @@index([userId])
+  @@index([postId])
 }
 
 model Account {
@@ -56,6 +69,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+  likes         Like[]
 }
 
 model VerificationToken {
