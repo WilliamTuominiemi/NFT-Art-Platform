@@ -1,23 +1,22 @@
+import { LikeButton } from "@/components/post/like-button";
 import { Button } from "@/components/ui/button";
-import type { Post, User } from "@prisma/client";
+import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Heart, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 dayjs.extend(relativeTime);
 
 interface PostCardProps {
   post: Post & {
     user: User;
+    likes: Like[];
   };
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
-  const [isLiked, setIsLiked] = useState(false);
-
   return (
     <div className="group rounded-md border border-slate-200 shadow-md hover:shadow-lg dark:border-slate-800">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md border-b border-slate-200 dark:border-slate-800">
@@ -42,17 +41,8 @@ export const PostCard = ({ post }: PostCardProps) => {
           </span>
         </p>
         <div className="flex flex-row space-x-2">
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => setIsLiked((prev) => !prev)}
-          >
-            <Heart
-              className="text-red-400"
-              fill={isLiked ? "#f87171" : "transparent"}
-            />
-          </Button>
-          <Button size="sm" variant="ghost">
+          <LikeButton post={post} />
+          <Button size="sm" variant="ghost" aria-label="Comment">
             <MessageCircle className="text-blue-400" />
           </Button>
         </div>

@@ -1,6 +1,6 @@
 import Layout from "@/components/layout";
-import { LoadingCard } from "@/components/loading-card";
-import { PostCard } from "@/components/post-card";
+import { LoadingCard } from "@/components/post/loading-card";
+import { PostCard } from "@/components/post/post-card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
