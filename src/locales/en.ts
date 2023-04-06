@@ -1,12 +1,16 @@
 import { type Translations } from "@/locales/Translations";
 
 export const englishTranslations: Translations = {
-  common: {
-    success: "Success",
-    error: "Error",
-    create: "Draw",
+  errorMessages: {
+    title: "Error",
+    postError: "Could not post drawing",
+    likeError: "Could not like drawing",
+    fetchPostsError: "Could not fetch drawings",
+    notFound: "Page not found",
+    tryAgain: "Try again",
   },
   navbar: {
+    draw: "Draw",
     login: "Login",
     logout: "Logout",
     profile: "Profile",
@@ -27,8 +31,6 @@ export const englishTranslations: Translations = {
     clear: "Clear",
     undo: "Undo",
     redo: "Redo",
-    successDescription: "Drawing was created",
-    errorDescription: "Drawing could not be created",
   },
   home: {
     feed: "Feed",

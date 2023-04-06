@@ -70,7 +70,7 @@ export const UserAvatar = () => {
           }}
         >
           <Brush className="mr-2 h-4 w-4" />
-          <span>{t.common.create}</span>
+          <span>{t.navbar.draw}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>

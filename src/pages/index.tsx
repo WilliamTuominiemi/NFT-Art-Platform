@@ -1,3 +1,4 @@
+import { ErrorPage } from "@/components/error-page";
 import Layout from "@/components/layout";
 import { LoadingCard } from "@/components/post/loading-card";
 import { PostCard } from "@/components/post/post-card";
@@ -30,7 +31,13 @@ const Home: NextPage = () => {
     },
   );
 
-  if (isError) return <div>Error</div>;
+  if (isError)
+    return (
+      <ErrorPage
+        title={t.errorMessages.title}
+        description={t.errorMessages.fetchPostsError}
+      />
+    );
 
   return (
     <Layout title="Home">
@@ -41,7 +48,7 @@ const Home: NextPage = () => {
         </div>
         <Button onClick={() => router.push("/create")}>
           <Brush className="mr-2 h-4 w-4" />
-          <span>{t.common.create}</span>
+          <span>{t.navbar.draw}</span>
         </Button>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">

@@ -1,12 +1,16 @@
 import { type Translations } from "@/locales/Translations";
 
 export const finnishTranslations: Translations = {
-  common: {
-    success: "Onnistui",
-    error: "Virhe",
-    create: "Piirrä",
+  errorMessages: {
+    title: "Virhe",
+    postError: "Piirustusta ei voitu lähettää",
+    likeError: "Piirustusta ei voitu tykätä",
+    fetchPostsError: "Piirustuksia ei voitu ladata",
+    notFound: "Sivua ei löytynyt",
+    tryAgain: "Yritä uudelleen",
   },
   navbar: {
+    draw: "Piirrä",
     login: "Kirjaudu",
     logout: "Kirjaudu ulos",
     profile: "Profiili",
@@ -27,8 +31,6 @@ export const finnishTranslations: Translations = {
     clear: "Tyhjennä",
     undo: "Kumoa",
     redo: "Tee uudelleen",
-    errorDescription: "Piirustusta ei voitu luoda",
-    successDescription: "Piirustus luotiin",
   },
   home: {
     feed: "Fiidi",
