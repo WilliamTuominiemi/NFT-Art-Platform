@@ -1,12 +1,13 @@
 import { type Translations } from "@/locales/Translations";
 
 export const swedishTranslations: Translations = {
-  common: {
-    success: "Lyckades",
-    error: "Fel",
-    create: "Rita",
+  errorMessages: {
+    title: "Fel",
+    postError: "Kunde inte skapa ritningen",
+    likeError: "Kunde inte gilla ritningen",
   },
   navbar: {
+    draw: "Rita",
     login: "Logga in",
     logout: "Logga ut",
     profile: "Profil",
@@ -27,8 +28,6 @@ export const swedishTranslations: Translations = {
     clear: "Rensa",
     undo: "Ångra",
     redo: "Gör om",
-    successDescription: "Ritningen skapades",
-    errorDescription: "Ditt inlägg kunde inte skapas",
   },
   home: {
     feed: "Flöde",

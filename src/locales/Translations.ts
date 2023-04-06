@@ -1,10 +1,11 @@
 export interface Translations {
-  common: {
-    success: string;
-    error: string;
-    create: string;
+  errorMessages: {
+    title: string;
+    postError: string;
+    likeError: string;
   };
   navbar: {
+    draw: string;
     login: string;
     logout: string;
     profile: string;
@@ -25,8 +26,6 @@ export interface Translations {
     clear: string;
     undo: string;
     redo: string;
-    errorDescription: string;
-    successDescription: string;
   };
   home: {
     feed: string;

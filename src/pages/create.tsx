@@ -38,15 +38,11 @@ const Create: NextPage = () => {
     onError: () => {
       toast({
         variant: "destructive",
-        title: t.common.error,
-        description: t.create.errorDescription,
+        title: t.errorMessages.title,
+        description: t.errorMessages.postError,
       });
     },
     onSuccess: () => {
-      toast({
-        title: t.common.success,
-        description: t.create.successDescription,
-      });
       ctx.invalidate();
       router.push("/");
     },

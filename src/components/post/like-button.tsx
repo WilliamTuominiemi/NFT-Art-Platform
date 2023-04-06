@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
 import { Like, Post } from "@prisma/client";
 import { Heart, Loader2 } from "lucide-react";
@@ -13,6 +15,8 @@ interface LikeButtonProps {
 
 export const LikeButton = ({ post }: LikeButtonProps) => {
   const { data: session } = useSession();
+  const { toast } = useToast();
+  const { t } = useTranslation();
 
   const [likeCount, setLikeCount] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(
@@ -27,6 +31,13 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
         setIsLiked(true);
         setLikeCount((prev) => prev + 1);
       },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          title: t.errorMessages.title,
+          description: t.errorMessages.likeError,
+        });
+      },
     });
 
   const { mutate: unLike, isLoading: unLikeIsLoading } =
@@ -34,6 +45,13 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
       onSuccess: () => {
         setIsLiked(false);
         setLikeCount((prev) => prev + -1);
+      },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          title: t.errorMessages.title,
+          description: t.errorMessages.likeError,
+        });
       },
     });
 
