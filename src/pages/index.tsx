@@ -1,4 +1,5 @@
 import { ErrorPage } from "@/components/error-page";
+import { Header } from "@/components/header";
 import Layout from "@/components/layout";
 import { LoadingCard } from "@/components/post/loading-card";
 import { PostCard } from "@/components/post/post-card";
@@ -41,16 +42,12 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="Home">
-      <div className="mb-12 flex justify-between">
-        <div className="grid gap-1">
-          <h1 className="text-2xl font-bold tracking-wide">{t.home.feed}</h1>
-          <p className="text-slate-500">{t.home.description}</p>
-        </div>
+      <Header title={t.home.feed} description={t.home.description}>
         <Button onClick={() => router.push("/create")}>
           <Brush className="mr-2 h-4 w-4" />
           <span>{t.navbar.draw}</span>
         </Button>
-      </div>
+      </Header>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
         {isLoading ? (
           <>
