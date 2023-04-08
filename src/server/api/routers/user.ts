@@ -1,5 +1,4 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 export const userRouter = createTRPCRouter({
@@ -20,6 +19,9 @@ export const userRouter = createTRPCRouter({
           name: true,
           image: true,
           posts: {
+            orderBy: {
+              createdAt: "desc",
+            },
             include: {
               likes: true,
               user: true,
@@ -40,7 +42,6 @@ export const userRouter = createTRPCRouter({
           },
         },
       });
-      if (!user) throw new TRPCError({ code: "NOT_FOUND" });
       return user;
     }),
 });
