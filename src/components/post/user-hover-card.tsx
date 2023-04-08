@@ -19,7 +19,7 @@ export const UserHoverCard = ({ user, children }: UserHoverCardProps) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>{children}</HoverCardTrigger>
-      <HoverCardContent className="w-80">
+      <HoverCardContent className="w-72">
         <div className="flex flex-row space-x-4">
           <Avatar>
             <AvatarImage src={user.image} />
@@ -29,7 +29,7 @@ export const UserHoverCard = ({ user, children }: UserHoverCardProps) => {
             </AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h4 className="text-sm font-semibold">{user.name}</h4>
+            <h4 className="truncate text-sm font-semibold">{user.name}</h4>
             <div className="flex items-center">
               <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
               <span className="text-xs text-slate-500 dark:text-slate-400">

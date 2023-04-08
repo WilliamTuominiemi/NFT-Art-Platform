@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Share2 } from "lucide-react";
+import { MoreHorizontal, Share2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -47,19 +47,29 @@ export const PostCard = ({ post }: PostCardProps) => {
             className="object-cover object-top transition-all duration-500 hover:cursor-pointer group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-col space-y-4 p-4">
-          <div className="flex w-full flex-row space-x-1">
-            <UserHoverCard user={post.user}>
-              <Link
-                className="max-w-[70%] truncate text-sm font-medium underline-offset-2 hover:cursor-pointer hover:underline"
-                href={`/user/${post.user.id}`}
-              >
-                {post.user.name}
-              </Link>
-            </UserHoverCard>
-            <p className="max-w-[30%] truncate text-sm text-slate-600 dark:text-slate-400">
-              {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
-            </p>
+        <div className="flex flex-col space-y-4 px-4 pb-4 pt-2">
+          <div className="flex w-full flex-row justify-between space-x-2">
+            <div className="flex flex-row space-x-1 truncate pt-2">
+              <UserHoverCard user={post.user}>
+                <Link
+                  className="text-sm font-medium underline-offset-2 hover:cursor-pointer hover:underline"
+                  href={`/user/${post.user.id}`}
+                >
+                  {post.user.name}
+                </Link>
+              </UserHoverCard>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
+              </p>
+            </div>
+            <Button
+              size="sm"
+              variant="ghost"
+              aria-label="More"
+              className="rounded-full"
+            >
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
           </div>
           <div className="flex flex-row space-x-2">
             <LikeButton post={post} />
