@@ -8,6 +8,7 @@ export const swedishTranslations: Translations = {
     fetchPostsError: "Kunde inte hämta ritningar",
     notFound: "Sidan kunde inte hittas",
     tryAgain: "Försök igen",
+    profileError: "Kunde inte hämta profilen",
   },
   navbar: {
     draw: "Rita",
@@ -38,8 +39,8 @@ export const swedishTranslations: Translations = {
     loadMore: "Ladda mer",
   },
   profile: {
-    drawings: "Ritningar",
-    likedDrawings: "Gillade",
+    drawings: "Alla ritningar",
+    likedDrawings: "Gillade ritningar",
     joined: "Gick med",
   },
 };

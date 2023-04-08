@@ -6,6 +6,7 @@ export interface Translations {
     fetchPostsError: string;
     notFound: string;
     tryAgain: string;
+    profileError: string;
   };
   navbar: {
     draw: string;

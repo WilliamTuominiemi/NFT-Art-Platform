@@ -28,7 +28,7 @@ export const PostCard = ({ post }: PostCardProps) => {
           width={500}
           alt="Post image"
           onClick={() => setIsOpen(true)}
-          className="object-cover object-top transition-all duration-500 group-hover:scale-105"
+          className="object-cover object-top transition-all duration-500 hover:cursor-pointer group-hover:scale-105"
         />
       </div>
       <div className="flex flex-col space-y-4 p-4">

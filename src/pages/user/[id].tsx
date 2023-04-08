@@ -10,9 +10,10 @@ import { useRouter } from "next/router";
 
 const Profile: NextPage = () => {
   const { t, currentLanguage } = useTranslation();
-
   const { query } = useRouter();
-  if (typeof query.id !== "string") return <div>Invalid user id</div>;
+
+  if (typeof query.id !== "string")
+    return <ErrorPage title="404" description={t.errorMessages.notFound} />;
 
   const {
     data: user,
@@ -23,10 +24,17 @@ const Profile: NextPage = () => {
   });
 
   if (isLoading) return <div>Loading...</div>;
-  if (!user) return <div>User not found</div>;
+
+  if (!user)
+    return <ErrorPage title="404" description={t.errorMessages.notFound} />;
 
   if (isError)
-    return <ErrorPage title="Error" description="Error loading profile" />;
+    return (
+      <ErrorPage
+        title={t.errorMessages.title}
+        description={t.errorMessages.profileError}
+      />
+    );
 
   return (
     <Layout title="Home">

@@ -41,6 +41,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-sketch-canvas": "^6.2.0",
+    "sharp": "^0.32.0",
     "superjson": "1.12.2",
     "tailwind-merge": "^1.12.0",
     "zod": "^3.21.4"

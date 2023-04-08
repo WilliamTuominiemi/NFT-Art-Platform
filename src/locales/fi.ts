@@ -8,6 +8,7 @@ export const finnishTranslations: Translations = {
     fetchPostsError: "Piirustuksia ei voitu ladata",
     notFound: "Sivua ei löytynyt",
     tryAgain: "Yritä uudelleen",
+    profileError: "Profiilia ei voitu ladata",
   },
   navbar: {
     draw: "Piirrä",
@@ -38,8 +39,8 @@ export const finnishTranslations: Translations = {
     loadMore: "Lataa lisää",
   },
   profile: {
-    drawings: "Piirrokset",
-    likedDrawings: "Tykätyt",
+    drawings: "Kaikki piirrokset",
+    likedDrawings: "Tykätyt piirrokset",
     joined: "Liittyi",
   },
 };

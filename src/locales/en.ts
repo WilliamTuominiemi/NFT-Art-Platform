@@ -8,6 +8,7 @@ export const englishTranslations: Translations = {
     fetchPostsError: "Could not fetch drawings",
     notFound: "Page not found",
     tryAgain: "Try again",
+    profileError: "Could not fetch profile",
   },
   navbar: {
     draw: "Draw",
@@ -38,8 +39,8 @@ export const englishTranslations: Translations = {
     loadMore: "Load more",
   },
   profile: {
-    drawings: "Drawings",
-    likedDrawings: "Liked",
+    drawings: "All drawings",
+    likedDrawings: "Liked drawings",
     joined: "Joined",
   },
 };
