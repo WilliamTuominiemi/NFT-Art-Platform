@@ -11,20 +11,19 @@ datasource db {
 model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
+  userId    String
   image     String   @db.LongText
   user      User     @relation(fields: [userId], references: [id])
-  userId    String
   likes     Like[]
 
   @@index([userId])
 }
 
 model Like {
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  postId    String
-  post      Post     @relation(fields: [postId], references: [id])
-  createdAt DateTime @default(now())
+  userId String
+  postId String
+  user   User   @relation(fields: [userId], references: [id])
+  post   Post   @relation(fields: [postId], references: [id])
 
   @@id([userId, postId])
   @@index([userId])
@@ -66,6 +65,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  createdAt     DateTime  @default(now())
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
@@ -78,4 +78,15 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Comment {
+  userId    String
+  postId    String
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+  @@index([postId])
+  @@index([userId])
 }
