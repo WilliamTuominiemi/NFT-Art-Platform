@@ -1,4 +1,5 @@
 import { LikeButton } from "@/components/post/like-button";
+import { UserHoverCard } from "@/components/post/user-hover-card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { Like, Post, User } from "@prisma/client";
@@ -47,17 +48,19 @@ export const PostCard = ({ post }: PostCardProps) => {
           />
         </div>
         <div className="flex flex-col space-y-4 p-4">
-          <p className="truncate text-sm">
-            <Link
-              className="font-medium underline-offset-2 hover:cursor-pointer hover:underline"
-              href={`/user/${post.user.id}`}
-            >
-              {post.user.name}
-            </Link>
-            <span className="text-slate-600 dark:text-slate-400">
-              {` ${"·"} ${dayjs(post.createdAt).fromNow()}`}
-            </span>
-          </p>
+          <div className="flex w-full flex-row space-x-1">
+            <UserHoverCard user={post.user}>
+              <Link
+                className="max-w-[70%] truncate text-sm font-medium underline-offset-2 hover:cursor-pointer hover:underline"
+                href={`/user/${post.user.id}`}
+              >
+                {post.user.name}
+              </Link>
+            </UserHoverCard>
+            <p className="max-w-[30%] truncate text-sm text-slate-600 dark:text-slate-400">
+              {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
+            </p>
+          </div>
           <div className="flex flex-row space-x-2">
             <LikeButton post={post} />
             <Button
