@@ -30,7 +30,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             height={1000}
             width={1000}
             alt="Post image"
-            className="rounded-md"
+            className="rounded-2xl p-2"
           />
         </DialogContent>
       </Dialog>
