@@ -14,6 +14,7 @@ export const useTranslation = (): {
   currentLanguage: string;
 } => {
   const router = useRouter();
+  dayjs.locale(router.locale);
 
   let t: Translations;
   switch (router.locale) {

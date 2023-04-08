@@ -25,6 +25,7 @@ model Like {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   postId    String
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 
   @@id([userId, postId])
   @@index([userId])
