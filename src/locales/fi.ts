@@ -37,4 +37,9 @@ export const finnishTranslations: Translations = {
     description: "Nauti kauniista piirroksista!",
     loadMore: "Lataa lisää",
   },
+  profile: {
+    drawings: "Piirrokset",
+    likedDrawings: "Tykätyt",
+    joined: "Liittyi",
+  },
 };

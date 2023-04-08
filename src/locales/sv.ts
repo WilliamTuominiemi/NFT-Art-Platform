@@ -37,4 +37,9 @@ export const swedishTranslations: Translations = {
     description: "Njut av de vackra teckningarna!",
     loadMore: "Ladda mer",
   },
+  profile: {
+    drawings: "Ritningar",
+    likedDrawings: "Gillade",
+    joined: "Gick med",
+  },
 };

@@ -13,7 +13,11 @@ export const userRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
-        include: {
+        select: {
+          id: true,
+          createdAt: true,
+          name: true,
+          image: true,
           posts: {
             include: {
               likes: true,

@@ -37,4 +37,9 @@ export const englishTranslations: Translations = {
     description: "Enjoy the beautiful doodles!",
     loadMore: "Load more",
   },
+  profile: {
+    drawings: "Drawings",
+    likedDrawings: "Liked",
+    joined: "Joined",
+  },
 };

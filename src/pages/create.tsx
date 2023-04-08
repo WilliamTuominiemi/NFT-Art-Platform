@@ -57,13 +57,16 @@ const Create: NextPage = () => {
   };
 
   useEffect(() => {
-    addEventListener("keypress", (event) => {
-      if (event.key === "\x1A") {
+    const shortcut = (e: KeyboardEvent) => {
+      if (e.key === "z" && e.ctrlKey) {
         canvasRef.current?.undo();
-      } else if (event.key === "\x19") {
+      } else if (e.key === "y" && e.ctrlKey) {
         canvasRef.current?.redo();
       }
-    });
+    };
+
+    document.addEventListener("keydown", shortcut);
+    return () => document.removeEventListener("keydown", shortcut);
   });
 
   return (

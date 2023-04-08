@@ -5,11 +5,17 @@ import Image from "next/image";
 
 interface CommentButtonProps {
   postImage: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
-export const CommentButton = ({ postImage }: CommentButtonProps) => {
+export const CommentButton = ({
+  postImage,
+  isOpen,
+  setIsOpen,
+}: CommentButtonProps) => {
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
           size="sm"

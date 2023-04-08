@@ -35,4 +35,9 @@ export interface Translations {
     description: string;
     loadMore: string;
   };
+  profile: {
+    drawings: string;
+    likedDrawings: string;
+    joined: string;
+  };
 }

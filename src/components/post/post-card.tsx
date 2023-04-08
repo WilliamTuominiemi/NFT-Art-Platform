@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 dayjs.extend(relativeTime);
 
@@ -16,6 +17,8 @@ interface PostCardProps {
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="group rounded-md border border-slate-200 shadow-md hover:shadow-lg dark:border-slate-800">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md border-b border-slate-200 dark:border-slate-800">
@@ -24,6 +27,7 @@ export const PostCard = ({ post }: PostCardProps) => {
           height={500}
           width={500}
           alt="Post image"
+          onClick={() => setIsOpen(true)}
           className="object-cover object-top transition-all duration-500 group-hover:scale-105"
         />
       </div>
@@ -41,7 +45,11 @@ export const PostCard = ({ post }: PostCardProps) => {
         </p>
         <div className="flex flex-row space-x-2">
           <LikeButton post={post} />
-          <CommentButton postImage={post.image} />
+          <CommentButton
+            postImage={post.image}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
         </div>
       </div>
     </div>
