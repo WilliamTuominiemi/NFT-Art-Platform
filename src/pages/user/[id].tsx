@@ -37,11 +37,11 @@ const Profile: NextPage = () => {
     );
 
   return (
-    <Layout title="Home">
+    <Layout title={user.name}>
       <div className="mb-12 flex flex-row space-x-6">
         <Image
           className="h-16 w-16 rounded-full"
-          src={user.image || ""}
+          src={user.image}
           alt="User profile"
           width={64}
           height={64}

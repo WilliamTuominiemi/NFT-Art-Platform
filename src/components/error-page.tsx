@@ -12,7 +12,7 @@ export const ErrorPage = ({ title, description }: ErrorPageProps) => {
   const { t } = useTranslation();
 
   return (
-    <Layout title="Error">
+    <Layout title={title}>
       <div className="mt-12 flex flex-col items-center justify-center">
         <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           {title}
