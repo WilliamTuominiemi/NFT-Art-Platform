@@ -15,7 +15,6 @@ model Post {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   likes     Like[]
-  comments  Comment[]
 
   @@index([userId])
 }
@@ -25,18 +24,6 @@ model Like {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   postId    String
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-
-  @@id([userId, postId])
-  @@index([userId])
-  @@index([postId])
-}
-
-model Comment {
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  postId    String
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  message   String   @db.Text
   createdAt DateTime @default(now())
 
   @@id([userId, postId])
@@ -85,7 +72,6 @@ model User {
   sessions      Session[]
   posts         Post[]
   likes         Like[]
-  comments      Comment[]
 }
 
 model VerificationToken {

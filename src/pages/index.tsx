@@ -40,7 +40,7 @@ const Home: NextPage = () => {
     );
 
   return (
-    <Layout title="Home">
+    <Layout>
       <div className="mb-12 flex justify-between">
         <div className="grid gap-1">
           <h1 className="text-2xl font-bold tracking-wide">{t.home.feed}</h1>

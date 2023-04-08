@@ -3,15 +3,14 @@ import { Navbar } from "@/components/layout/navbar";
 import Head from "next/head";
 
 interface LayoutProps {
-  title: string;
   children: React.ReactNode;
 }
 
-const Layout = ({ title, children }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>{`${title} | Baynet`}</title>
+        <title>Baynet</title>
         <meta name="description" content="Social media for drawings" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

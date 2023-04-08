@@ -70,7 +70,7 @@ const Create: NextPage = () => {
   });
 
   return (
-    <Layout title="Draw">
+    <Layout>
       <div className="flex flex-col items-center space-x-0 space-y-12 md:flex-row md:items-start md:space-x-12 md:space-y-0">
         <div className="h-[500px] w-[500px]">
           <ReactSketchCanvas
