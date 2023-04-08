@@ -10,6 +10,7 @@ export const englishTranslations: Translations = {
     tryAgain: "Try again",
     profileError: "Could not fetch profile",
     noPosts: "There aren't any posts yet",
+    goHome: "Go home",
   },
   navbar: {
     draw: "Draw",

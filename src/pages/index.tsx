@@ -1,12 +1,14 @@
 import { ErrorPage } from "@/components/error-page";
-import Layout from "@/components/layout";
+import { Layout } from "@/components/layout";
 import { LoadingCard } from "@/components/post/loading-card";
 import { PostCard } from "@/components/post/post-card";
+import { PostsGrid } from "@/components/post/posts-grid";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
 import { Brush, Loader2 } from "lucide-react";
 import { type NextPage } from "next";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -36,7 +38,9 @@ const Home: NextPage = () => {
       <ErrorPage
         title={t.errorMessages.title}
         description={t.errorMessages.fetchPostsError}
-      />
+      >
+        <Button onClick={() => signOut()}>{t.errorMessages.tryAgain}</Button>
+      </ErrorPage>
     );
 
   return (
@@ -51,7 +55,7 @@ const Home: NextPage = () => {
           <span>{t.navbar.draw}</span>
         </Button>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+      <PostsGrid>
         {isLoading ? (
           <>
             {Array(LIMIT)
@@ -71,7 +75,7 @@ const Home: NextPage = () => {
             ))}
           </>
         )}
-      </div>
+      </PostsGrid>
       <div className="mt-6 w-full text-center">
         <Button
           variant="subtle"

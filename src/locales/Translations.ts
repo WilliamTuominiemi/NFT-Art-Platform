@@ -8,6 +8,7 @@ export interface Translations {
     tryAgain: string;
     profileError: string;
     noPosts: string;
+    goHome: string;
   };
   navbar: {
     draw: string;

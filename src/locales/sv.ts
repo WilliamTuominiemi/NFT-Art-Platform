@@ -10,6 +10,7 @@ export const swedishTranslations: Translations = {
     tryAgain: "Försök igen",
     profileError: "Kunde inte hämta profilen",
     noPosts: "Det finns inga ritningar ännu",
+    goHome: "Gå hem",
   },
   navbar: {
     draw: "Rita",

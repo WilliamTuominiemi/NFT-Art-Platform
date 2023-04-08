@@ -10,6 +10,7 @@ export const finnishTranslations: Translations = {
     tryAgain: "Yritä uudelleen",
     profileError: "Profiilia ei voitu ladata",
     noPosts: "Piirustuksia ei vielä ole",
+    goHome: "Mene kotiin",
   },
   navbar: {
     draw: "Piirrä",

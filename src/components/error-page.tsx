@@ -1,16 +1,12 @@
-import Layout from "@/components/layout";
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/hooks/use-translations";
-import { signOut } from "next-auth/react";
+import { Layout } from "@/components/layout";
 
 interface ErrorPageProps {
   title: string;
   description: string;
+  children: React.ReactNode;
 }
 
-export const ErrorPage = ({ title, description }: ErrorPageProps) => {
-  const { t } = useTranslation();
-
+export const ErrorPage = ({ title, description, children }: ErrorPageProps) => {
   return (
     <Layout>
       <div className="mt-12 flex flex-col items-center justify-center">
@@ -20,7 +16,7 @@ export const ErrorPage = ({ title, description }: ErrorPageProps) => {
         <p className="mb-12 leading-7 [&:not(:first-child)]:mt-6">
           {description}
         </p>
-        <Button onClick={() => signOut()}>{t.errorMessages.tryAgain}</Button>
+        {children}
       </div>
     </Layout>
   );

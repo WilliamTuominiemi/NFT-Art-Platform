@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +16,7 @@ import {
   type ReactSketchCanvasRef,
 } from "react-sketch-canvas";
 
-const INITIAL_WIDTH = 10;
+const INITIAL_STROKE_WIDTH = 10;
 
 const Create: NextPage = () => {
   const { data: session, status } = useSession();
@@ -31,7 +31,7 @@ const Create: NextPage = () => {
 
   const canvasRef = createRef<ReactSketchCanvasRef>();
   const [color, setColor] = useState("#000000");
-  const [width, setWidth] = useState(INITIAL_WIDTH);
+  const [width, setWidth] = useState(INITIAL_STROKE_WIDTH);
   const [isEmpty, setIsEmpty] = useState(true);
 
   const { mutate, isLoading } = api.post.create.useMutation({
@@ -109,7 +109,7 @@ const Create: NextPage = () => {
             <Slider
               min={1}
               max={100}
-              defaultValue={[INITIAL_WIDTH]}
+              defaultValue={[INITIAL_STROKE_WIDTH]}
               id="slider"
               onValueChange={(e) => setWidth(e[0])}
             />
