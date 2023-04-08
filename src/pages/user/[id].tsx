@@ -97,22 +97,38 @@ const Profile: NextPage = () => {
           <TabsTrigger value="drawings">{t.profile.drawings}</TabsTrigger>
           <TabsTrigger value="liked">{t.profile.likedDrawings}</TabsTrigger>
         </TabsList>
-        <TabsContent value="drawings">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-            {user.posts?.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
+        <TabsContent value="drawings" className="border-0 p-0">
+          {user.posts.length === 0 ? (
+            <p className="text-2xl font-semibold tracking-tight">
+              {t.errorMessages.noPosts}
+            </p>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+                {user.posts?.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+              </div>
+            </>
+          )}
         </TabsContent>
-        <TabsContent value="liked">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-            {user.likes.map((like) => (
-              <PostCard
-                key={`${like.postId}-${like.userId}`}
-                post={like.post}
-              />
-            ))}
-          </div>
+        <TabsContent value="liked" className="border-0 p-0">
+          {user.likes.length === 0 ? (
+            <p className="text-2xl font-semibold tracking-tight">
+              {t.errorMessages.noPosts}
+            </p>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+                {user.likes.map((like) => (
+                  <PostCard
+                    key={`${like.postId}-${like.userId}`}
+                    post={like.post}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </TabsContent>
       </Tabs>
     </Layout>

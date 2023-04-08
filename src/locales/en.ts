@@ -9,6 +9,7 @@ export const englishTranslations: Translations = {
     notFound: "Page not found",
     tryAgain: "Try again",
     profileError: "Could not fetch profile",
+    noPosts: "There aren't any posts yet",
   },
   navbar: {
     draw: "Draw",

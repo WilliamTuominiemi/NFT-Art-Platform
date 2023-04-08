@@ -9,6 +9,7 @@ export const finnishTranslations: Translations = {
     notFound: "Sivua ei löytynyt",
     tryAgain: "Yritä uudelleen",
     profileError: "Profiilia ei voitu ladata",
+    noPosts: "Piirustuksia ei vielä ole",
   },
   navbar: {
     draw: "Piirrä",

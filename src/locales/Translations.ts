@@ -7,6 +7,7 @@ export interface Translations {
     notFound: string;
     tryAgain: string;
     profileError: string;
+    noPosts: string;
   };
   navbar: {
     draw: string;

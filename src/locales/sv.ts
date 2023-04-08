@@ -9,6 +9,7 @@ export const swedishTranslations: Translations = {
     notFound: "Sidan kunde inte hittas",
     tryAgain: "Försök igen",
     profileError: "Kunde inte hämta profilen",
+    noPosts: "Det finns inga ritningar ännu",
   },
   navbar: {
     draw: "Rita",
