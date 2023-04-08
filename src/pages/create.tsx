@@ -57,17 +57,20 @@ const Create: NextPage = () => {
   };
 
   useEffect(() => {
-    addEventListener("keypress", (event) => {
-      if (event.key === "\x1A") {
+    const shortcut = (e: KeyboardEvent) => {
+      if (e.key === "z" && e.ctrlKey) {
         canvasRef.current?.undo();
-      } else if (event.key === "\x19") {
+      } else if (e.key === "y" && e.ctrlKey) {
         canvasRef.current?.redo();
       }
-    });
+    };
+
+    document.addEventListener("keydown", shortcut);
+    return () => document.removeEventListener("keydown", shortcut);
   });
 
   return (
-    <Layout title="Create">
+    <Layout title="Draw">
       <div className="flex flex-col items-center space-x-0 space-y-12 md:flex-row md:items-start md:space-x-12 md:space-y-0">
         <div className="h-[500px] w-[500px]">
           <ReactSketchCanvas

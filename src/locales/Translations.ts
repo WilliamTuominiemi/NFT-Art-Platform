@@ -6,6 +6,7 @@ export interface Translations {
     fetchPostsError: string;
     notFound: string;
     tryAgain: string;
+    profileError: string;
   };
   navbar: {
     draw: string;
@@ -34,5 +35,10 @@ export interface Translations {
     feed: string;
     description: string;
     loadMore: string;
+  };
+  profile: {
+    drawings: string;
+    likedDrawings: string;
+    joined: string;
   };
 }

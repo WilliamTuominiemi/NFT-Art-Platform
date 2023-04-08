@@ -1,8 +1,12 @@
+import { type Translations } from "@/locales/Translations";
 import { englishTranslations } from "@/locales/en";
 import { finnishTranslations } from "@/locales/fi";
 import { swedishTranslations } from "@/locales/sv";
-import { type Translations } from "@/locales/Translations";
+import dayjs from "dayjs";
 import { useRouter } from "next/router";
+import("dayjs/locale/en");
+import("dayjs/locale/sv");
+import("dayjs/locale/fi");
 
 export const useTranslation = (): {
   t: Translations;
@@ -28,6 +32,7 @@ export const useTranslation = (): {
   }
 
   const changeLanguage = (locale: string) => {
+    dayjs.locale(locale);
     router.push(router.pathname, router.asPath, { locale });
   };
 

@@ -11,19 +11,33 @@ datasource db {
 model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  userId    String
   image     String   @db.LongText
   user      User     @relation(fields: [userId], references: [id])
+  userId    String
   likes     Like[]
+  comments  Comment[]
 
   @@index([userId])
 }
 
 model Like {
-  userId String
-  postId String
-  user   User   @relation(fields: [userId], references: [id])
-  post   Post   @relation(fields: [postId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
+  @@index([userId])
+  @@index([postId])
+}
+
+model Comment {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  message   String   @db.Text
+  createdAt DateTime @default(now())
 
   @@id([userId, postId])
   @@index([userId])
@@ -61,15 +75,17 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
+  createdAt     DateTime  @default(now())
+  name          String
   email         String?   @unique
   emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now())
+  image         String
+  
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
   likes         Like[]
+  comments      Comment[]
 }
 
 model VerificationToken {
@@ -78,15 +94,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model Comment {
-  userId    String
-  postId    String
-  message   String   @db.Text
-  createdAt DateTime @default(now())
-
-  @@id([userId, postId])
-  @@index([postId])
-  @@index([userId])
 }

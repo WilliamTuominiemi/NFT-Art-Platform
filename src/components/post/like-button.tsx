@@ -17,6 +17,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
   const { data: session } = useSession();
   const { toast } = useToast();
   const { t } = useTranslation();
+  const ctx = api.useContext();
 
   const [likeCount, setLikeCount] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(
@@ -28,6 +29,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
   const { mutate: like, isLoading: likeIsLoading } =
     api.like.create.useMutation({
       onSuccess: () => {
+        ctx.invalidate();
         setIsLiked(true);
         setLikeCount((prev) => prev + 1);
       },
@@ -43,6 +45,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
   const { mutate: unLike, isLoading: unLikeIsLoading } =
     api.like.delete.useMutation({
       onSuccess: () => {
+        ctx.invalidate();
         setIsLiked(false);
         setLikeCount((prev) => prev + -1);
       },
