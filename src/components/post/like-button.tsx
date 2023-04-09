@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
-import { kFormatter } from "@/utils/helpers";
+import { cn, kFormatter } from "@/utils/helpers";
 import { Like, Post } from "@prisma/client";
 import { Heart, Loader2 } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -12,9 +12,10 @@ interface LikeButtonProps {
   post: Post & {
     likes: Like[];
   };
+  isBig?: boolean;
 }
 
-export const LikeButton = ({ post }: LikeButtonProps) => {
+export const LikeButton = ({ post, isBig = false }: LikeButtonProps) => {
   const { data: session } = useSession();
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -61,7 +62,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
 
   return (
     <Button
-      size="sm"
+      size={isBig ? "default" : "sm"}
       variant="ghost"
       aria-label="Like"
       className="text-red-400 dark:text-red-400 dark:hover:text-red-400"
@@ -78,7 +79,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       ) : (
         <Heart
-          className="mr-2 h-4 w-4"
+          className={cn(isBig ? "h-5 w-5" : "h-4 w-4", "mr-2")}
           fill={isLiked ? "#f87171" : "transparent"}
         />
       )}
