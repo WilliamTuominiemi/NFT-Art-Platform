@@ -11,6 +11,7 @@ export const englishTranslations: Translations = {
     getProfileError: "Could not find profile",
     noPostsYet: "No drawings yet",
     noLikesYet: "No liked drawings yet",
+    deleteError: "Could not delete drawing",
     tryAgain: "Try again",
     goHome: "Go home",
   },
@@ -53,5 +54,10 @@ export const englishTranslations: Translations = {
     delete: "Delete",
     pin: "Pin to profile",
     unpin: "Unpin from profile",
+    deleteDialog: {
+      title: "Delete drawing",
+      description: "Are you sure you want to delete this drawing?",
+      cancel: "Cancel",
+    },
   },
 };

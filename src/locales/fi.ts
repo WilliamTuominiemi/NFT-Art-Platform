@@ -11,6 +11,7 @@ export const finnishTranslations: Translations = {
     getProfileError: "Profiilia ei löytynyt",
     noPostsYet: "Piirustuksia ei vielä ole",
     noLikesYet: "Piirustuksia ei vielä ole tykätty",
+    deleteError: "Piirustusta ei voitu poistaa",
     tryAgain: "Yritä uudelleen",
     goHome: "Mene kotiin",
   },
@@ -53,5 +54,10 @@ export const finnishTranslations: Translations = {
     delete: "Poista",
     pin: "Kiinnitä profiiliin",
     unpin: "Poista profiilista",
+    deleteDialog: {
+      title: "Poista piirustus",
+      description: "Haluatko varmasti poistaa tämän piirustuksen?",
+      cancel: "Peruuta",
+    },
   },
 };

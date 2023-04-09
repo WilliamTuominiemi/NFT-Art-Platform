@@ -11,6 +11,7 @@ export const swedishTranslations: Translations = {
     getProfileError: "Kunde inte hitta profilen",
     noPostsYet: "Inga ritningar ännu",
     noLikesYet: "Inga gillade ritningar ännu",
+    deleteError: "Kunde inte radera ritningen",
     tryAgain: "Försök igen",
     goHome: "Gå hem",
   },
@@ -50,8 +51,13 @@ export const swedishTranslations: Translations = {
   postMenu: {
     share: "Dela",
     copyLink: "Kopiera länk",
-    delete: "Ta bort",
+    delete: "Radera",
     pin: "Fäst på profilen",
     unpin: "Lossa från profilen",
+    deleteDialog: {
+      title: "Radera ritning",
+      description: "Är du säker att du vill radera denna ritning?",
+      cancel: "Avbryt",
+    },
   },
 };

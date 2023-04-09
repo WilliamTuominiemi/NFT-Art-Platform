@@ -9,6 +9,7 @@ export interface Translations {
     getProfileError: string;
     noPostsYet: string;
     noLikesYet: string;
+    deleteError: string;
     tryAgain: string;
     goHome: string;
   };
@@ -51,5 +52,10 @@ export interface Translations {
     delete: string;
     pin: string;
     unpin: string;
+    deleteDialog: {
+      title: string;
+      description: string;
+      cancel: string;
+    };
   };
 }
