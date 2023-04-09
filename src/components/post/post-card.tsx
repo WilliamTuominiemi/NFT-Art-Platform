@@ -30,11 +30,11 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-3xl">
+        <DialogContent className="sm:max-w-[600px]">
           <Image
             src={post.image}
-            height={1000}
-            width={1000}
+            height={600}
+            width={600}
             alt="Post image"
             className="rounded-2xl p-2"
           />
