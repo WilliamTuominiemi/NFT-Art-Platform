@@ -36,8 +36,8 @@ const Home: NextPage = () => {
   if (isError)
     return (
       <ErrorPage
-        title={t.errorMessages.title}
-        description={t.errorMessages.fetchPostsError}
+        title={t.errorMessages.error}
+        description={t.errorMessages.getPostsError}
       >
         <Button onClick={() => signOut()}>{t.errorMessages.tryAgain}</Button>
       </ErrorPage>
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
     <Layout>
       <div className="mb-12 flex justify-between">
         <div className="grid gap-1">
-          <h1 className="text-2xl font-bold tracking-wide">{t.home.feed}</h1>
+          <h1 className="text-2xl font-bold tracking-wide">{t.home.title}</h1>
           <p className="text-slate-500">{t.home.description}</p>
         </div>
         <Button onClick={() => router.push("/create")}>

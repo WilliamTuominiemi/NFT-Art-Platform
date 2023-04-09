@@ -38,11 +38,11 @@ const Profile: NextPage = () => {
   if (isError)
     return (
       <ErrorPage
-        title={error.data?.code === "NOT_FOUND" ? "404" : t.errorMessages.title}
+        title={error.data?.code === "NOT_FOUND" ? "404" : t.errorMessages.error}
         description={
           error.data?.code === "NOT_FOUND"
             ? t.errorMessages.notFound
-            : t.errorMessages.profileError
+            : t.errorMessages.getProfileError
         }
       >
         {error.data?.code === "NOT_FOUND" ? (
@@ -96,8 +96,8 @@ const Profile: NextPage = () => {
         </TabsList>
         <TabsContent value="drawings" className="border-0 p-0">
           {!isLoading && user.posts?.length === 0 && (
-            <p className="text-2xl font-semibold tracking-tight">
-              {t.errorMessages.noPosts}
+            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-500">
+              {t.errorMessages.noPostsYet}
             </p>
           )}
           <PostsGrid>
@@ -120,8 +120,8 @@ const Profile: NextPage = () => {
         </TabsContent>
         <TabsContent value="liked" className="border-0 p-0">
           {!isLoading && user.likes?.length === 0 && (
-            <p className="text-2xl font-semibold tracking-tight">
-              {t.errorMessages.noPosts}
+            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-500">
+              {t.errorMessages.noLikesYet}
             </p>
           )}
           <PostsGrid>

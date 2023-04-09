@@ -1,22 +1,24 @@
 export interface Translations {
   errorMessages: {
-    title: string;
-    postError: string;
+    error: string;
+    createPostError: string;
     likeError: string;
-    fetchPostsError: string;
+    unLikeError: string;
+    getPostsError: string;
     notFound: string;
+    getProfileError: string;
+    noPostsYet: string;
+    noLikesYet: string;
     tryAgain: string;
-    profileError: string;
-    noPosts: string;
     goHome: string;
   };
   navbar: {
+    profile: string;
     draw: string;
+    language: string;
+    theme: string;
     login: string;
     logout: string;
-    profile: string;
-    theme: string;
-    language: string;
     light: string;
     dark: string;
     system: string;
@@ -26,15 +28,15 @@ export interface Translations {
     sourceCode: string;
   };
   create: {
-    create: string;
     color: string;
     thickness: string;
-    clear: string;
     undo: string;
     redo: string;
+    clear: string;
+    create: string;
   };
   home: {
-    feed: string;
+    title: string;
     description: string;
     loadMore: string;
   };
@@ -42,5 +44,12 @@ export interface Translations {
     drawings: string;
     likedDrawings: string;
     joined: string;
+  };
+  postMenu: {
+    share: string;
+    copyLink: string;
+    delete: string;
+    pin: string;
+    unpin: string;
   };
 }

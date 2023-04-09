@@ -38,8 +38,8 @@ const Create: NextPage = () => {
     onError: () => {
       toast({
         variant: "destructive",
-        title: t.errorMessages.title,
-        description: t.errorMessages.postError,
+        title: t.errorMessages.error,
+        description: t.errorMessages.createPostError,
       });
     },
     onSuccess: () => {

@@ -1,11 +1,10 @@
 import { LikeButton } from "@/components/post/like-button";
+import { MoreButton } from "@/components/post/more-button";
 import { UserHoverCard } from "@/components/post/user-hover-card";
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { MoreHorizontal, Share2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -47,7 +46,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             className="object-cover object-top transition-all duration-500 hover:cursor-pointer group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-col space-y-4 px-4 pb-4 pt-2">
+        <div className="flex flex-col space-y-2 px-4 pb-4 pt-2">
           <div className="flex w-full flex-row justify-between space-x-2">
             <div className="flex flex-row space-x-1 truncate pt-2">
               <UserHoverCard user={post.user}>
@@ -62,25 +61,10 @@ export const PostCard = ({ post }: PostCardProps) => {
                 {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
               </p>
             </div>
-            <Button
-              size="sm"
-              variant="ghost"
-              aria-label="More"
-              className="rounded-full"
-            >
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
+            <MoreButton postId={post.id} />
           </div>
-          <div className="flex flex-row space-x-2">
+          <div className="flex">
             <LikeButton post={post} />
-            <Button
-              size="sm"
-              variant="ghost"
-              aria-label="Share"
-              className="px-3 text-blue-400 dark:text-blue-400 dark:hover:text-blue-400"
-            >
-              <Share2 className="h-4 w-4" />
-            </Button>
           </div>
         </div>
       </div>
