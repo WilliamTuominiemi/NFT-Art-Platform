@@ -17,7 +17,14 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
-import { Link2, MoreHorizontal, Pin, Share2, Trash } from "lucide-react";
+import {
+  Link2,
+  Loader2,
+  MoreHorizontal,
+  Pin,
+  Share2,
+  Trash,
+} from "lucide-react";
 import { useState } from "react";
 
 interface MoreButtonProps {
@@ -69,7 +76,8 @@ export const MoreButton = ({ postId, isOwner }: MoreButtonProps) => {
                 })
               }
             >
-              {t.postMenu.delete}
+              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              <span>{t.postMenu.delete}</span>
             </Button>
           </DialogFooter>
         </DialogContent>
