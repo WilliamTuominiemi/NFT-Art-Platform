@@ -15,6 +15,7 @@ model Post {
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   likes     Like[]
+  pinned    Boolean  @default(false)
 
   @@index([userId])
 }

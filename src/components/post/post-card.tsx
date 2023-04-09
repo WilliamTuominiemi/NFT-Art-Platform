@@ -64,7 +64,7 @@ export const PostCard = ({ post }: PostCardProps) => {
               </p>
             </div>
             <MoreButton
-              postId={post.id}
+              post={post}
               isOwner={!!session?.user && session.user.id === post.user.id}
             />
           </div>

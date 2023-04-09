@@ -14,11 +14,7 @@ export const userRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
-        select: {
-          id: true,
-          createdAt: true,
-          name: true,
-          image: true,
+        include: {
           posts: {
             orderBy: {
               createdAt: "desc",

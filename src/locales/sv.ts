@@ -12,6 +12,8 @@ export const swedishTranslations: Translations = {
     noPostsYet: "Inga ritningar ännu",
     noLikesYet: "Inga gillade ritningar ännu",
     deleteError: "Kunde inte radera ritningen",
+    pinError: "Kunde inte fästa ritningen på profilen",
+    unPinError: "Kunde inte lossa ritningen från profilen",
     tryAgain: "Försök igen",
     goHome: "Gå hem",
   },

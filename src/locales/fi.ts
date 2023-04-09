@@ -12,6 +12,8 @@ export const finnishTranslations: Translations = {
     noPostsYet: "Piirustuksia ei vielä ole",
     noLikesYet: "Piirustuksia ei vielä ole tykätty",
     deleteError: "Piirustusta ei voitu poistaa",
+    pinError: "Piirustusta ei voitu kiinnittää",
+    unPinError: "Piirustusta ei voitu irrottaa",
     tryAgain: "Yritä uudelleen",
     goHome: "Mene kotiin",
   },
