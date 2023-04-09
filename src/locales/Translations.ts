@@ -42,6 +42,7 @@ export interface Translations {
     title: string;
     description: string;
     loadMore: string;
+    pinned: string;
   };
   profile: {
     drawings: string;
