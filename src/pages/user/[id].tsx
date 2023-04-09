@@ -153,9 +153,3 @@ const Profile: NextPage = () => {
 };
 
 export default Profile;
-
-{
-  /* <p className="text-2xl font-semibold tracking-tight">
-{t.errorMessages.noPosts}
-</p> */
-}
