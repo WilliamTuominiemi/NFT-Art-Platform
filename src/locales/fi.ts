@@ -45,6 +45,7 @@ export const finnishTranslations: Translations = {
     description: "Piirroksia yhteisöstä",
     loadMore: "Lataa lisää",
     pinned: "Kiinnitetty",
+    linkCopied: "Linkki kopioitu leikepöydälle",
   },
   profile: {
     drawings: "Piirrokset",

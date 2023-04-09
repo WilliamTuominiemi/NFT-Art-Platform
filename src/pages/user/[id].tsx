@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
+import { formatUserJoinedString } from "@/utils/helpers";
 import { type NextPage } from "next";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
@@ -78,12 +79,11 @@ const Profile: NextPage = () => {
             <div className="grid gap-1">
               <h1 className="text-2xl font-bold tracking-wide">{user.name}</h1>
               <p className="text-slate-500">
-                {`${t.profile.joined} ${user.createdAt.toLocaleDateString(
+                {formatUserJoinedString(
+                  t.profile.joined,
                   currentLanguage,
-                  {
-                    dateStyle: "long",
-                  },
-                )}`}
+                  user.createdAt,
+                )}
               </p>
             </div>
           </>

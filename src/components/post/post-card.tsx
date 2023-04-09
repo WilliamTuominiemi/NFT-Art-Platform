@@ -75,11 +75,9 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
           <div className="flex flex-row justify-between">
             <LikeButton post={post} />
             {post.pinned && showPinned ? (
-              <div className="flex items-center truncate">
-                <Pin className="mr-2 h-4 w-4 opacity-70" fill="#111827" />{" "}
-                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
-                  {t.home.pinned}
-                </span>
+              <div className="flex items-center truncate text-slate-500">
+                <Pin className="mr-2 h-4 w-4" fill="#64748b" />{" "}
+                <span className="text-xs font-bold">{t.home.pinned}</span>
               </div>
             ) : null}
           </div>
