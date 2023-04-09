@@ -5,6 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -20,6 +21,7 @@ interface PostCardProps {
 
 export const PostCard = ({ post }: PostCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <>
@@ -61,7 +63,10 @@ export const PostCard = ({ post }: PostCardProps) => {
                 {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
               </p>
             </div>
-            <MoreButton postId={post.id} />
+            <MoreButton
+              postId={post.id}
+              isOwner={!!session?.user && session.user.id === post.user.id}
+            />
           </div>
           <div className="flex">
             <LikeButton post={post} />

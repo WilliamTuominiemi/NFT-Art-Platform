@@ -8,15 +8,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "@/hooks/use-translations";
 import { Link2, MoreHorizontal, Pin, Share2, Trash } from "lucide-react";
-import { useSession } from "next-auth/react";
 
 interface MoreButtonProps {
   postId: string;
+  isOwner: boolean;
 }
 
-export const MoreButton = ({}: MoreButtonProps) => {
+export const MoreButton = ({ isOwner }: MoreButtonProps) => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
 
   return (
     <DropdownMenu>
@@ -49,7 +48,7 @@ export const MoreButton = ({}: MoreButtonProps) => {
           <Link2 className="mr-2 h-4 w-4" />
           <span>{t.postMenu.copyLink}</span>
         </DropdownMenuItem>
-        {!!session?.user ? (
+        {isOwner ? (
           <>
             <DropdownMenuItem
               className="cursor-pointer"
