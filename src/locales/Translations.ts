@@ -10,6 +10,8 @@ export interface Translations {
     noPostsYet: string;
     noLikesYet: string;
     deleteError: string;
+    pinError: string;
+    unPinError: string;
     tryAgain: string;
     goHome: string;
   };

@@ -12,6 +12,8 @@ export const englishTranslations: Translations = {
     noPostsYet: "No drawings yet",
     noLikesYet: "No liked drawings yet",
     deleteError: "Could not delete drawing",
+    pinError: "Could not pin drawing",
+    unPinError: "Could not unpin drawing",
     tryAgain: "Try again",
     goHome: "Go home",
   },

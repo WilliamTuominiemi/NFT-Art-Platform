@@ -60,4 +60,50 @@ export const postRouter = createTRPCRouter({
         },
       });
     }),
+
+  updatePinned: protectedProcedure
+    .input(z.object({ id: z.string(), pinned: z.boolean() }))
+    .mutation(async ({ ctx, input }) => {
+      if (input.pinned) {
+        await ctx.prisma.$transaction(async (prisma) => {
+          const existingPinnedPost = await prisma.post.findFirst({
+            where: {
+              user: {
+                id: ctx.session.user.id,
+              },
+              pinned: true,
+            },
+          });
+
+          if (existingPinnedPost) {
+            await prisma.post.update({
+              where: {
+                id: existingPinnedPost.id,
+              },
+              data: {
+                pinned: false,
+              },
+            });
+          }
+
+          await prisma.post.update({
+            where: {
+              id: input.id,
+            },
+            data: {
+              pinned: true,
+            },
+          });
+        });
+      } else {
+        await ctx.prisma.post.update({
+          where: {
+            id: input.id,
+          },
+          data: {
+            pinned: false,
+          },
+        });
+      }
+    }),
 });

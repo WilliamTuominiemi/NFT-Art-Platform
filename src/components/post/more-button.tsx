@@ -17,45 +17,66 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
+import { Post } from "@prisma/client";
 import {
   Link2,
   Loader2,
   MoreHorizontal,
   Pin,
-  Share2,
+  PinOff,
   Trash,
 } from "lucide-react";
 import { useState } from "react";
 
 interface MoreButtonProps {
-  postId: string;
+  post: Post;
   isOwner: boolean;
 }
 
-export const MoreButton = ({ postId, isOwner }: MoreButtonProps) => {
+export const MoreButton = ({ post, isOwner }: MoreButtonProps) => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const ctx = api.useContext();
-  const [isOpen, setIsOpen] = useState(false);
+  const [deleteIsOpen, setDeleteIsOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const { mutate, isLoading } = api.post.delete.useMutation({
-    onSuccess: () => {
-      ctx.invalidate();
-      setIsOpen(false);
-    },
-    onError: () => {
-      setIsOpen(false);
-      toast({
-        variant: "destructive",
-        title: t.errorMessages.error,
-        description: t.errorMessages.deleteError,
-      });
-    },
-  });
+  const { mutate: deletePost, isLoading: deleteIsLoading } =
+    api.post.delete.useMutation({
+      onSuccess: () => {
+        ctx.invalidate();
+        setDeleteIsOpen(false);
+      },
+      onError: () => {
+        setDeleteIsOpen(false);
+        toast({
+          variant: "destructive",
+          title: t.errorMessages.error,
+          description: t.errorMessages.deleteError,
+        });
+      },
+    });
+
+  const { mutate: pinPost, isLoading: pinIsLoading } =
+    api.post.updatePinned.useMutation({
+      onSuccess: () => {
+        ctx.invalidate();
+        setMenuIsOpen(false);
+      },
+      onError: () => {
+        setMenuIsOpen(false);
+        toast({
+          variant: "destructive",
+          title: t.errorMessages.error,
+          description: post.pinned
+            ? t.errorMessages.unPinError
+            : t.errorMessages.pinError,
+        });
+      },
+    });
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={deleteIsOpen} onOpenChange={setDeleteIsOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{t.postMenu.deleteDialog.title}</DialogTitle>
@@ -64,26 +85,28 @@ export const MoreButton = ({ postId, isOwner }: MoreButtonProps) => {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsOpen(false)}>
+            <Button variant="outline" onClick={() => setDeleteIsOpen(false)}>
               {t.postMenu.deleteDialog.cancel}
             </Button>
             <Button
               variant="destructive"
-              disabled={isLoading}
+              disabled={deleteIsLoading}
               onClick={() =>
-                mutate({
-                  id: postId,
+                deletePost({
+                  id: post.id,
                 })
               }
             >
-              {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {deleteIsLoading && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
               <span>{t.postMenu.delete}</span>
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      <DropdownMenu>
+      <DropdownMenu open={menuIsOpen} onOpenChange={setMenuIsOpen}>
         <DropdownMenuTrigger asChild>
           <Button
             size="sm"
@@ -101,15 +124,6 @@ export const MoreButton = ({ postId, isOwner }: MoreButtonProps) => {
               e.preventDefault();
             }}
           >
-            <Share2 className="mr-2 h-4 w-4" />
-            <span>{t.postMenu.share}</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            className="cursor-pointer"
-            onSelect={(e) => {
-              e.preventDefault();
-            }}
-          >
             <Link2 className="mr-2 h-4 w-4" />
             <span>{t.postMenu.copyLink}</span>
           </DropdownMenuItem>
@@ -117,19 +131,32 @@ export const MoreButton = ({ postId, isOwner }: MoreButtonProps) => {
             <>
               <DropdownMenuItem
                 className="cursor-pointer"
+                disabled={pinIsLoading}
+                onClick={() => pinPost({ id: post.id, pinned: !post.pinned })}
                 onSelect={(e) => {
                   e.preventDefault();
+                  pinPost({ id: post.id, pinned: !post.pinned });
                 }}
               >
-                <Pin className="mr-2 h-4 w-4" />
-                <span>{t.postMenu.pin}</span>
+                {pinIsLoading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <>
+                    {post.pinned ? (
+                      <PinOff className="mr-2 h-4 w-4" />
+                    ) : (
+                      <Pin className="mr-2 h-4 w-4" />
+                    )}
+                  </>
+                )}
+                <span>{post.pinned ? t.postMenu.unpin : t.postMenu.pin}</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="cursor-pointer"
                 onSelect={(e) => {
                   e.preventDefault();
-                  setIsOpen(true);
+                  setDeleteIsOpen(true);
                 }}
               >
                 <Trash className="mr-2 h-4 w-4" />
