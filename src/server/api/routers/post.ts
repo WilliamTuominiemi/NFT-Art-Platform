@@ -3,6 +3,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 export const postRouter = createTRPCRouter({
@@ -12,18 +13,26 @@ export const postRouter = createTRPCRouter({
         limit: z.number(),
         cursor: z.string().nullish(),
         skip: z.number().optional(),
+        sortBy: z.string(),
       }),
     )
     .query(async ({ ctx, input }) => {
-      const { limit, skip, cursor } = input;
+      const { limit, skip, cursor, sortBy } = input;
+
+      let orderBy = {};
+      if (sortBy === "old") {
+        orderBy = { createdAt: "asc" };
+      } else if (sortBy === "top") {
+        orderBy = { likes: { _count: "desc" } };
+      } else {
+        orderBy = { createdAt: "desc" };
+      }
 
       const posts = await ctx.prisma.post.findMany({
         take: limit + 1,
         skip: skip,
         cursor: cursor ? { id: cursor } : undefined,
-        orderBy: {
-          createdAt: "desc",
-        },
+        orderBy,
         include: {
           user: true,
           likes: true,
@@ -114,7 +123,7 @@ export const postRouter = createTRPCRouter({
       }),
     )
     .query(async ({ ctx, input }) => {
-      const posts = await ctx.prisma.post.findFirst({
+      const post = await ctx.prisma.post.findFirst({
         orderBy: {
           createdAt: "desc",
         },
@@ -126,6 +135,10 @@ export const postRouter = createTRPCRouter({
           likes: true,
         },
       });
-      return posts;
+      if (!post)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+        });
+      return post;
     }),
 });

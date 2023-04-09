@@ -14,10 +14,8 @@ import { useRouter } from "next/router";
 
 dayjs.extend(relativeTime);
 
-const LIMIT = 8;
-
 const Profile: NextPage = () => {
-  const { t, currentLanguage } = useTranslation();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const {
@@ -57,20 +55,18 @@ const Profile: NextPage = () => {
       </ErrorPage>
     );
 
-  if (!post) return <div>No post</div>;
-
   return (
     <Layout>
       <div className="mt-12 flex flex-col items-center justify-center">
         <div className="flex flex-col space-y-4">
-          <div className="aspect-h-1 aspect-w-1 h-[500px] w-[500px] overflow-hidden rounded-t-md border-b border-slate-200 dark:border-slate-800">
+          <div className="aspect-h-1 aspect-w-1 h-[400px] w-[400px] sm:h-[600px] sm:w-[600px]">
             {isLoading ? (
               <div className="animate-pulse rounded-lg bg-slate-200 dark:bg-slate-700" />
             ) : (
               <Image
-                className="rounded-lg"
                 src={post.image}
-                alt="User profile"
+                className="rounded-lg"
+                alt="Post image"
                 width={600}
                 height={600}
               />
@@ -89,12 +85,12 @@ const Profile: NextPage = () => {
                   height={40}
                 />
               )}
-              <div className="space flex flex-col">
+              <div className="flex flex-col">
                 <div className="grid gap-1">
                   {isLoading ? (
                     <>
-                      <div className="h-4 w-48 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
-                      <div className="h-3 w-32 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+                      <div className="h-5 w-48 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+                      <div className="mt-1 h-3 w-32 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
                     </>
                   ) : (
                     <>
@@ -112,7 +108,7 @@ const Profile: NextPage = () => {
                 </div>
               </div>
             </div>
-            {!isLoading ? <>pee</> : <LikeButton post={post} />}
+            {!isLoading && <LikeButton post={post} isBig />}
           </div>
         </div>
       </div>

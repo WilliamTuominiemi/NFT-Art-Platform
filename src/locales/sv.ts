@@ -46,6 +46,11 @@ export const swedishTranslations: Translations = {
     loadMore: "Ladda mer",
     pinned: "Fäst",
     linkCopied: "Länk kopierad till urklipp",
+    orderBy: {
+      newest: "Nyaste",
+      oldest: "Äldsta",
+      mostLiked: "Mest gillade",
+    },
   },
   profile: {
     drawings: "Ritningar",

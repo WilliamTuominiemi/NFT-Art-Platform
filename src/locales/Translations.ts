@@ -44,6 +44,11 @@ export interface Translations {
     loadMore: string;
     pinned: string;
     linkCopied: string;
+    orderBy: {
+      newest: string;
+      oldest: string;
+      mostLiked: string;
+    };
   };
   profile: {
     drawings: string;
