@@ -36,7 +36,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
       onError: () => {
         toast({
           variant: "destructive",
-          title: t.errorMessages.title,
+          title: t.errorMessages.error,
           description: t.errorMessages.likeError,
         });
       },
@@ -52,8 +52,8 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
       onError: () => {
         toast({
           variant: "destructive",
-          title: t.errorMessages.title,
-          description: t.errorMessages.likeError,
+          title: t.errorMessages.error,
+          description: t.errorMessages.unLikeError,
         });
       },
     });

@@ -18,9 +18,9 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 
 export const UserAvatar = () => {
+  const router = useRouter();
   const { t, changeLanguage } = useTranslation();
   const { setTheme } = useTheme();
-  const router = useRouter();
   const { data: session } = useSession();
 
   if (!session?.user)

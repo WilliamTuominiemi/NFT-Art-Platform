@@ -2,14 +2,18 @@ import { type Translations } from "@/locales/Translations";
 
 export const finnishTranslations: Translations = {
   errorMessages: {
-    title: "Virhe",
-    postError: "Piirustusta ei voitu lähettää",
+    error: "Virhe",
+    createPostError: "Piirustusta ei voitu lähettää",
     likeError: "Piirustusta ei voitu tykätä",
-    fetchPostsError: "Piirustuksia ei voitu ladata",
+    unLikeError: "Tykkäystä ei voitu poistaa",
+    getPostsError: "Piirroksia ei voitu ladata",
     notFound: "Sivua ei löytynyt",
+    getProfileError: "Profiilia ei löytynyt",
+    noPostsYet: "Piirustuksia ei vielä ole",
+    noLikesYet: "Piirustuksia ei vielä ole tykätty",
+    deleteError: "Piirustusta ei voitu poistaa",
     tryAgain: "Yritä uudelleen",
-    profileError: "Profiilia ei voitu ladata",
-    noPosts: "Piirustuksia ei vielä ole",
+    goHome: "Mene kotiin",
   },
   navbar: {
     draw: "Piirrä",
@@ -35,13 +39,25 @@ export const finnishTranslations: Translations = {
     redo: "Tee uudelleen",
   },
   home: {
-    feed: "Fiidi",
-    description: "Nauti kauniista piirroksista!",
+    title: "Fiidi",
+    description: "Piirroksia yhteisöstä",
     loadMore: "Lataa lisää",
   },
   profile: {
-    drawings: "Kaikki piirrokset",
-    likedDrawings: "Tykätyt piirrokset",
+    drawings: "Piirrokset",
+    likedDrawings: "Tykätyt",
     joined: "Liittyi",
+  },
+  postMenu: {
+    share: "Jaa",
+    copyLink: "Kopioi linkki",
+    delete: "Poista",
+    pin: "Kiinnitä profiiliin",
+    unpin: "Poista profiilista",
+    deleteDialog: {
+      title: "Poista piirustus",
+      description: "Haluatko varmasti poistaa tämän piirustuksen?",
+      cancel: "Peruuta",
+    },
   },
 };

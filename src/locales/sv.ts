@@ -2,14 +2,18 @@ import { type Translations } from "@/locales/Translations";
 
 export const swedishTranslations: Translations = {
   errorMessages: {
-    title: "Fel",
-    postError: "Kunde inte skapa ritningen",
+    error: "Fel",
+    createPostError: "Kunde inte skapa ritningen",
     likeError: "Kunde inte gilla ritningen",
-    fetchPostsError: "Kunde inte hämta ritningar",
-    notFound: "Sidan kunde inte hittas",
+    unLikeError: "Kunde inte ogilla ritningen",
+    getPostsError: "Det uppstod ett fel när ritningarna skulle hämtas",
+    notFound: "Sidan inte hittades inte",
+    getProfileError: "Kunde inte hitta profilen",
+    noPostsYet: "Inga ritningar ännu",
+    noLikesYet: "Inga gillade ritningar ännu",
+    deleteError: "Kunde inte radera ritningen",
     tryAgain: "Försök igen",
-    profileError: "Kunde inte hämta profilen",
-    noPosts: "Det finns inga ritningar ännu",
+    goHome: "Gå hem",
   },
   navbar: {
     draw: "Rita",
@@ -24,7 +28,7 @@ export const swedishTranslations: Translations = {
   },
   footer: {
     builtBy: "Byggd av",
-    sourceCode: "Kod är tillgänglig på",
+    sourceCode: "Koden är tillgänglig på",
   },
   create: {
     create: "Skapa",
@@ -35,13 +39,25 @@ export const swedishTranslations: Translations = {
     redo: "Gör om",
   },
   home: {
-    feed: "Flöde",
-    description: "Njut av de vackra teckningarna!",
+    title: "Flöde",
+    description: "Ritningar från communityn",
     loadMore: "Ladda mer",
   },
   profile: {
-    drawings: "Alla ritningar",
-    likedDrawings: "Gillade ritningar",
+    drawings: "Ritningar",
+    likedDrawings: "Gillade",
     joined: "Gick med",
+  },
+  postMenu: {
+    share: "Dela",
+    copyLink: "Kopiera länk",
+    delete: "Radera",
+    pin: "Fäst på profilen",
+    unpin: "Lossa från profilen",
+    deleteDialog: {
+      title: "Radera ritning",
+      description: "Är du säker att du vill radera denna ritning?",
+      cancel: "Avbryt",
+    },
   },
 };

@@ -2,14 +2,18 @@ import { type Translations } from "@/locales/Translations";
 
 export const englishTranslations: Translations = {
   errorMessages: {
-    title: "Error",
-    postError: "Could not post drawing",
+    error: "Error",
+    createPostError: "Could not post drawing",
     likeError: "Could not like drawing",
-    fetchPostsError: "Could not fetch drawings",
+    unLikeError: "Could not unlike drawing",
+    getPostsError: "There was an error fetching the drawings",
     notFound: "Page not found",
+    getProfileError: "Could not find profile",
+    noPostsYet: "No drawings yet",
+    noLikesYet: "No liked drawings yet",
+    deleteError: "Could not delete drawing",
     tryAgain: "Try again",
-    profileError: "Could not fetch profile",
-    noPosts: "There aren't any posts yet",
+    goHome: "Go home",
   },
   navbar: {
     draw: "Draw",
@@ -35,13 +39,25 @@ export const englishTranslations: Translations = {
     redo: "Redo",
   },
   home: {
-    feed: "Feed",
-    description: "Enjoy the beautiful doodles!",
+    title: "Feed",
+    description: "Drawings from the community",
     loadMore: "Load more",
   },
   profile: {
-    drawings: "All drawings",
-    likedDrawings: "Liked drawings",
+    drawings: "Drawings",
+    likedDrawings: "Likes",
     joined: "Joined",
+  },
+  postMenu: {
+    share: "Share",
+    copyLink: "Copy link",
+    delete: "Delete",
+    pin: "Pin to profile",
+    unpin: "Unpin from profile",
+    deleteDialog: {
+      title: "Delete drawing",
+      description: "Are you sure you want to delete this drawing?",
+      cancel: "Cancel",
+    },
   },
 };
