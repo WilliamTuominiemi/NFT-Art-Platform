@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
+import { kFormatter } from "@/utils/helpers";
 import { Like, Post } from "@prisma/client";
 import { Heart, Loader2 } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -81,7 +82,7 @@ export const LikeButton = ({ post }: LikeButtonProps) => {
           fill={isLiked ? "#f87171" : "transparent"}
         />
       )}
-      <span>{likeCount}</span>
+      <span>{kFormatter(likeCount)}</span>
     </Button>
   );
 };

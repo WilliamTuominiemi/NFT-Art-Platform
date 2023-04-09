@@ -5,6 +5,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useTranslation } from "@/hooks/use-translations";
+import { formatUserJoinedString } from "@/utils/helpers";
 import type { User } from "@prisma/client";
 import { CalendarDays, User as UserIcon } from "lucide-react";
 
@@ -33,12 +34,11 @@ export const UserHoverCard = ({ user, children }: UserHoverCardProps) => {
             <div className="flex items-center">
               <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
               <span className="text-xs text-slate-500 dark:text-slate-400">
-                {`${t.profile.joined} ${user.createdAt.toLocaleDateString(
+                {formatUserJoinedString(
+                  t.profile.joined,
                   currentLanguage,
-                  {
-                    dateStyle: "long",
-                  },
-                )}`}
+                  user.createdAt,
+                )}
               </span>
             </div>
           </div>

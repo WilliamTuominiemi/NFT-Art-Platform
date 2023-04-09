@@ -122,6 +122,13 @@ export const MoreButton = ({ post, isOwner }: MoreButtonProps) => {
             className="cursor-pointer"
             onSelect={(e) => {
               e.preventDefault();
+              navigator.clipboard.writeText(
+                `${window.location.origin}/post/${post.id}`,
+              );
+              toast({
+                description: t.home.linkCopied,
+              });
+              setMenuIsOpen(false);
             }}
           >
             <Link2 className="mr-2 h-4 w-4" />

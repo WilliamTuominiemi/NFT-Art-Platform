@@ -43,6 +43,7 @@ export interface Translations {
     description: string;
     loadMore: string;
     pinned: string;
+    linkCopied: string;
   };
   profile: {
     drawings: string;
