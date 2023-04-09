@@ -126,7 +126,7 @@ const Create: NextPage = () => {
             <Button
               variant="ghost"
               onClick={async () => {
-                await canvasRef.current?.clearCanvas();
+                await canvasRef.current?.resetCanvas();
                 setIsEmpty(true);
               }}
             >
