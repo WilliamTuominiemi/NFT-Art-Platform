@@ -46,6 +46,11 @@ export const finnishTranslations: Translations = {
     loadMore: "Lataa lisää",
     pinned: "Kiinnitetty",
     linkCopied: "Linkki kopioitu leikepöydälle",
+    orderBy: {
+      newest: "Uusimmat",
+      oldest: "Vanhimmat",
+      mostLiked: "Tykätyimmät",
+    },
   },
   profile: {
     drawings: "Piirrokset",

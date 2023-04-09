@@ -4,19 +4,27 @@ import { LoadingCard } from "@/components/post/loading-card";
 import { PostCard } from "@/components/post/post-card";
 import { PostsGrid } from "@/components/post/posts-grid";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useTranslation } from "@/hooks/use-translations";
 import { api } from "@/utils/api";
 import { Brush, Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
+import { Fragment, useState } from "react";
 
 const LIMIT = 12;
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const [sortBy, setSortBy] = useState("new");
 
   const {
     data,
@@ -25,8 +33,9 @@ const Home: NextPage = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
+    refetch,
   } = api.post.getAll.useInfiniteQuery(
-    { limit: LIMIT },
+    { limit: LIMIT, sortBy },
     {
       keepPreviousData: true,
       getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -50,10 +59,30 @@ const Home: NextPage = () => {
           <h1 className="text-2xl font-bold tracking-wide">{t.home.title}</h1>
           <p className="text-slate-500">{t.home.description}</p>
         </div>
-        <Button onClick={() => router.push("/create")}>
-          <Brush className="mr-2 h-4 w-4" />
-          <span>{t.navbar.draw}</span>
-        </Button>
+        <div className="flex flex-row space-x-6">
+          <Select
+            onValueChange={(e) => {
+              setSortBy(e);
+              refetch();
+            }}
+          >
+            <SelectTrigger className="w-32">
+              <SelectValue
+                defaultValue="new"
+                placeholder={t.home.orderBy.newest}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="new">{t.home.orderBy.newest}</SelectItem>
+              <SelectItem value="old">{t.home.orderBy.oldest}</SelectItem>
+              <SelectItem value="top">{t.home.orderBy.mostLiked}</SelectItem>
+            </SelectContent>
+          </Select>
+          <Button onClick={() => router.push("/create")}>
+            <Brush className="mr-2 h-4 w-4" />
+            <span>{t.navbar.draw}</span>
+          </Button>
+        </div>
       </div>
       <PostsGrid>
         {isLoading ? (
@@ -67,11 +96,11 @@ const Home: NextPage = () => {
         ) : (
           <>
             {data.pages.map((page) => (
-              <React.Fragment key={page.nextCursor || "lastPage"}>
+              <Fragment key={page.nextCursor || "lastPage"}>
                 {page.posts?.map((post) => (
                   <PostCard key={post.id} post={post} />
                 ))}
-              </React.Fragment>
+              </Fragment>
             ))}
           </>
         )}

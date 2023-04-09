@@ -46,6 +46,11 @@ export const englishTranslations: Translations = {
     loadMore: "Load more",
     pinned: "Pinned",
     linkCopied: "Link copied to clipboard",
+    orderBy: {
+      newest: "Newest",
+      oldest: "Oldest",
+      mostLiked: "Most liked",
+    },
   },
   profile: {
     drawings: "Drawings",
