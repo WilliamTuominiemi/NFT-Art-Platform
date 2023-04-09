@@ -114,7 +114,7 @@ const Profile: NextPage = () => {
                 {user.posts
                   .sort((a, b) => Number(b.pinned) - Number(a.pinned))
                   .map((post) => (
-                    <PostCard key={post.id} post={post} />
+                    <PostCard key={post.id} post={post} showPinned />
                   ))}
               </>
             )}

@@ -2,9 +2,11 @@ import { LikeButton } from "@/components/post/like-button";
 import { MoreButton } from "@/components/post/more-button";
 import { UserHoverCard } from "@/components/post/user-hover-card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useTranslation } from "@/hooks/use-translations";
 import type { Like, Post, User } from "@prisma/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { Pin } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,10 +19,12 @@ interface PostCardProps {
     user: User;
     likes: Like[];
   };
+  showPinned?: boolean;
 }
 
-export const PostCard = ({ post }: PostCardProps) => {
+export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
   const { data: session } = useSession();
 
   return (
@@ -68,8 +72,16 @@ export const PostCard = ({ post }: PostCardProps) => {
               isOwner={!!session?.user && session.user.id === post.user.id}
             />
           </div>
-          <div className="flex">
+          <div className="flex flex-row justify-between">
             <LikeButton post={post} />
+            {post.pinned && showPinned ? (
+              <div className="flex items-center truncate">
+                <Pin className="mr-2 h-4 w-4 opacity-70" fill="#111827" />{" "}
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  {t.home.pinned}
+                </span>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

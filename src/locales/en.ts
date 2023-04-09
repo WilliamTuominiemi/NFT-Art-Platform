@@ -44,6 +44,7 @@ export const englishTranslations: Translations = {
     title: "Feed",
     description: "Drawings from the community",
     loadMore: "Load more",
+    pinned: "Pinned",
   },
   profile: {
     drawings: "Drawings",

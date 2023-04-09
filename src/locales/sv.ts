@@ -44,6 +44,7 @@ export const swedishTranslations: Translations = {
     title: "Flöde",
     description: "Ritningar från communityn",
     loadMore: "Ladda mer",
+    pinned: "Fäst",
   },
   profile: {
     drawings: "Ritningar",

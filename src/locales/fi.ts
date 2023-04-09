@@ -44,6 +44,7 @@ export const finnishTranslations: Translations = {
     title: "Fiidi",
     description: "Piirroksia yhteisöstä",
     loadMore: "Lataa lisää",
+    pinned: "Kiinnitetty",
   },
   profile: {
     drawings: "Piirrokset",
