@@ -27,6 +27,17 @@
   <img src="screenshot.png" alt="screenshot" width="800"/>
 </a>
 
+### Features
+
+- Feed, with pagination and sorting
+- Highly customizable drawing canvas
+- Like and share drawings
+- User profiles
+- Pinned drawings
+- Responsive design
+- Light and dark mode
+- English, Swedish and Finnish translations
+
 ### Get started
 
 ```bash
