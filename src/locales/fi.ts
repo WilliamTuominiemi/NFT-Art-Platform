@@ -1,0 +1,72 @@
+import { type Translations } from "@/locales/Translations";
+
+export const finnishTranslations: Translations = {
+  errorMessages: {
+    error: "Virhe",
+    createPostError: "Piirrustuksen lähettäminen epäonnistui",
+    likeError: "Piirrustuksen tykkääminen epäonnistui",
+    unLikeError: "Tykkäyksen poisto epäonnistui",
+    getPostsError: "Piirroksien lataaminen epäonnistui",
+    notFound: "Sivua ei löytynyt",
+    getProfileError: "Profiilia ei löytynyt",
+    noPostsYet: "Piirustuksia ei olla vielä luotu",
+    noLikesYet: "Piirustuksia ei olla vielä tykätty",
+    deleteError: "Piirustuksen poisto epäonnistui",
+    pinError: "Piirustuksen kiinnitys epäonnistui",
+    unPinError: "Piirustuksen irroitus epäonnistui",
+    tryAgain: "Yritä uudelleen",
+    goHome: "Mene kotisivulle",
+  },
+  navbar: {
+    draw: "Piirrä",
+    login: "Kirjaudu",
+    logout: "Kirjaudu ulos",
+    profile: "Profiili",
+    theme: "Teema",
+    language: "Kieli",
+    light: "Vaalea",
+    dark: "Tumma",
+    system: "Systeemi",
+  },
+  footer: {
+    builtBy: "Rakennettu",
+    sourceCode: "Koodi on saatavilla",
+  },
+  create: {
+    create: "Luo",
+    color: "Väri",
+    thickness: "Paksuus",
+    clear: "Tyhjennä",
+    undo: "Kumoa",
+    redo: "Tee uudelleen",
+  },
+  home: {
+    title: "Syöte",
+    description: "Yhteisön luomia piirroksia",
+    loadMore: "Lataa lisää",
+    pinned: "Kiinnitetty",
+    linkCopied: "Linkki kopioitu leikepöydälle",
+    orderBy: {
+      newest: "Uusimmat",
+      oldest: "Vanhimmat",
+      mostLiked: "Tykätyimmät",
+    },
+  },
+  profile: {
+    drawings: "Piirrokset",
+    likedDrawings: "Tykätyt",
+    joined: "Liittyi",
+  },
+  postMenu: {
+    share: "Jaa",
+    copyLink: "Kopioi linkki",
+    delete: "Poista",
+    pin: "Kiinnitä profiiliin",
+    unpin: "Poista profiilista",
+    deleteDialog: {
+      title: "Poista piirustus",
+      description: "Haluatko varmasti poistaa tämän piirustuksen?",
+      cancel: "Peruuta",
+    },
+  },
+};
