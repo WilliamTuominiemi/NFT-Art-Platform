@@ -41,7 +41,7 @@
 ### Get started
 
 ```bash
-git clone https://github.com/MaximilianHagelstam/cryptochimp
+git clone https://github.com/WilliamTuominiemi/NFT-Art-Platform.git
 cd cryptochimp
 
 # Create a .env file in the root of the project and fill it out as per .env.example
@@ -53,7 +53,7 @@ npm run dev
 
 ### Tech stack
 
-CryptoChimp is built with the [T3 Stack](https://create.t3.gg), which includes the following technologies:
+Baynet is built with the [T3 Stack](https://create.t3.gg), which includes the following technologies:
 
 - [Next.js](https://nextjs.org)
 - [TypeScript](https://www.typescriptlang.org)
