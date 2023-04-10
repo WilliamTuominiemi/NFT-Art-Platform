@@ -65,7 +65,7 @@ const Profile: NextPage = () => {
             ) : (
               <Image
                 src={post.image}
-                className="rounded-lg"
+                className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-800"
                 alt="Post image"
                 width={600}
                 height={600}

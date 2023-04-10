@@ -19,7 +19,7 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 
-const LIMIT = 12;
+const LIMIT = 16;
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -57,7 +57,9 @@ const Home: NextPage = () => {
       <div className="mb-12 flex justify-between">
         <div className="grid gap-1">
           <h1 className="text-2xl font-bold tracking-wide">{t.home.title}</h1>
-          <p className="text-slate-500">{t.home.description}</p>
+          <p className="text-slate-600 dark:text-slate-400">
+            {t.home.description}
+          </p>
         </div>
         <div className="flex flex-row space-x-6">
           <Select
