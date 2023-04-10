@@ -23,7 +23,7 @@
 
 ### Screenshot
 
-<a href="h#">
+<a href="https://baynet.vercel.app">
   <img src="screenshot.png" alt="screenshot" width="800"/>
 </a>
 
@@ -40,7 +40,7 @@ npm run db:push
 npm run dev
 ```
 
-### Tech Stack
+### Tech stack
 
 CryptoChimp is built with the [T3 Stack](https://create.t3.gg), which includes the following technologies:
 
