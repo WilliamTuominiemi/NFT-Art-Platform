@@ -52,7 +52,7 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
             className="object-cover object-top transition-all duration-500 hover:cursor-pointer group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-col space-y-2 px-4 pb-4 pt-2">
+        <div className="flex flex-col px-4 pb-4 pt-2">
           <div className="flex w-full flex-row justify-between space-x-2">
             <div className="flex flex-row space-x-1 truncate pt-2">
               <UserHoverCard user={post.user}>
