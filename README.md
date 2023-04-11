@@ -42,7 +42,7 @@
 
 ```bash
 git clone https://github.com/WilliamTuominiemi/NFT-Art-Platform.git
-cd cryptochimp
+cd NFT-Art-Platform
 
 # Create a .env file in the root of the project and fill it out as per .env.example
 
