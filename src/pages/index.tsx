@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
+import { api } from "@/lib/api";
 import { Brush, Loader2 } from "lucide-react";
 import { type NextPage } from "next";
 import { signOut } from "next-auth/react";
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
       <div className="mb-12 flex justify-between">
         <div className="grid gap-1">
           <h1 className="text-2xl font-bold tracking-wide">{t.home.title}</h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-zinc-600 dark:text-zinc-400">
             {t.home.description}
           </p>
         </div>
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
       </PostsGrid>
       <div className="mt-6 w-full text-center">
         <Button
-          variant="subtle"
+          variant="ghost"
           disabled={isLoading || isFetchingNextPage || !hasNextPage}
           onClick={() => fetchNextPage()}
         >

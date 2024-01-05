@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
-import { cn, kFormatter } from "@/utils/helpers";
+import { api } from "@/lib/api";
+import { cn, kFormatter } from "@/lib/utils";
 import { Like, Post } from "@prisma/client";
 import { Heart, Loader2 } from "lucide-react";
 import { useSession } from "next-auth/react";

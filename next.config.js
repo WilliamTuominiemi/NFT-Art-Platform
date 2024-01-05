@@ -5,7 +5,5 @@ module.exports = {
     locales: ["en", "sv", "fi"],
     defaultLocale: "en",
   },
-  images: {
-    domains: ["lh3.googleusercontent.com"],
-  },
+  images: { remotePatterns: [{ hostname: "lh3.googleusercontent.com" }] },
 };

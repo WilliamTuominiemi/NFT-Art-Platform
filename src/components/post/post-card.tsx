@@ -41,8 +41,8 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
         </DialogContent>
       </Dialog>
 
-      <div className="group rounded-md border border-slate-200 shadow-md hover:shadow-lg dark:border-slate-800">
-        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md border-b border-slate-200 dark:border-slate-800">
+      <div className="group rounded-md border border-zinc-200 shadow-md hover:shadow-lg dark:border-zinc-800">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md border-b border-zinc-200 dark:border-zinc-800">
           <Image
             src={post.image}
             height={500}
@@ -63,7 +63,7 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
                   {post.user.name}
                 </Link>
               </UserHoverCard>
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
               </p>
             </div>
@@ -75,7 +75,7 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
           <div className="flex flex-row justify-between">
             <LikeButton post={post} />
             {post.pinned && showPinned ? (
-              <div className="flex items-center truncate text-slate-500">
+              <div className="flex items-center truncate text-zinc-500">
                 <Pin className="mr-2 h-4 w-4" fill="#64748b" />{" "}
                 <span className="text-xs font-bold">{t.home.pinned}</span>
               </div>

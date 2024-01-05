@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
+import { api } from "@/lib/api";
 import { Post } from "@prisma/client";
 import {
   Link2,

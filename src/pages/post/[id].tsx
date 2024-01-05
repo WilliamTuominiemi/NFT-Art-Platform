@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout";
 import { LikeButton } from "@/components/post/like-button";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
+import { api } from "@/lib/api";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { type NextPage } from "next";
@@ -61,11 +61,11 @@ const Profile: NextPage = () => {
         <div className="flex flex-col space-y-4">
           <div className="aspect-h-1 aspect-w-1 h-[400px] w-[400px] sm:h-[600px] sm:w-[600px]">
             {isLoading ? (
-              <div className="animate-pulse rounded-lg bg-slate-200 dark:bg-slate-700" />
+              <div className="animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
             ) : (
               <Image
                 src={post.image}
-                className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-800"
+                className="rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-800"
                 alt="Post image"
                 width={600}
                 height={600}
@@ -75,7 +75,7 @@ const Profile: NextPage = () => {
           <div className="flex flex-row justify-between space-x-4">
             <div className="flex flex-row space-x-4">
               {isLoading ? (
-                <div className="h-10 w-10 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+                <div className="h-10 w-10 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
               ) : (
                 <Image
                   className="h-10 w-10 rounded-full"
@@ -89,8 +89,8 @@ const Profile: NextPage = () => {
                 <div className="grid gap-1">
                   {isLoading ? (
                     <>
-                      <div className="h-5 w-48 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
-                      <div className="mt-1 h-3 w-32 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+                      <div className="h-5 w-48 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
+                      <div className="mt-1 h-3 w-32 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
                     </>
                   ) : (
                     <>
@@ -100,7 +100,7 @@ const Profile: NextPage = () => {
                       >
                         {post?.user.name}
                       </Link>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{`${dayjs(
+                      <p className="text-sm text-zinc-500 dark:text-zinc-400">{`${dayjs(
                         post.createdAt,
                       ).fromNow()}`}</p>
                     </>

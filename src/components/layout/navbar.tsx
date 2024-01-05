@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <header className="container sticky top-0 z-40 bg-white dark:bg-slate-900">
-      <div className="flex h-16 items-center justify-between border-b border-b-slate-200 py-4 dark:border-b-slate-700">
+    <header className="container sticky top-0 z-40 bg-white dark:bg-zinc-950">
+      <div className="flex h-16 w-full items-center justify-between border-b border-b-zinc-200 py-4 dark:border-b-zinc-700">
         <Link href="/" className="flex items-center space-x-2">
           <Pencil />
           <span className="font-bold">Baynet</span>
