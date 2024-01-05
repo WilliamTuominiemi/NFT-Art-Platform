@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
+import { api } from "@/lib/api";
 import { Loader2, Redo, Trash, Undo } from "lucide-react";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
@@ -74,7 +74,7 @@ const Create: NextPage = () => {
       <div className="flex flex-col items-center space-x-0 space-y-12 md:flex-row md:items-start md:space-x-12 md:space-y-0">
         <div className="h-[500px] w-[500px]">
           <ReactSketchCanvas
-            className="h-full w-full rounded-md border border-slate-200"
+            className="h-full w-full rounded-md border border-zinc-200"
             width="500"
             height="500"
             strokeWidth={width}

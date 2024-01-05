@@ -48,7 +48,7 @@ export const UserAvatar = () => {
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             <p className="font-medium">{session.user.name}</p>
-            <p className="w-[200px] truncate text-sm text-slate-600">
+            <p className="w-[200px] truncate text-sm text-zinc-600">
               {session.user.email}
             </p>
           </div>
@@ -94,8 +94,8 @@ export const UserAvatar = () => {
         </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <Sun className="mr-2 h-4 w-4 rotate-0 scale-100 transition-all hover:text-slate-900 dark:-rotate-90 dark:scale-0 dark:text-slate-400 dark:hover:text-slate-100" />
-            <Moon className="absolute mr-2 h-4 w-4 rotate-90 scale-0 transition-all hover:text-slate-900 dark:rotate-0 dark:scale-100 dark:text-slate-400 dark:hover:text-slate-100" />
+            <Sun className="mr-2 h-4 w-4 rotate-0 scale-100 dark:scale-0" />
+            <Moon className="absolute mr-2 h-4 w-4 scale-0 dark:scale-100" />
             <span>{t.navbar.theme}</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>

@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
+import { api } from "@/lib/api";
 import "@/styles/globals.css";
-import { api } from "@/utils/api";
 import { Analytics } from "@vercel/analytics/react";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";

@@ -1,9 +1,10 @@
+// Inspired by react-hot-toast library
 import * as React from "react";
 
-import { ToastActionElement, type ToastProps } from "@/components/ui/toast";
+import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
 
 const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 1000;
+const TOAST_REMOVE_DELAY = 1000000;
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -22,7 +23,7 @@ const actionTypes = {
 let count = 0;
 
 function genId() {
-  count = (count + 1) % Number.MAX_VALUE;
+  count = (count + 1) % Number.MAX_SAFE_INTEGER;
   return count.toString();
 }
 
@@ -92,7 +93,6 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue(toastId);
       } else {
-        // eslint-disable-next-line no-shadow
         state.toasts.forEach((toast) => {
           addToRemoveQueue(toast.id);
         });
@@ -135,13 +135,11 @@ function dispatch(action: Action) {
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Toast extends Omit<ToasterToast, "id"> {}
+type Toast = Omit<ToasterToast, "id">;
 
 function toast({ ...props }: Toast) {
   const id = genId();
 
-  // eslint-disable-next-line no-shadow
   const update = (props: ToasterToast) =>
     dispatch({
       type: "UPDATE_TOAST",
@@ -188,4 +186,4 @@ function useToast() {
   };
 }
 
-export { useToast, toast };
+export { toast, useToast };

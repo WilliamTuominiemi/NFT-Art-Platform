@@ -21,7 +21,7 @@
   </a>
 </div>
 
-### Screenshot
+### Demo
 
 <a href="https://baynet.vercel.app">
   <img src="screenshot.png" alt="screenshot" width="800"/>

@@ -6,8 +6,8 @@ import { PostsGrid } from "@/components/post/posts-grid";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "@/hooks/use-translations";
-import { api } from "@/utils/api";
-import { formatUserJoinedString } from "@/utils/helpers";
+import { api } from "@/lib/api";
+import { formatUserJoinedString } from "@/lib/utils";
 import { type NextPage } from "next";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
@@ -61,10 +61,10 @@ const Profile: NextPage = () => {
       <div className="mb-12 flex flex-row space-x-6">
         {isLoading ? (
           <>
-            <div className="h-16 w-16 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+            <div className="h-16 w-16 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
             <div className="grid gap-1">
-              <div className="h-6 w-64 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
-              <div className="h-4 w-32 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700" />
+              <div className="h-6 w-64 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 w-32 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-700" />
             </div>
           </>
         ) : (
@@ -78,7 +78,7 @@ const Profile: NextPage = () => {
             />
             <div className="grid gap-1">
               <h1 className="text-2xl font-bold tracking-wide">{user.name}</h1>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-zinc-600 dark:text-zinc-400">
                 {formatUserJoinedString(
                   t.profile.joined,
                   currentLanguage,
@@ -96,7 +96,7 @@ const Profile: NextPage = () => {
         </TabsList>
         <TabsContent value="drawings" className="border-0 p-0">
           {!isLoading && user.posts?.length === 0 && (
-            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-500">
+            <p className="mt-3 text-xl font-semibold tracking-tight text-zinc-500">
               {t.errorMessages.noPostsYet}
             </p>
           )}
@@ -122,7 +122,7 @@ const Profile: NextPage = () => {
         </TabsContent>
         <TabsContent value="liked" className="border-0 p-0">
           {!isLoading && user.likes?.length === 0 && (
-            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-500">
+            <p className="mt-3 text-xl font-semibold tracking-tight text-zinc-500">
               {t.errorMessages.noLikesYet}
             </p>
           )}
