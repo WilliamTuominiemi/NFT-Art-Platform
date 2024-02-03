@@ -6,7 +6,7 @@ export const Footer = () => {
 
   return (
     <footer className="container bg-white text-zinc-600 dark:bg-zinc-950 dark:text-zinc-400">
-      <div className="flex flex-col items-center justify-between gap-4 border-t border-t-zinc-200 py-10 md:h-24 md:flex-row md:py-0 dark:border-t-zinc-700">
+      <div className="flex flex-col items-center justify-between gap-4 border-t border-t-zinc-200 py-10 dark:border-t-zinc-700 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <Pencil />
           <p className="text-center text-sm leading-loose md:text-left">

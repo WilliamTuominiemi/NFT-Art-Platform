@@ -40,25 +40,30 @@
 
 ### Get started
 
+Install dependencies:
+
 ```bash
-git clone https://github.com/WilliamTuominiemi/NFT-Art-Platform.git
-cd NFT-Art-Platform
-
-# Create a .env file in the root of the project and fill it out as per .env.example
-
 npm install
+```
+
+Create e `.env` file and fill it out as per `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Create database tables from Prisma schema:
+
+```bash
 npm run db:push
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
 ### Tech stack
 
-Baynet is built with the [T3 Stack](https://create.t3.gg), which includes the following technologies:
-
-- [Next.js](https://nextjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [tRPC](https://trpc.io)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [PlanetScale](https://planetscale.com/)
-- [Tailwind CSS](https://tailwindcss.com)
+Baynet is built with the [T3 Stack](https://create.t3.gg/) and [ShadcnUI](https://ui.shadcn.com/).
