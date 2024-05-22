@@ -29,6 +29,7 @@ const Home: NextPage = () => {
   const {
     data,
     isLoading,
+    isRefetching,
     isError,
     fetchNextPage,
     hasNextPage,
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
     {
       keepPreviousData: true,
       getNextPageParam: (lastPage) => lastPage.nextCursor,
+      refetchOnWindowFocus: false,
     },
   );
 
@@ -87,7 +89,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       <PostsGrid>
-        {isLoading ? (
+        {isLoading || isRefetching ? (
           <>
             {Array(LIMIT)
               .fill(1)
