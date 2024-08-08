@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -11,7 +11,7 @@ datasource db {
 model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  image     String   @db.LongText
+  image     String   @db.Text
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   likes     Like[]

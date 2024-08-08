@@ -29,7 +29,6 @@ const Home: NextPage = () => {
   const {
     data,
     isLoading,
-    isRefetching,
     isError,
     fetchNextPage,
     hasNextPage,
@@ -89,7 +88,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       <PostsGrid>
-        {isLoading || isRefetching ? (
+        {isLoading ? (
           <>
             {Array(LIMIT)
               .fill(1)
