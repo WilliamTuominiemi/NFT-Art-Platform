@@ -27,6 +27,15 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
   const { t } = useTranslation();
   const { data: session } = useSession();
 
+  const adminUserIds = [
+    "clzo1nl2e0005137e1z9cnajv",
+    "clzlkp5j40000ibxoiwtfhtv4",
+  ];
+
+  const userId = session?.user.id ?? "";
+  const isOwner = userId === post.user.id;
+  const isAdmin = adminUserIds.includes(userId);
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -67,10 +76,7 @@ export const PostCard = ({ post, showPinned = false }: PostCardProps) => {
                 {`${"·"} ${dayjs(post.createdAt).fromNow()}`}
               </p>
             </div>
-            <MoreButton
-              post={post}
-              isOwner={!!session?.user && session.user.id === post.user.id}
-            />
+            <MoreButton post={post} isOwner={isOwner || isAdmin} />
           </div>
           <div className="flex flex-row justify-between">
             <LikeButton post={post} />
